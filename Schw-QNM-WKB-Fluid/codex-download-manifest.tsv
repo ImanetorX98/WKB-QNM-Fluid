@@ -1,0 +1,19 @@
+# Manifest per Codex: articoli non scaricabili da qui (paywall o blocco bot).
+# Gli otto PDF gia' presenti in papers/ NON sono in questa lista.
+# Campi: chiave <TAB> DOI <TAB> riferimento <TAB> nota di accesso
+# Salvare in papers/ con il nome dato dalla chiave, es. madelung1927.pdf
+
+madelung1927	10.1007/BF01400372	Madelung, Z. Phys. 40, 322-326 (1927)	Springer, paywall. Traduzioni inglesi in circolazione: verificare che sia l'originale.
+bohm1952	10.1103/PhysRev.85.166	Bohm, Phys. Rev. 85, 166-179 (1952)	APS, paywall. Serve anche la Parte II, doi 10.1103/PhysRev.85.180
+regge1957	10.1103/PhysRev.108.1063	Regge & Wheeler, Phys. Rev. 108, 1063-1069 (1957)	APS, paywall
+zerilli1970	10.1103/PhysRevLett.24.737	Zerilli, Phys. Rev. Lett. 24, 737-738 (1970)	APS, paywall
+ferrari1984	10.1103/PhysRevD.30.295	Ferrari & Mashhoon, Phys. Rev. D 30, 295-304 (1984)	APS, paywall
+schutz1985	10.1086/184453	Schutz & Will, ApJL 291, L33 (1985)	Open access via MPG: http://hdl.handle.net/11858/00-001M-0000-0013-735D-6 (il mio curl ha ricevuto JSON, non PDF)
+iyerwill1987a	10.1103/PhysRevD.35.3621	Iyer & Will, Phys. Rev. D 35, 3621-3631 (1987)	APS, paywall. E' la fonte primaria delle correzioni Lambda_j: la piu' importante della lista.
+iyer1987b	10.1103/PhysRevD.35.3632	Iyer, Phys. Rev. D 35, 3632-3636 (1987)	APS, paywall. Fonte dei valori di riferimento dei test.
+berry1972	10.1088/0034-4885/35/1/306	Berry & Mount, Rep. Prog. Phys. 35, 315-397 (1972)	IOP segnala open access ma blocca il download automatico.
+ddp1997	10.1063/1.532206	Delabaere, Dillinger & Pham, J. Math. Phys. 38, 6126-6184 (1997)	AIP, paywall
+unruh1981	10.1103/PhysRevLett.46.1351	Unruh, Phys. Rev. Lett. 46, 1351-1353 (1981)	APS, paywall
+barcelo2026	10.1007/s41114-026-00064-9	Barcelo, Liberati & Visser, Living Rev. Rel. 29 (2026)	Open access ma Springer blocca il bot. Il preprint gr-qc/0505065v4 e' gia' in papers/ ed e' la stessa revisione.
+chandrasekhar1983	-	Chandrasekhar, The Mathematical Theory of Black Holes, OUP (1983)	Monografia, ISBN 978-0198512912. Nessun DOI.
+benderorszag1999	10.1007/978-1-4757-3069-2	Bender & Orszag, Advanced Mathematical Methods, Springer (1999)	Monografia. Serve solo il capitolo 10 (WKB).

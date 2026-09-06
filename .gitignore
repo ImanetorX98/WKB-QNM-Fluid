@@ -1,0 +1,13 @@
+.DS_Store
+.claude/
+.venv/
+*.py[cod]
+__pycache__/
+.mplconfig/
+
+# Generated reports, plots, CSVs and intermediate research artifacts.
+output/
+tmp/
+
+# Local copies of third-party papers are not redistributed in the public repo.
+Schw-QNM-WKB-Fluid/papers/
