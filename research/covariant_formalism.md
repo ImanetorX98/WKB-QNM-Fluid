@@ -112,6 +112,76 @@ WKB. Il termine «Madelung» seleziona l'interpretazione in ampiezza e corrente;
 non rende nuova l'identità (2.5). Il progetto deve produrre un diagnostico o un
 risultato dinamico che non segua dalla sola rinominazione dello Schwarziano.
 
+### 2.3 Energia misurata e carica conservata
+
+Sia
+
+\[
+W_\mu=\nabla_\mu S
+\]
+
+il covettore di fase. Per un osservatore normalizzato di quadrivelocità
+\(u^\mu\),
+
+\[
+\widehat E[u]=-u^\mu W_\mu
+\tag{2.6}
+\]
+
+è l'energia o frequenza **misurata** localmente. La (2.6) è una definizione,
+non una legge di conservazione. Se \(X^\mu\) è un campo vettoriale qualsiasi e
+le caratteristiche soddisfano la (2.1), lungo \(W^\mu\) vale
+
+\[
+W^\nu\nabla_\nu(-X\!\cdot W)
+=-\frac12W^\mu W^\nu\mathcal L_Xg_{\mu\nu}
++\frac12X^\mu\nabla_\mu(\mathcal U+Q_g).
+\tag{2.7}
+\]
+
+Nel limite eikonale libero, \(\mathcal U=Q_g=0\), la quantità
+\(E_\xi=-\xi\!\cdot W\) è conservata quando \(\xi\) è Killing. È la simmetria,
+non un osservatore o un apparato propulsivo, a produrre la carica conservata.
+
+Anche in un fondo statico l'osservatore fisico
+\(u=\xi/\sqrt{-\xi^2}\) misura
+
+\[
+\widehat E[u]=\frac{E_\xi}{\sqrt{-\xi^2}},
+\]
+
+che varia con il redshift pur essendo \(E_\xi\) costante. Imporre
+\(\widehat E=\mathrm{costante}\) selezionerebbe localmente una congruenza di
+osservatori accelerati. Non conserverebbe l'energia del campo: gli osservatori
+starebbero modificando il proprio moto e quindi il risultato della misura.
+
+In Kerr le cariche geometriche sono \(E=-\partial_t\!\cdot W\) e
+\(L=\partial_\phi\!\cdot W\); la frequenza locale contiene invece
+\(E-\Omega L\). In Vaidya non esiste una Killing temporale. Il vettore di
+Kodama \(K^\mu\) fornisce un riferimento energetico preferito in simmetria
+sferica, ma in generale
+
+\[
+W^\nu\nabla_\nu E_K
+=-\frac12W^\mu W^\nu\mathcal L_Kg_{\mu\nu}\ne0.
+\tag{2.8}
+\]
+
+Per la metrica entrante di §6, con \(K=\partial_v\) e
+\(f=1-2M(v)/r\), il limite null-eikonal dà, con le convenzioni qui adottate,
+
+\[
+\frac{dE_K}{d\lambda}
+=-\frac{\dot M(v)}r\,(W^v)^2.
+\tag{2.9}
+\]
+
+Il termine a destra non è un difetto da cancellare: è la firma della mancanza
+di simmetria temporale. Il potenziale di Madelung può aggiungere il secondo
+termine della (2.7), ma non deve essere scelto artificialmente per annullare la
+variazione geometrica. L'eventuale compensazione sarebbe un vincolo imposto,
+non una previsione della dinamica.
+
 ## 3. La scala delle simmetrie
 
 | Classe | Simmetria temporale | Nuovo ingrediente | Oggetto da misurare |

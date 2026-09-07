@@ -141,10 +141,29 @@ def check_memory_normalization() -> None:
     )
 
 
+def check_kodama_energy_balance() -> None:
+    """Check the null-eikonal Kodama-energy drift for f=1-2M(v)/r."""
+
+    mass = sp.Function("M", real=True)(v)
+    vaidya_f = 1 - 2 * mass / r
+    orbit_metric = sp.Matrix([[-vaidya_f, 1], [1, 0]])
+    w_v, w_r = sp.symbols("W_v W_r", real=True)
+    wave_vector = sp.Matrix([w_v, w_r])
+
+    # K=partial_v has constant components, so L_K g_ab=partial_v g_ab.
+    lie_k_metric = orbit_metric.diff(v)
+    drift = -sp.Rational(1, 2) * (
+        wave_vector.T * lie_k_metric * wave_vector
+    )[0]
+    expected = -sp.diff(mass, v) * w_v**2 / r
+    assert_zero("Kodama-energy drift in ingoing Vaidya", drift - expected)
+
+
 def main() -> None:
     check_radial_reduction()
     check_madelung_split()
     check_memory_normalization()
+    check_kodama_energy_balance()
 
 
 if __name__ == "__main__":
