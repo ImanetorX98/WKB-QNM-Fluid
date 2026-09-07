@@ -25,6 +25,7 @@ attribuita alla trasformazione ampiezza–fase o alla sola comparsa di
 |---|---|---|
 | WKB di barriera | QNM di Schwarzschild e altri fondi a ordini elevati, Padé e matching uniforme | nessuna interpretazione Madelung necessaria |
 | exact WKB / Riccati | momento quantistico, Stokes, periodi complessi e QNM di Schwarzschild/Kerr/RN | la chiusura locale e i periodi non sono nuovi come algebra |
+| Bohm–Madelung / Ermakov | ampiezze stazionarie, invariante di Ermakov–Lewis e base di Weber | non tratta risonanze QNM, condizioni radiative o stima dell'errore WKB |
 | phase-amplitude QNM | Prüfer e funzioni di fase applicate a Schwarzschild e Kerr | usate come metodo numerico, non come diagnostica di memoria o simmetria |
 | analogue gravity | QNM di metriche acustiche e pressione quantistica microscopica | il fluido è il mezzo fisico che genera la metrica analoga |
 | correnti QNM | bilinear forms, regolarizzazione e slicing iperboloidale | chiariscono l'apertura, senza Madelung |
@@ -42,6 +43,22 @@ Un uso moderno della stessa famiglia di tecniche per frequenze ed excitation
 factors oltre GR è H. O. Silva et al., *Quasinormal modes and their excitation
 beyond general relativity*:
 [arXiv:2404.11110](https://arxiv.org/abs/2404.11110).
+
+### Bohm–Madelung, Ermakov e base di Weber
+
+A. A. Kumar ricava l'equazione di Ermakov–Pinney e l'invariante di
+Ermakov–Lewis dalla formulazione Bohm–Madelung di problemi stazionari
+separabili. Per l'oscillatore armonico usa esplicitamente la base di Weber
+\(D_\nu(\xi),D_\nu(-\xi)\):
+[arXiv:2602.00507](https://arxiv.org/abs/2602.00507).
+
+Questo è un precedente diretto per il legame strutturale
+Madelung–Sturm–Liouville–funzioni parabolico-cilindriche. Di conseguenza non
+si deve rivendicare come nuova né la base di Weber né l'equazione non lineare
+dell'ampiezza. Il lavoro non considera però stati risonanti/QNM, condizioni
+uscenti, turning point complessi o la differenza fra curvature di ampiezza come
+stimatore dell'errore di troncamento WKB. La ricerca testuale mirata non ha
+identificato un articolo che esegua quest'ultimo confronto.
 
 ### Exact WKB: aggiornamento decisivo
 
@@ -135,6 +152,7 @@ conclusione provvisoria di ricerca, non una prova di priorità.
 ## Rivendicazioni da evitare
 
 - «Prima decomposizione ampiezza–fase di un QNM».
+- «Primo legame fra Madelung e funzioni parabolico-cilindriche».
 - «Prima relazione fra QNM e fluidi».
 - «Il potenziale di Madelung modifica lo spettro»: una trasformazione esatta di
   variabili non introduce nuova fisica.
@@ -159,7 +177,8 @@ conclusione provvisoria di ricerca, non una prova di priorità.
 ## Prossime ricerche bibliografiche
 
 - seguire tutte le citazioni del lavoro phase-amplitude del 2003;
-- cercare *Milne/Ermakov equation* insieme a black-hole resonances;
+- cercare le citazioni di Kumar e *Milne/Ermakov equation* insieme a
+  black-hole resonances;
 - cercare letteratura su Gamow/Siegert states e Madelung complessa;
 - seguire citazioni e sviluppi dei tre lavori exact-WKB 2025–2026;
 - seguire citazioni e lavori correlati ai quattro articoli Vaidya sopra;

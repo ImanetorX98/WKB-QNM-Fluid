@@ -135,17 +135,86 @@ soluzione uniforme,
 
 con una prescrizione separata per gli zeri.
 
-## 5. Riproduzione e verifica indipendente
+## 5. Primo residuo uniforme
+
+Per l'equazione normalizzata
+
+\[
+\varepsilon^2\psi''+
+[\widehat\omega^2-\operatorname{sech}^2y]\psi=0,
+\qquad \varepsilon=L^{-1},
+\tag{6}
+\]
+
+la forma quadratica al massimo è \(q_{\rm PC}=q_0+y^2\). Più in generale,
+per \(q=q_0+q_2x^2/2\), la trasformazione
+
+\[
+\zeta=e^{-i\pi/4}\frac{(2q_2)^{1/4}}{\sqrt\varepsilon}x,
+\qquad
+\nu=\frac{iq_0}{\varepsilon\sqrt{2q_2}}-\frac12
+\tag{7}
+\]
+
+riduce esattamente l'equazione quadratica a quella della funzione cilindrica
+parabolica \(D_\nu(\zeta)\). Il controllo Mathematica verifica la (7). Nel
+calcolo numerico si usa la combinazione delle due soluzioni che riproduce i
+dati di Cauchy della soluzione esatta al massimo; questo evita di imporre per
+errore un singolo ramo con parità sbagliata.
+
+Il nesso fra ampiezza Bohm–Madelung, equazione di Ermakov–Pinney e base di
+Weber è già presente per sistemi stazionari separabili in Kumar (2026). Qui
+non viene quindi rivendicato come nuovo. L'oggetto sottoposto a test è invece
+la sottrazione fra curvature esatta e uniforme per stati risonanti QNM e il
+suo rapporto con l'errore di troncamento WKB.
+
+La differenza (5) va integrata nella regione in cui l'approssimazione è
+uniforme, cioè \(y=O(\sqrt\varepsilon)\), non su una finestra macroscopica
+fissa. Infatti, ponendo \(y=\sqrt\varepsilon\,\eta\),
+
+\[
+\frac{1-\operatorname{sech}^2(\sqrt\varepsilon\eta)}{\varepsilon}
+=\eta^2-\frac23\varepsilon\eta^4
++\frac{17}{45}\varepsilon^2\eta^6+O(\varepsilon^3).
+\tag{8}
+\]
+
+Un fit logaritmico sui punti \(L=4,6,8,12,16\) dà:
+
+| overtone | \(\Delta Q_M^{\rm unif}\) | errore WKB1 | \(Q_M\) completo | errore WKB3 |
+|---:|---:|---:|---:|---:|
+| 0 | \(L^{-1.941}\) | \(L^{-1.996}\) | \(L^{-1.974}\) | \(L^{-5.005}\) |
+| 2 | \(L^{-1.760}\) | \(L^{-1.772}\) | \(L^{-1.002}\) | \(L^{-4.800}\) |
+
+Il nuovo residuo riproduce dunque, entro circa \(0.06\) nell'esponente, lo
+scaling dell'errore WKB1 per entrambi gli overtone regolari. Le correlazioni
+logaritmiche sono \(0.9999\) per \(n=0\) e \(0.9998\) per \(n=2\), con rango di
+Spearman unitario. È il primo esito positivo del residuo uniforme dopo il
+fallimento della serie locale. Variando la larghezza gaussiana fra
+\(0.75\) e \(1.5\) volte quella nominale, l'esponente resta fra
+\(-1.949,-1.941\) per \(n=0\) e fra \(-1.780,-1.759\) per \(n=2\).
+
+La sola monotonia non basta tuttavia a diagnosticare l'ordine di troncamento:
+il residuo non riproduce ancora la legge \(L^{-5}\) dell'errore WKB3. La forma
+quadratica misura il difetto dominante. Per mirare al residuo WKB3 occorre
+correggere perturbativamente l'ampiezza uniforme con i termini quartico e
+successivi della (8), e solo dopo sottrarne la curvatura di Madelung.
+
+## 6. Riproduzione e verifica indipendente
 
 ```text
 python3.13 calculations/poschl_teller_madelung_benchmark.py --n 0 --n 1 --n 2
 python3.13 calculations/order_resolved_madelung_benchmark.py --n 0
+python3.13 calculations/uniform_madelung_defect.py --n 0 --n 2
 python3.13 -m unittest calculations/test_poschl_teller_madelung.py
 python3.13 -m unittest calculations/test_order_resolved_madelung.py
+python3.13 -m unittest calculations/test_uniform_madelung_defect.py
+wolframscript -file calculations/verify_formalism.wl
 ```
 
-`calculations/verify_formalism.wl` controlla con Mathematica sia gli ordini
-formali dei tre residui sia le autofunzioni esatte \(n=0,1\) e lo zero nodale.
+`calculations/verify_formalism.wl` controlla con Mathematica gli ordini
+formali dei tre residui, le autofunzioni esatte \(n=0,1\), lo zero nodale, la
+mappa parabolico-cilindrica e lo sviluppo nello strato \(\sqrt\varepsilon\).
 
 ## Riferimenti essenziali
 
@@ -155,3 +224,5 @@ formali dei tre residui sia le autofunzioni esatte \(n=0,1\) e lo zero nodale.
 - H. R. Beyer, *On the Completeness of the Quasinormal Modes of the
   Poeschl–Teller Potential*, Commun. Math. Phys. 204 (1999) 397–423,
   arXiv:gr-qc/9803034.
+- A. A. Kumar, *Ermakov–Lewis Invariants in Stationary Bohm–Madelung
+  Quantum Mechanics*, arXiv:2602.00507 (2026).

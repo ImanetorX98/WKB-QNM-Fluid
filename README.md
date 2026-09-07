@@ -26,6 +26,7 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `calculations/static_madelung_benchmark.py` | scansione Schwarzschild indipendente WKB–Leaver–Madelung |
 | `calculations/order_resolved_madelung_benchmark.py` | residui locali \(\mathfrak R_0,\mathfrak R_1,\mathfrak R_2\) |
 | `calculations/poschl_teller_madelung_benchmark.py` | benchmark QNM esattamente risolvibile fuori Schwarzschild |
+| `calculations/uniform_madelung_defect.py` | residuo di Madelung uniforme nello strato parabolico-cilindrico |
 | `calculations/kerr_scalar_madelung_symbolic.py` | riduzione scalare Kerr esatta e ponte slow-rotation |
 | `calculations/verify_formalism.wl` | controlli simbolici con kernel Mathematica/Wolfram |
 | `report-source.md` | rapporto di ricerca, sorgente del PDF |

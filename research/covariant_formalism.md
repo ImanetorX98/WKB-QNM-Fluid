@@ -243,8 +243,11 @@ esatti. La correlazione sopravvive per i modi senza zeri, mentre il primo
 overtone dispari mostra un limite strutturale: \(A=|\psi|\) si annulla al
 centro e \(Q_M\) diventa singolare. Lo stesso studio respinge il residuo locale
 ingenuo \(Q_M-Q_M^{(N)}\) sulla barriera: pur avendo l'ordine formale corretto,
-esso peggiora vicino ai turning point. Il residuo utile dovrà essere definito
-rispetto alla soluzione uniforme parabolico-cilindrica.
+esso peggiora vicino ai turning point. La prima sottrazione rispetto alla
+soluzione uniforme parabolico-cilindrica, integrata nello strato
+\(O(\sqrt\varepsilon)\), recupera invece lo scaling dell'errore WKB1 per
+\(n=0,2\). Non recupera ancora l'errore WKB3: per quello servono le correzioni
+quartiche e di ordine superiore alla forma uniforme.
 
 ## 5. Livello II: fondo stazionario non statico
 
@@ -492,7 +495,8 @@ definita, non una riscalatura radiale lasciata implicita.
 
 1. chiudere la ricerca di anteriorità sui formalismi equivalenti;
 2. implementare un benchmark statico con soluzione indipendente;
-3. costruire la forma uniforme vicino al massimo della barriera;
+3. correggere la forma uniforme al di là del termine quadratico e confrontare
+   i residui risolti per ordine;
 4. implementare slow Kerr scalare;
 5. implementare Vaidya a \(\dot M\) costante;
 6. passare a un profilo \(M(v)\) generico e misurare (6.6)–(6.7).

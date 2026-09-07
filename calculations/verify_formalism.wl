@@ -106,7 +106,28 @@ assertZero[
 ];
 assertZero["Poschl-Teller n=1 symmetry-protected node", Sinh[0]];
 
-(* 5. Exact scalar Kerr radial reduction and its slow-rotation limit. *)
+(* 5. Uniform parabolic-cylinder normal form at a quadratic barrier top. *)
+ClearAll[qZero, qTwo, xxPC, zPC, etaPC];
+alphaPC = Exp[-I Pi/4] (2 qTwo)^(1/4)/Sqrt[eps];
+nuPC = I qZero/(eps Sqrt[2 qTwo]) - 1/2;
+pcResidual = eps^2 alphaPC^2 (zPC^2/4 - nuPC - 1/2) +
+  qZero + qTwo xxPC^2/2 /. zPC -> alphaPC xxPC;
+assertZero[
+  "parabolic-cylinder barrier-top mapping",
+  FullSimplify[pcResidual, Assumptions -> {eps > 0, qTwo > 0}]
+];
+
+scaledPTBarrier = Normal@Series[
+  (1 - Sech[Sqrt[eps] etaPC]^2)/eps,
+  {eps, 0, 2}
+];
+assertZero[
+  "Poschl-Teller boundary-layer expansion",
+  scaledPTBarrier - (etaPC^2 - 2 eps etaPC^4/3 +
+    17 eps^2 etaPC^6/45)
+];
+
+(* 6. Exact scalar Kerr radial reduction and its slow-rotation limit. *)
 ClearAll[rr, aa, mm, massK, om, sepK, psiK];
 deltaK = rr^2 - 2 massK rr + aa^2;
 h2K = rr^2 + aa^2;
@@ -137,7 +158,7 @@ assertZero[
   qSlowKerr - (qSchwarzschild - 4 aa mm massK om/rr^3)
 ];
 
-(* 6. Vaidya reduced Klein-Gordon equation and Madelung split. *)
+(* 7. Vaidya reduced Klein-Gordon equation and Madelung split. *)
 ClearAll[amp, phase, f, pot, v, r];
 psiV = amp[v, r] Exp[I phase[v, r]/eps];
 reducedVaidya = eps^2 (
@@ -158,7 +179,7 @@ assertZero[
   reducedVaidya - (-hjV + eps^2 ampV + I eps continuityV)
 ];
 
-(* 7. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
+(* 8. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
 mass = massFunction[v];
 fV = 1 - 2 mass/r;
 orbitMetric = {{-fV, 1}, {1, 0}};
