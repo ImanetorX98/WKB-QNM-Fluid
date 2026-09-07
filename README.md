@@ -20,7 +20,10 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `research/covariant_formalism.md` | base covariante statico → Kerr → Vaidya |
 | `research/prior_art.md` | mappa aggiornata dei precedenti e confine di originalità |
 | `research/references.bib` | bibliografia verificata del nuovo programma |
+| `research/static_benchmark.md` | benchmark di \(\mathcal E_M\) contro Leaver per 69 modi statici |
 | `calculations/vaidya_madelung_symbolic.py` | verifica KG e split Madelung su Vaidya |
+| `calculations/static_madelung_benchmark.py` | scansione Schwarzschild indipendente WKB–Leaver–Madelung |
+| `calculations/verify_formalism.wl` | controlli simbolici con kernel Mathematica/Wolfram |
 | `report-source.md` | rapporto di ricerca, sorgente del PDF |
 | `build_report.py`, `build_dirac_note.py` | generatori PDF (`ROOT = parent` del file: tenerli qui) |
 | `output/pdf/` | PDF prodotti |

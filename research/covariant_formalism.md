@@ -221,6 +221,22 @@ dove \(w\) è una finestra regolare centrata sulla barriera. La scelta di
 primo test è stabilire se la correlazione con l'errore WKB sopravviva a scelte
 ragionevoli.
 
+### 4.1 Primo benchmark
+
+Il test pilota in `research/static_benchmark.md` usa frequenze e profili
+indipendenti di Leaver per 69 modi di Schwarzschild, nei tre settori
+\(s=0,1,2\) e per \(n=0,1,2\). A overtone fissato, \(\mathcal E_M\) ordina
+fortemente sia l'errore WKB1 sia quello WKB3 e continua a farlo dopo aver
+rimosso lo scaling comune \(\varepsilon^2\). Il risultato è stabile sotto una
+variazione moderata della finestra.
+
+Il test chiarisce anche il limite dell'ansatz (4.1): mescolando gli overtone,
+la correlazione con il residuo WKB3 si indebolisce. Il funzionale completo è
+naturalmente sensibile alla correzione totale rispetto all'eikonale; per un
+metodo già troncato a ordine superiore occorre costruire un residuo
+\(Q_M-Q_M^{(N)}\). Questa sostituisce l'ipotesi troppo forte secondo cui un solo
+numero non risolto per ordine debba prevedere ogni troncamento WKB.
+
 ## 5. Livello II: fondo stazionario non statico
 
 In decomposizione ADM il termine principale di Hamilton–Jacobi è
