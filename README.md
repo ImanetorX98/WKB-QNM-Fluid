@@ -18,6 +18,7 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `calculations/` | verifiche simboliche Dirac (Schwarzschild e Kerr proiettivo) |
 | `calculations/dirac_wkb_hydrodynamics_notes.md` | nota di calcolo Dirac |
 | `research/covariant_formalism.md` | base covariante statico → Kerr → Vaidya |
+| `research/RESEARCH_STATE.md` | documento autosufficiente per riprendere risultati e prossimi conti |
 | `research/prior_art.md` | mappa aggiornata dei precedenti e confine di originalità |
 | `research/references.bib` | bibliografia verificata del nuovo programma |
 | `research/static_benchmark.md` | benchmark di \(\mathcal E_M\) contro Leaver per 69 modi statici |

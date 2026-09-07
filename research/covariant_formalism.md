@@ -94,7 +94,7 @@ infinito; non richiede un potenziale fondamentale non hermitiano.
 Se si impone il trasporto \(A=P^{-1/2}\), con \(P=S'\), allora
 
 \[
-\frac{A''}{A}=rac34\left(\frac{P'}P\right)^2
+\frac{A''}{A}=\frac34\left(\frac{P'}P\right)^2
 -\frac12\frac{P''}P=-\frac12\{S,x\},
 \]
 
