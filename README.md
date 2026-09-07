@@ -21,8 +21,11 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `research/prior_art.md` | mappa aggiornata dei precedenti e confine di originalità |
 | `research/references.bib` | bibliografia verificata del nuovo programma |
 | `research/static_benchmark.md` | benchmark di \(\mathcal E_M\) contro Leaver per 69 modi statici |
+| `research/exact_barrier_benchmark.md` | controllo Pöschl–Teller, residui per ordine e limite nodale |
 | `calculations/vaidya_madelung_symbolic.py` | verifica KG e split Madelung su Vaidya |
 | `calculations/static_madelung_benchmark.py` | scansione Schwarzschild indipendente WKB–Leaver–Madelung |
+| `calculations/order_resolved_madelung_benchmark.py` | residui locali \(\mathfrak R_0,\mathfrak R_1,\mathfrak R_2\) |
+| `calculations/poschl_teller_madelung_benchmark.py` | benchmark QNM esattamente risolvibile fuori Schwarzschild |
 | `calculations/kerr_scalar_madelung_symbolic.py` | riduzione scalare Kerr esatta e ponte slow-rotation |
 | `calculations/verify_formalism.wl` | controlli simbolici con kernel Mathematica/Wolfram |
 | `report-source.md` | rapporto di ricerca, sorgente del PDF |

@@ -237,6 +237,15 @@ metodo già troncato a ordine superiore occorre costruire un residuo
 \(Q_M-Q_M^{(N)}\). Questa sostituisce l'ipotesi troppo forte secondo cui un solo
 numero non risolto per ordine debba prevedere ogni troncamento WKB.
 
+Un secondo controllo, documentato in `research/exact_barrier_benchmark.md`, usa
+la barriera di Pöschl–Teller, per la quale spettro e autofunzioni QNM sono
+esatti. La correlazione sopravvive per i modi senza zeri, mentre il primo
+overtone dispari mostra un limite strutturale: \(A=|\psi|\) si annulla al
+centro e \(Q_M\) diventa singolare. Lo stesso studio respinge il residuo locale
+ingenuo \(Q_M-Q_M^{(N)}\) sulla barriera: pur avendo l'ordine formale corretto,
+esso peggiora vicino ai turning point. Il residuo utile dovrà essere definito
+rispetto alla soluzione uniforme parabolico-cilindrica.
+
 ## 5. Livello II: fondo stazionario non statico
 
 In decomposizione ADM il termine principale di Hamilton–Jacobi è

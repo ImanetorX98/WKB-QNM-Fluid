@@ -118,6 +118,20 @@ Questo lavoro deve essere usato come confronto obbligatorio per distinguere
 Le ricerche testuali mirate per combinazioni di *Vaidya*, *Madelung*, *Bohm
 potential* e *quasinormal modes* non hanno restituito un precedente diretto.
 
+### Barriera esatta di Pöschl–Teller
+
+Lo spettro e le autofunzioni QNM della barriera di Pöschl–Teller sono noti e
+non costituiscono una rivendicazione del progetto. Cardona e Molina ottengono
+la torre QNM di potenziali di Pöschl–Teller generalizzati con metodi algebrici:
+[arXiv:1711.00479](https://arxiv.org/abs/1711.00479). Beyer studia completezza
+e convergenza dell'espansione QNM:
+[arXiv:gr-qc/9803034](https://arxiv.org/abs/gr-qc/9803034).
+
+La ricerca mirata non ha identificato in questi lavori, né nei risultati
+testuali adiacenti, l'uso di \(-A''/A\) come diagnostico quantitativo
+dell'errore WKB o l'analisi del suo fallimento sugli zeri QNM. Questa resta una
+conclusione provvisoria di ricerca, non una prova di priorità.
+
 ## Rivendicazioni da evitare
 
 - «Prima decomposizione ampiezza–fase di un QNM».
@@ -139,6 +153,8 @@ potential* e *quasinormal modes* non hanno restituito un precedente diretto.
 4. Una curvatura logaritmica normalizzata rispetto al fondo congelato misura
    una componente del ritardo QNM di Vaidya non contenuta nella sola frequenza
    istantanea.
+5. Un diagnostico globale deve trattare esplicitamente gli zeri del modo e la
+   regione uniforme dei turning point; la serie locale di Madelung non basta.
 
 ## Prossime ricerche bibliografiche
 

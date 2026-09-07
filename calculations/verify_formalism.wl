@@ -12,6 +12,15 @@ assertZero[label_String, expression_] := Module[{reduced},
   ]
 ];
 
+assertNonzero[label_String, expression_] := Module[{reduced},
+  reduced = FullSimplify[expression];
+  If[TrueQ[reduced === 0],
+    Print["[FAIL] ", label, ": expression vanished"];
+    Exit[1],
+    Print["[ok] ", label]
+  ]
+];
+
 (* 1. Exact one-dimensional phase-amplitude closure. *)
 psi = u[x]^(-1/2) Exp[I theta[x]/eps];
 ode = Expand[
@@ -38,6 +47,36 @@ seriesResidual = Normal@Series[
   ];
 assertZero["even WKB recursion through epsilon^4", seriesResidual];
 
+closureResidual[trial_] := q[x] - trial^2 +
+  eps^2 D[trial^(-1/2), {x, 2}]/trial^(-1/2);
+remainder0 = closureResidual[u0];
+remainder1 = closureResidual[u0 + eps^2 u2];
+remainder2 = closureResidual[uSeries];
+assertZero[
+  "R0 has no terms below epsilon^2",
+  Normal@Series[remainder0, {eps, 0, 1}]
+];
+assertZero[
+  "R1 has no terms below epsilon^4",
+  Normal@Series[remainder1, {eps, 0, 3}]
+];
+assertZero[
+  "R2 has no terms below epsilon^6",
+  Normal@Series[remainder2, {eps, 0, 5}]
+];
+assertNonzero[
+  "R0 starts at epsilon^2",
+  SeriesCoefficient[remainder0, {eps, 0, 2}]
+];
+assertNonzero[
+  "R1 starts at epsilon^4",
+  SeriesCoefficient[remainder1, {eps, 0, 4}]
+];
+assertNonzero[
+  "R2 starts at epsilon^6",
+  SeriesCoefficient[remainder2, {eps, 0, 6}]
+];
+
 (* 3. Exact Langer split of the Regge-Wheeler potential. *)
 fSchw = 1 - 2/x;
 vReggeWheeler = fSchw ((1/eps^2 - 1/4)/x^2 + 2 (1 - spin^2)/x^3);
@@ -45,7 +84,29 @@ vEikonal = fSchw/x^2 +
   eps^2 fSchw (2 (1 - spin^2)/x^3 - 1/(4 x^2));
 assertZero["Regge-Wheeler Langer split", eps^2 vReggeWheeler - vEikonal];
 
-(* 4. Exact scalar Kerr radial reduction and its slow-rotation limit. *)
+(* 4. Exact Poschl-Teller QNMs used as an out-of-family benchmark. *)
+ClearAll[barrierL, yy];
+lambdaPT = Sqrt[barrierL^2 - 1/4];
+omegaPT0 = lambdaPT - I/2;
+logDerivativePT0 = I omegaPT0 Tanh[yy];
+residualPT0 = D[logDerivativePT0, yy] + logDerivativePT0^2 +
+  omegaPT0^2 - barrierL^2 Sech[yy]^2;
+assertZero[
+  "Poschl-Teller fundamental QNM",
+  FullSimplify[residualPT0, Assumptions -> barrierL > 1/2]
+];
+
+omegaPT1 = lambdaPT - 3 I/2;
+logDerivativePT1 = Coth[yy] + (I omegaPT1 - 1) Tanh[yy];
+residualPT1 = D[logDerivativePT1, yy] + logDerivativePT1^2 +
+  omegaPT1^2 - barrierL^2 Sech[yy]^2;
+assertZero[
+  "Poschl-Teller first overtone away from its node",
+  FullSimplify[residualPT1, Assumptions -> {barrierL > 1/2, yy != 0}]
+];
+assertZero["Poschl-Teller n=1 symmetry-protected node", Sinh[0]];
+
+(* 5. Exact scalar Kerr radial reduction and its slow-rotation limit. *)
 ClearAll[rr, aa, mm, massK, om, sepK, psiK];
 deltaK = rr^2 - 2 massK rr + aa^2;
 h2K = rr^2 + aa^2;
@@ -76,7 +137,7 @@ assertZero[
   qSlowKerr - (qSchwarzschild - 4 aa mm massK om/rr^3)
 ];
 
-(* 5. Vaidya reduced Klein-Gordon equation and Madelung split. *)
+(* 6. Vaidya reduced Klein-Gordon equation and Madelung split. *)
 ClearAll[amp, phase, f, pot, v, r];
 psiV = amp[v, r] Exp[I phase[v, r]/eps];
 reducedVaidya = eps^2 (
@@ -97,7 +158,7 @@ assertZero[
   reducedVaidya - (-hjV + eps^2 ampV + I eps continuityV)
 ];
 
-(* 6. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
+(* 7. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
 mass = massFunction[v];
 fV = 1 - 2 mass/r;
 orbitMetric = {{-fV, 1}, {1, 0}};
