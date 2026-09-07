@@ -263,6 +263,104 @@ va rinominato «potenziale di Madelung». La domanda è come \(Q_g\) corregga la
 propagazione su quel simbolo e se presenti una firma robusta della regione
 superradiante.
 
+### 5.1 Riduzione scalare esatta di Kerr
+
+Con convenzione \(e^{-i\omega t+im\phi}\), l'equazione angolare scalare è
+
+\[
+\frac1{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta Y)
++\left(a^2\omega^2\cos^2\theta-\frac{m^2}{\sin^2\theta}
++A_{\ell m}\right)Y=0,
+\tag{5.2}
+\]
+
+mentre l'equazione radiale è
+
+\[
+\partial_r(\Delta\partial_rR)
++\left(\frac{K^2}{\Delta}-\lambda\right)R=0,
+\quad
+K=(r^2+a^2)\omega-am,
+\quad
+\lambda=A_{\ell m}+a^2\omega^2-2am\omega.
+\tag{5.3}
+\]
+
+Ponendo \(H=r^2+a^2\), \(dr_*/dr=H/\Delta\) e
+\(\Psi=\sqrt H\,R\), la derivata prima scompare esattamente:
+
+\[
+\frac{d^2\Psi}{dr_*^2}+\mathcal Q_K\Psi=0,
+\tag{5.4}
+\]
+
+\[
+\boxed{\;
+\mathcal Q_K=
+\left(\omega-\frac{am}{H}\right)^2
+-\frac{\Delta\lambda}{H^2}
+-\frac1{\sqrt H}\frac{d^2\sqrt H}{dr_*^2}
+\;}.
+\tag{5.5}
+\]
+
+La prima parentesi rende esplicita la frequenza co-rotante. Al limite esterno
+dell'orizzonte,
+
+\[
+\mathcal Q_K\longrightarrow(\omega-m\Omega_H)^2,
+\qquad
+\Omega_H=\frac{a}{r_+^2+a^2}.
+\tag{5.6}
+\]
+
+Per \(\Psi=Ae^{iS}\), con \(P=dS/dr_*\), lo split reale applicato a una
+frequenza QNM complessa dà
+
+\[
+P^2+Q_K^{\rm M}=\operatorname{Re}\mathcal Q_K,
+\qquad
+Q_K^{\rm M}=-\frac{A''}{A},
+\tag{5.7}
+\]
+
+\[
+(A^2P)'=-\operatorname{Im}\mathcal Q_K\,A^2.
+\tag{5.8}
+\]
+
+Quindi anche il problema radiale stazionario è un flusso aperto dopo la
+separazione QNM. Il termine di frame dragging sta già in \(\mathcal Q_K\); il
+potenziale di Madelung è invece la curvatura dell'ampiezza richiesta dalla
+soluzione di (5.4).
+
+### 5.2 Ponte slow Kerr
+
+Poiché \(A_{\ell m}=\ell(\ell+1)+O((a\omega)^2)\), al primo ordine in \(a\)
+la (5.5) diventa
+
+\[
+\mathcal Q_K=
+\omega^2-f\left[\frac{\ell(\ell+1)}{r^2}+\frac{2M}{r^3}\right]
+-\frac{4amM\omega}{r^3}+O(a^2).
+\tag{5.9}
+\]
+
+Il termine dispari in \(am\) è il primo ponte controllato fra Schwarzschild e
+Kerr. Per \(\omega=\omega_R+i\omega_I\),
+
+\[
+\operatorname{Im}\mathcal Q_K=
+2\omega_I\left(\omega_R-\frac{2amM}{r^3}\right)+O(a^2),
+\tag{5.10}
+\]
+
+che inserisce la rotazione direttamente nella sorgente della continuità
+radiale (5.8). Le (5.3)–(5.10), incluso il limite Schwarzschild, sono verificate
+in modo indipendente sia con SymPy sia con il kernel Mathematica in
+`calculations/kerr_scalar_madelung_symbolic.py` e
+`calculations/verify_formalism.wl`.
+
 ## 6. Livello III: Vaidya
 
 Per la metrica entrante

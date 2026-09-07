@@ -45,7 +45,38 @@ vEikonal = fSchw/x^2 +
   eps^2 fSchw (2 (1 - spin^2)/x^3 - 1/(4 x^2));
 assertZero["Regge-Wheeler Langer split", eps^2 vReggeWheeler - vEikonal];
 
-(* 4. Vaidya reduced Klein-Gordon equation and Madelung split. *)
+(* 4. Exact scalar Kerr radial reduction and its slow-rotation limit. *)
+ClearAll[rr, aa, mm, massK, om, sepK, psiK];
+deltaK = rr^2 - 2 massK rr + aa^2;
+h2K = rr^2 + aa^2;
+hK = Sqrt[h2K];
+dstarK[expression_] := deltaK/h2K D[expression, rr];
+kK = h2K om - aa mm;
+qK = (om - aa mm/h2K)^2 - deltaK sepK/h2K^2 -
+  dstarK[dstarK[hK]]/hK;
+radialK = D[deltaK D[psiK[rr]/hK, rr], rr] +
+  (kK^2/deltaK - sepK) psiK[rr]/hK;
+schrodingerK = dstarK[dstarK[psiK[rr]]] + qK psiK[rr];
+assertZero[
+  "exact scalar Kerr radial reduction",
+  schrodingerK - deltaK radialK/hK^3
+];
+
+fK0 = 1 - 2 massK/rr;
+qSchwarzschild = om^2 - fK0 (ellTerm/rr^2 + 2 massK/rr^3);
+assertZero[
+  "scalar Schwarzschild limit of Kerr",
+  (qK /. {aa -> 0, sepK -> ellTerm}) - qSchwarzschild
+];
+
+qSlowKerr = Normal@Series[qK /. sepK -> ellTerm - 2 aa mm om,
+  {aa, 0, 1}];
+assertZero[
+  "linear slow-Kerr frame dragging",
+  qSlowKerr - (qSchwarzschild - 4 aa mm massK om/rr^3)
+];
+
+(* 5. Vaidya reduced Klein-Gordon equation and Madelung split. *)
 ClearAll[amp, phase, f, pot, v, r];
 psiV = amp[v, r] Exp[I phase[v, r]/eps];
 reducedVaidya = eps^2 (
@@ -66,7 +97,7 @@ assertZero[
   reducedVaidya - (-hjV + eps^2 ampV + I eps continuityV)
 ];
 
-(* 5. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
+(* 6. Kodama-energy drift for ingoing Vaidya, K = partial_v. *)
 mass = massFunction[v];
 fV = 1 - 2 mass/r;
 orbitMetric = {{-fV, 1}, {1, 0}};

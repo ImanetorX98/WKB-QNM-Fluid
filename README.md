@@ -23,6 +23,7 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `research/static_benchmark.md` | benchmark di \(\mathcal E_M\) contro Leaver per 69 modi statici |
 | `calculations/vaidya_madelung_symbolic.py` | verifica KG e split Madelung su Vaidya |
 | `calculations/static_madelung_benchmark.py` | scansione Schwarzschild indipendente WKB–Leaver–Madelung |
+| `calculations/kerr_scalar_madelung_symbolic.py` | riduzione scalare Kerr esatta e ponte slow-rotation |
 | `calculations/verify_formalism.wl` | controlli simbolici con kernel Mathematica/Wolfram |
 | `report-source.md` | rapporto di ricerca, sorgente del PDF |
 | `build_report.py`, `build_dirac_note.py` | generatori PDF (`ROOT = parent` del file: tenerli qui) |

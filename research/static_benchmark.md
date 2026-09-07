@@ -109,4 +109,6 @@ python3.13 -m unittest calculations/test_static_madelung_benchmark.py
 ```
 
 Le identità simboliche indipendenti sono controllate dal kernel Mathematica
-13.3.1 con `calculations/verify_formalism.wl`.
+13.3.1 con `calculations/verify_formalism.wl`. Il controllo comprende anche la
+riduzione radiale scalare esatta di Kerr, il limite Schwarzschild e il termine
+lineare di frame dragging slow Kerr.
