@@ -17,6 +17,10 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `core/README-wkb-fluid.md` | derivazione del ramo bosonico |
 | `calculations/` | verifiche simboliche Dirac (Schwarzschild e Kerr proiettivo) |
 | `calculations/dirac_wkb_hydrodynamics_notes.md` | nota di calcolo Dirac |
+| `research/covariant_formalism.md` | base covariante statico → Kerr → Vaidya |
+| `research/prior_art.md` | mappa aggiornata dei precedenti e confine di originalità |
+| `research/references.bib` | bibliografia verificata del nuovo programma |
+| `calculations/vaidya_madelung_symbolic.py` | verifica KG e split Madelung su Vaidya |
 | `report-source.md` | rapporto di ricerca, sorgente del PDF |
 | `build_report.py`, `build_dirac_note.py` | generatori PDF (`ROOT = parent` del file: tenerli qui) |
 | `output/pdf/` | PDF prodotti |
