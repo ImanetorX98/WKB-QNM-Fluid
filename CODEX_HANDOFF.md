@@ -9,8 +9,18 @@
 > limite vero, la **condizione al bordo dell'orizzonte**, che seminava il modo
 > entrante. Cura: \(Z=h\) dentro, \(g\to C\) fuori, Frobenius a due termini —
 > niente esponenziale, niente mpmath, 5 secondi.
+> **Anche il bordo interno è chiuso.** A \(r=2\) l'ODE ha un punto singolare
+> regolare (indici 0 e \(4i\omega\)); con \(x=r-2\) si ha \(I=Kx^{-4i\omega}B(x)\)
+> con \(B\) analitica, e \(\int_0^w I\,dx\) si somma in forma chiusa. Sorpresa:
+> per il **fondamentale** \(4\,\mathrm{Im}\,\omega\simeq-0.39>-1\), quindi la
+> singolarità è **integrabile** e non serviva alcun termine di superficie.
+> Valore corrente, regolarizzato ai due bordi e senza tagli:
+> \(N = 20.666545 - 40.326537\,i\) (\(\ell=2,s=0\)), `width` indipendente a 3e-7.
 > Dettagli: [`research/vaidya_numerator_resolved_2026-09-09.md`](research/vaidya_numerator_resolved_2026-09-09.md).
-> Resta aperto il **bordo interno** della regolarizzazione (il taglio \(a=4\)).
+>
+> Resta aperto solo \(n\ge1\): la primitiva esterna vale 7.8e24 a \(L_+=80\)
+> contro \(N\sim10\), 14-15 cifre cancellate su 16. **Qui sì serve mpmath**, e
+> serve sull'estremo esterno.
 
 > **Aggiornamento Codex, 9 settembre 2026:** il riproduttore aggiunto
 > ha permesso di risolvere il preciso scarto 1.65e-4. La quadratura usa i:j

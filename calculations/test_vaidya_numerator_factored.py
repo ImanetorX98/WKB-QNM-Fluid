@@ -16,12 +16,12 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from vaidya_numerator_factored import (  # noqa: E402
-    Asymptotic, horizon_start, numerator, outer_solve,
+    Asymptotic, horizon_integral, horizon_series, numerator, outer_solve,
 )
 from leaver_qnm import leaver_qnm  # noqa: E402
 from vaidya_solvability import tortoise  # noqa: E402
 
-REFERENCE = 40.294405 + 4.154483j    # ell=2, s=0, n=0, L+ in [40,80]
+REFERENCE = 20.666545 - 40.326537j   # ell=2, s=0, n=0, regolarizzato ai due bordi
 
 
 class NumeratorTest(unittest.TestCase):
@@ -42,12 +42,12 @@ class NumeratorTest(unittest.TestCase):
         """N != 0: la forzatura risonante ha componente sul modo."""
         self.assertGreater(abs(self.base["N"]), 1.0)
 
-    def test_independent_of_horizon_offset(self):
-        """Frobenius a due termini: delta su cinque ordini non sposta N."""
-        values = [numerator(delta=d, uppers=(40.0, 60.0, 80.0))["N"]
-                  for d in (1.0e-3, 1.0e-5, 1.0e-7)]
+    def test_independent_of_horizon_width(self):
+        """Il taglio interno deve cadere: sopra `width` numerico, sotto esatto."""
+        values = [numerator(width=w, uppers=(40.0, 60.0, 80.0))["N"]
+                  for w in (0.2, 0.5, 1.0, 1.25)]
         centre = np.mean(values)
-        self.assertLess(max(abs(v - centre) for v in values) / abs(centre), 1.0e-5)
+        self.assertLess(max(abs(v - centre) for v in values) / abs(centre), 1.0e-6)
 
     def test_independent_of_match_point(self):
         """Il raccordo dentro/fuori non deve lasciare traccia."""
@@ -68,11 +68,35 @@ class FactorisationTest(unittest.TestCase):
     """I due cambi di variabile che tolgono il range dinamico."""
 
     def test_frobenius_satisfies_indicial_relation(self):
-        """h'(2) = U(2)/(1/2 - 2 i om) e' la condizione al punto singolare."""
+        """h_1 = U(2)/(1/2 - 2 i om): la relazione indiciale al bordo interno."""
         omega = leaver_qnm(2, 0, 0)
-        _, slope = horizon_start(2, 0, omega, 0.0)
+        coefficients = horizon_series(2, 0, omega, 10)
         expected = (2 * 3 / 4.0 + 2.0 / 8.0) / (0.5 - 2j * omega)
-        self.assertAlmostEqual(abs(slope / expected - 1.0), 0.0, delta=1.0e-14)
+        self.assertAlmostEqual(abs(coefficients[1] / expected - 1.0), 0.0, delta=1.0e-14)
+
+    def test_horizon_exponent_is_integrable_only_for_the_fundamental(self):
+        """Re(-4 i om) > -1 solo a n=0: la' il bordo non chiede regolarizzazione."""
+        self.assertGreater(4 * leaver_qnm(2, 0, 0).imag, -1.0)
+        self.assertLess(4 * leaver_qnm(2, 1, 0).imag, -1.0)
+
+    def test_horizon_integral_matches_independent_quadrature(self):
+        """Forma chiusa contro quadratura in t = ln x, dove l'integrale converge."""
+        omega = leaver_qnm(2, 0, 0)
+        terms, width = 60, 0.5
+        coefficients = horizon_series(2, 0, omega, terms)
+        index = np.arange(terms)
+        first = np.concatenate([index[1:] * coefficients[1:], [0.0]])
+        second = np.concatenate([index[1:-1] * index[2:] * coefficients[2:], [0.0, 0.0]])
+        t = np.linspace(np.log(1e-13), np.log(width), 400001)
+        x = np.exp(t)
+        powers = x[:, None] ** index[None, :]
+        star = (2.0 + x) + 2.0 * np.log(x / 2.0)
+        integrand = (np.exp(-2j * omega * star) * (powers @ coefficients)
+                     * 2.0 * ((powers @ first) + (2.0 + x) * (powers @ second)))
+        from scipy.integrate import simpson
+        reference = simpson(integrand * x, x=t)
+        closed = horizon_integral(2, 0, omega, width, terms)
+        self.assertLess(abs(closed / reference - 1.0), 1.0e-7)
 
     def test_series_solves_the_equation(self):
         """Il difetto R/f^2 misura quanto u risolve gia' l'ODE: deve sparire."""

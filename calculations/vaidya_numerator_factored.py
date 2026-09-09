@@ -31,19 +31,44 @@ Nessuna delle due variabili cresce, quindi la doppia precisione basta e mpmath
 non serve.  La BC di Frobenius (due termini, errore O(delta^3)) permette
 delta = 1e-5, dove non c'e' cancellazione.
 
-RISULTATO.  N = 40.2951 + 4.1600 i, con dispersione in L_+ di 7.6e-6 — cinque
-ordini meglio del 10% precedente.  Stabile a 1e-5 rispetto a delta, punto di
-raccordo, risoluzione e numero di termini della serie.
+BORDO INTERNO.  Anche il limite inferiore e' ora l'orizzonte, senza tagli.  A
+r=2 l'ODE ha un punto singolare regolare con indici 0 e 4 i om; h e' il ramo
+analitico, e con x = r-2
 
-AVVERTENZA.  Il limite inferiore a = 4 resta un taglio arbitrario: il bordo
-interno della regolarizzazione di Leung non e' trattato qui.  N != 0 dice che la
-proiezione risonante non si annulla; non e' ancora un coefficiente fisico.
+    I = K x^{-4 i om} B(x),    B analitica,    K = e^{-4 i om} 2^{4 i om},
+
+quindi int_0^w I dx si somma in forma chiusa (`horizon_integral`).  Due fatti
+che non ci aspettavamo:
+
+  * per il modo FONDAMENTALE Re(-4 i om) = 4 Im(om) ~ -0.39 > -1, quindi la
+    singolarita' e' **integrabile** e il limite al bordo esiste gia': non
+    serviva alcun termine di superficie;
+  * per n >= 1 l'esponente scende sotto -1 e la stessa formula e' la
+    continuazione analitica che definisce il valore.
+
+RISULTATO (n=0, ogni spin).  Regolarizzato a **entrambi** i bordi:
+
+    N = 20.666545 - 40.326537 i        (ell=2, s=0)
+
+indipendente dal taglio esterno a 1.1e-7 e dalla larghezza interna `width` a
+3.4e-8 — width da 0.2 a 1.25 non muove nove cifre.
+
+LIMITE NOTO (n >= 1).  La primitiva esterna cresce come e^{2|Im om| r_*}: a
+L_+=80 vale 7.8e24 per n=1 e 1.9e41 per n=2, contro N di ordine 10.  La
+cancellazione mangia 14-15 cifre su 16.  Riducendo L_+ verso il raccordo si
+recupera n=1 all'1%, ma n>=2 richiede multiprecisione — questo, e solo questo,
+e' il caso genuino per mpmath.
+
+AVVERTENZA.  N != 0 dice che la proiezione risonante non si annulla.  Ora non
+dipende piu' da tagli arbitrari, ma resta una proiezione, non una memoria
+osservabile.
 
 Uso: python3.13 calculations/vaidya_numerator_factored.py
 """
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
@@ -83,19 +108,90 @@ class Asymptotic:
         return u, u1, u2, f, df, w, defect, drift
 
 
-def horizon_start(ell: int, spin: int, omega: complex, delta: float):
-    """h(2+delta), h'(2+delta) da due termini di Frobenius: errore O(delta^3)."""
-    u0 = ell * (ell + 1) / 4.0 + 2.0 * (1 - spin**2) / 8.0
-    u1 = -ell * (ell + 1) / 4.0 - 3.0 * (1 - spin**2) / 8.0
-    c1 = u0 / (0.5 - 2j * omega)
-    c2 = (c1 * (0.5 + u0) + u1) / (2.0 - 4j * omega)
-    return 1.0 + c1 * delta + c2 * delta**2, c1 + 2.0 * c2 * delta
+def horizon_series(ell: int, spin: int, omega: complex, terms: int) -> np.ndarray:
+    """Coefficienti di Frobenius di h = sum_k h_k x^k,  x = r-2,  h_0 = 1.
+
+    L'ODE moltiplicata per (2+x)^3 ha coefficienti polinomiali:
+
+        (x^3+4x^2+4x) h'' + P(x) h' + Q(x) h = 0,
+        P = (4-16 i om) + (2-24 i om)x - 12 i om x^2 - 2 i om x^3,
+        Q = -(2 Lam + Sig) - Lam x,     Lam = l(l+1),  Sig = 2(1-s^2).
+
+    Gli indici a x=0 sono 0 e 4 i om: h e' il ramo **analitico**, quello
+    entrante.  Il denominatore 4(n+1)(n+1-4 i om) non si annulla mai perche'
+    Re(omega) != 0.  Raggio di convergenza 2, fissato dalla singolarita' a r=0.
+    """
+    lam, sig = ell * (ell + 1), 2.0 * (1 - spin**2)
+    p = np.array([4.0 - 16j * omega, 2.0 - 24j * omega, -12j * omega, -2j * omega])
+    q0, q1 = -(2.0 * lam + sig), -float(lam)
+
+    h = np.zeros(terms, dtype=complex)
+    h[0] = 1.0
+    for n in range(terms - 1):
+        rhs = 4.0 * n * (n - 1) * h[n] + q0 * h[n]
+        if n >= 1:
+            rhs += (n - 1) * (n - 2) * h[n - 1] + q1 * h[n - 1]
+        for j in (1, 2, 3):
+            if 0 <= n - j + 1 < terms:
+                rhs += p[j] * (n - j + 1) * h[n - j + 1]
+        h[n + 1] = -rhs / (4.0 * (n + 1) * (n + 1 - 4j * omega))
+    return h
 
 
-def inner_solve(ell, spin, omega, delta, lower, r_match, points):
-    """h su [2+delta, r_match] con `lower` esattamente sulla griglia.
+def horizon_integral(ell: int, spin: int, omega: complex, width: float, terms: int) -> complex:
+    """int_2^{2+width} I dr in forma chiusa, per continuazione analitica.
 
-    Z = h: l'integrando e' I = e^{-2 i om r_*} h * 2 (h' + r h'').
+    Con x = r-2 si ha  r_* = (2+x) + 2 ln(x/2), quindi
+
+        I = mu Z S = e^{-2 i om r_*} A(x),   A = 2 h (h' + (2+x) h''),
+
+    e A e' analitica perche' l'equazione indiciale annulla il polo di h''.
+    Separando la parte non analitica del peso,
+
+        I = K x^{-4 i om} B(x),   K = e^{-4 i om} 2^{4 i om},
+        B = e^{-2 i om x} A(x),
+
+    l'integrale termine a termine e' esatto:
+
+        int_0^{w} I dx = K sum_k B_k w^{k+1-4 i om} / (k+1-4 i om).
+
+    **Il punto.**  Per il modo fondamentale Re(-4 i om) = 4 Im(om) ~ -0.39 > -1:
+    la singolarita' e' INTEGRABILE e il limite al bordo esiste gia'.  Per n >= 1
+    l'esponente scende sotto -1 e la formula qui sopra e' la continuazione
+    analitica che definisce il valore — l'analogo esatto, al bordo interno,
+    della sottrazione della primitiva asintotica al bordo esterno.
+    """
+    h = horizon_series(ell, spin, omega, terms)
+    index = np.arange(terms)
+    dh = np.concatenate([index[1:] * h[1:], [0.0]])
+    ddh = np.concatenate([index[1:-1] * index[2:] * h[2:], [0.0, 0.0]])
+    # A = 2 h (h' + (2+x) h''),  troncata a `terms` coefficienti
+    inner = dh + 2.0 * ddh + np.concatenate([[0.0], ddh[:-1]])
+    amplitude = 2.0 * np.convolve(h, inner)[:terms]
+    exponential = (-2j * omega) ** index / np.array(
+        [float(math.factorial(int(k))) for k in index]
+    )
+    b = np.convolve(amplitude, exponential)[:terms]
+
+    power = index + 1.0 - 4j * omega
+    return complex(np.exp(-4j * omega) * np.exp(4j * omega * np.log(2.0))
+                   * np.sum(b * np.exp(power * np.log(width)) / power))
+
+
+def horizon_values(ell: int, spin: int, omega: complex, width: float, terms: int):
+    """h, h' a x = width dalla serie di Frobenius: 1e-14 fino a x ~ 1.2."""
+    h = horizon_series(ell, spin, omega, terms)
+    index = np.arange(terms)
+    powers = width ** index
+    return (complex(h @ powers),
+            complex((index * h) @ np.where(index > 0, powers / width, 0.0)))
+
+
+def inner_solve(ell, spin, omega, width, r_match, points, terms):
+    """h su [2+width, r_match], condizione iniziale dalla serie di Frobenius.
+
+    Z = h: l'integrando e' I = e^{-2 i om r_*} h * 2 (h' + r h'').  Sotto
+    r = 2+width subentra `horizon_integral`, che e' esatto.
     """
 
     def curvature(r, h, dh):
@@ -106,15 +202,11 @@ def inner_solve(ell, spin, omega, delta, lower, r_match, points):
     def rhs(r, y):
         return np.array([y[1], curvature(r, y[0], y[1])], dtype=complex)
 
-    start = 2.0 + delta
-    grid = np.concatenate(
-        [np.linspace(start, lower, points // 4, endpoint=False),
-         np.linspace(lower, r_match, points)]
-    )
+    start = 2.0 + width
+    grid = np.linspace(start, r_match, points)
     solution = solve_ivp(
-        rhs,
-        (start, r_match),
-        np.array(horizon_start(ell, spin, omega, delta), dtype=complex),
+        rhs, (start, r_match),
+        np.array(horizon_values(ell, spin, omega, width, terms), dtype=complex),
         t_eval=grid, method="DOP853", rtol=1.0e-13, atol=1.0e-16,
     )
     if not solution.success:
@@ -156,19 +248,24 @@ def numerator(
     ell: int = ELL,
     spin: int = SPIN,
     overtone: int = 0,
-    delta: float = 1.0e-5,
-    lower: float = 4.0,
+    width: float = 0.5,
     r_match: float = 25.0,
     r_far: float = 95.0,
     inner_points: int = 80001,
     outer_points: int = 200001,
     terms: int = TERMS,
+    horizon_terms: int = 60,
     uppers: tuple[float, ...] = (40.0, 50.0, 60.0, 70.0, 80.0, 90.0),
 ) -> dict:
-    """N(L_+) su piu' L_+, piu' la dispersione che ne misura l'indipendenza."""
+    """N(L_+) su piu' L_+, piu' la dispersione che ne misura l'indipendenza.
+
+    Nessun taglio arbitrario: il bordo interno e' l'orizzonte, trattato in forma
+    chiusa da `horizon_integral` sotto r = 2 + width, e `width` deve cadere.
+    """
     omega = leaver_qnm(ell, overtone, spin)
     asy = Asymptotic(ell, spin, omega, terms)
-    r_in, h, dh, inner = inner_solve(ell, spin, omega, delta, lower, r_match, inner_points)
+    r_in, h, dh, inner = inner_solve(ell, spin, omega, width, r_match,
+                                     inner_points, horizon_terms)
 
     u, _, _, f, _, w, _, _ = asy.at(r_match)
     phase = np.exp(-2j * omega * tortoise(r_match))
@@ -184,8 +281,8 @@ def numerator(
                                          omega, terms, terms).evaluate(r_out)
                  * np.exp(2j * omega * tortoise(r_out)))
 
-    start = int(np.searchsorted(r_in, lower))
-    base = simpson(inner[start:], x=r_in[start:])
+    base = (horizon_integral(ell, spin, omega, width, horizon_terms)
+            + simpson(inner, x=r_in))
     values = {}
     for upper in uppers:
         j = int(np.searchsorted(r_out, upper))
@@ -217,10 +314,11 @@ def main() -> None:
     print()
     print("=== robustezza: ogni parametro separatamente ===")
     checks = (
-        ("delta", "delta", (1e-3, 1e-4, 1e-5, 1e-6, 1e-8)),
+        ("width", "width interno", (0.2, 0.35, 0.5, 0.75, 1.0, 1.25)),
         ("r_match", "r_match", (15.0, 20.0, 25.0, 30.0, 35.0)),
         ("inner_points", "punti interni", (40001, 80001, 160001)),
         ("terms", "termini serie", (12, 16, 20, 24)),
+        ("horizon_terms", "termini orizzonte", (30, 45, 60, 75)),
     )
     for key, label, options in checks:
         results = [numerator(**{key: option}) for option in options]

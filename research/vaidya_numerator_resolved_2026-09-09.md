@@ -117,6 +117,10 @@ della regolarizzazione di Leung non è trattato. \(N\neq0\) stabilisce che la
 proiezione risonante non si annulla; non è ancora un coefficiente fisico, e non
 dimostra memoria osservabile.
 
+> **Superato dal seguito in fondo a questo file:** il bordo interno è ora chiuso
+> in forma esatta, il taglio \(a\) è sparito e il valore corrente è
+> \(N=20.666545-40.326537\,i\). Il resto di questa prima parte resta valido.
+
 ## La lezione, di nuovo la stessa
 
 Quattro cause in fila, ciascuna nascosta dalla precedente. Le esclusioni della
@@ -128,3 +132,123 @@ silenzio.
 E la diagnosi giusta non è arrivata guardando meglio i numeri, ma cambiando la
 domanda: non «quanta precisione serve» ma «perché serve precisione». La risposta
 — nove ordini di range dinamico — si toglieva con l'algebra.
+
+---
+
+# Seguito: il bordo interno, chiuso anch'esso
+
+## Risultato
+
+Nessun taglio arbitrario da nessun lato. Il limite inferiore è **l'orizzonte**.
+
+\[
+N \;=\; 20.666545 \;-\; 40.326537\,i \qquad (\ell=2,\ s=0,\ n=0)
+\]
+
+| indipendenza da | dispersione |
+|---|---|
+| taglio esterno \(L_+\in[40,80]\) | 1.1e-7 |
+| larghezza interna `width` \(\in[0.2,1.25]\) | **3.2e-7** |
+| punto di raccordo \(r_{\rm match}\in[15,35]\) | 4.9e-6 |
+| termini della serie asintotica | 1.2e-7 |
+| termini della serie di Frobenius | 0 (quantizzazione) |
+
+`width` è il parametro che *deve* cadere — sotto di esso l'integrale è in forma
+chiusa, sopra è numerico — e cade a nove cifre.
+
+Il valore non è confrontabile con il precedente \(40.294+4.154i\): quello aveva
+il taglio a \(a=4\), questo parte da \(r=2\).
+
+## La struttura al bordo interno
+
+A \(r=2\) l'equazione \(f h''+(f'-2i\omega)h'-Uh=0\) ha un punto singolare
+**regolare**. Moltiplicata per \((2+x)^3\), \(x=r-2\), diventa a coefficienti
+polinomiali (verificato con sympy):
+
+\[
+(x^3+4x^2+4x)h'' + P(x)h' + Q(x)h = 0,
+\]
+\[
+P = (4-16i\omega)+(2-24i\omega)x-12i\omega x^2-2i\omega x^3,\qquad
+Q = -(2\Lambda+\Sigma)-\Lambda x .
+\]
+
+Gli **indici** sono \(0\) e \(4i\omega\). Il ramo entrante è quello analitico, e
+la ricorsione
+
+\[
+4(n+1)(n+1-4i\omega)\,h_{n+1} = -\big[\cdots\big]
+\]
+
+non incontra mai un denominatore nullo perché \(\operatorname{Re}\omega\neq0\).
+Raggio di convergenza 2 (singolarità a \(r=0\)). Validata contro l'ODE numerica:
+**1e-14** a \(x=0.5\) e \(x=1.0\).
+
+Con \(r_*=(2+x)+2\ln(x/2)\) il peso si separa esattamente:
+
+\[
+I \;=\; K\,x^{-4i\omega}B(x),\qquad K=e^{-4i\omega}2^{4i\omega},\qquad
+B=e^{-2i\omega x}A(x),
+\]
+
+con \(A=2h(h'+(2+x)h'')\) **analitica** — il polo di \(h''\) è cancellato
+proprio dalla relazione indiciale. Quindi
+
+\[
+\int_0^{w} I\,dx \;=\; K\sum_k B_k\,\frac{w^{\,k+1-4i\omega}}{k+1-4i\omega},
+\]
+
+esatta. Validata contro quadratura indipendente in \(t=\ln x\): **4e-9**, e il
+residuo è il taglio \(10^{-13}\) della quadratura, non della formula.
+
+## La sorpresa
+
+\[
+\operatorname{Re}(-4i\omega) = 4\,\operatorname{Im}\omega = -0.387 \;>\; -1 .
+\]
+
+**Per il modo fondamentale la singolarità è integrabile.** Il bordo interno non
+chiedeva alcun termine di superficie: il limite esisteva già. Avevamo dato per
+scontato — dalla frase «l'integrale QNM diverge a entrambi i bordi» — che
+servisse la stessa macchina del bordo esterno. Diverge in \(|Z|\), non
+nell'integrando pesato.
+
+Vale per tutti i fondamentali provati: \(4\,\mathrm{Im}\,\omega\) sta fra
+\(-0.36\) e \(-0.39\) per \(s=0,1,2\).
+
+Per \(n\ge1\), \(4\,\mathrm{Im}\,\omega\simeq-(n+\tfrac12)\cdot\!\) scende sotto
+\(-1\) e la formula chiusa diventa la **continuazione analitica** che definisce
+il valore — l'analogo interno esatto della sottrazione della primitiva.
+
+## \(N\neq0\) su tutti i fondamentali
+
+| \(\ell\) | \(s\) | \(N\) | disp\((L_+)\) | disp(`width`) |
+|---|---|---|---|---|
+| 2 | 0 | +20.6665418 − 40.3265371i | 1.1e-7 | 3.4e-8 |
+| 3 | 0 | +67.0552912 − 31.0152159i | 3.7e-7 | 1.4e-8 |
+| 2 | 2 | −14.9301378 − 21.8933101i | 1.5e-7 | 4.7e-9 |
+| 3 | 2 | +26.7652152 − 51.7881564i | 2.0e-7 | 7.3e-9 |
+| 2 | 1 | +10.4233793 − 39.4370806i | 2.8e-7 | 2.4e-8 |
+
+## Il limite che resta, e stavolta è davvero mpmath
+
+Per \(n\ge1\) la primitiva esterna cresce come \(e^{2|\mathrm{Im}\,\omega|r_*}\):
+
+| modo | \(|F(80)|\) | \(|N|\) | cifre cancellate |
+|---|---|---|---|
+| \(n=0\) | 4.2e+9 | 45 | 8.0 |
+| \(n=1\) | 7.8e+24 | — | 14.7 |
+| \(n=2\) | 1.9e+41 | — | 14.2 |
+
+Su 16 cifre di un double non resta nulla. Riducendo \(L_+\) verso il raccordo
+(\(L_+\simeq30\)) si recupera \(n=1\) all'1% — `width` cade a 1e-5 ma la
+dispersione in \(L_+\) resta 7e-3, perché lì la serie asintotica non è ancora
+convergente. Compromesso senza via d'uscita in doppia precisione.
+
+\(n\ge2\) richiede multiprecisione. **Questo, e solo questo, è il caso genuino
+per mpmath** — e serve sull'estremo esterno, non sull'ODE come credevo prima.
+
+## Cosa resta aperto
+
+\(N\) non dipende più da tagli, ma resta una proiezione. Il passo verso una
+memoria osservabile richiede \(Z_1\), non solo la sua sorgente.
