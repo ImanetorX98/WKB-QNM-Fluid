@@ -46,7 +46,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy.integrate import solve_ivp
+from scipy.integrate import simpson, solve_ivp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "core"))
 
@@ -93,6 +93,21 @@ def radial_mode(
     return {"x": solution.y[2].real, "xstar": xstar, "R": solution.y[0], "dR": solution.y[1]}
 
 
+def source_integrand(data, omega, ell, spin=0):
+    """mu G S, S=2(r G')', via the ODE (no finite differences).
+
+    This is twice the integrand called I in projection(). M=1.
+    """
+    r, t, R, dR = (data[k] for k in ('x', 'xstar', 'R', 'dR'))
+    f = 1 - 2/r
+    phase = np.exp(1j*omega*t)
+    G = phase*R
+    dG = phase*(1j*omega*R+dR)/f
+    U = ell*(ell+1)/r**2 + 2*(1-spin**2)/r**3
+    ddG = (U*G-(2/r**2-2j*omega)*dG)/f
+    return 2*np.exp(-2j*omega*t)*G*(dG+r*ddG)
+
+
 def projection(
     ell: int,
     spin: int = 0,
@@ -104,23 +119,14 @@ def projection(
     """I = int exp(-2 i Omega x_*) G (x G')' dx sulla finestra data."""
     omega = leaver_qnm(ell, 0, spin)
     data = radial_mode(ell, spin, omega, x_min, x_max, points)
-    x, xstar, R, dR_star = data["x"], data["xstar"], data["R"], data["dR"]
-
-    f = 1.0 - 2.0 / x
-    phase = np.exp(1j * omega * xstar)
-    amplitude = phase * R                      # G
-    # G' rispetto a x:  dR/dx = (1/f) dR/dx_*
-    d_amplitude = phase * (1j * omega * R / f + dR_star / f)
-
-    product = x * d_amplitude
-    d_product = np.gradient(product, x)        # (x G')'
-    integrand = np.exp(-2j * omega * xstar) * amplitude * d_product
+    x = data["x"]
+    integrand = 0.5 * source_integrand(data, omega, ell, spin)
 
     mask = (x > window[0]) & (x < window[1])
     mask[:4] = False
     mask[-4:] = False
-    value = np.trapezoid(integrand[mask], x[mask])
-    scale = np.trapezoid(np.abs(integrand[mask]), x[mask])
+    value = simpson(integrand[mask], x=x[mask])
+    scale = simpson(np.abs(integrand[mask]), x=x[mask])
     return {
         "ell": float(ell),
         "omega": omega,
@@ -146,8 +152,8 @@ def main() -> None:
         print()
 
     print("=== La cancellazione e' esatta o parziale? ===")
-    print("Se I fosse nullo per struttura, |I|/int|integrando| sarebbe ~0.")
-    print("Un rapporto O(1) significa che la sorgente NON e' ortogonale al modo.")
+    print("Rapporti su finestre finite: NON determinano la proiezione regolarizzata.")
+    print("Un rapporto O(1) non esclude cancellazioni con i termini di bordo.")
     print()
     for ell in (2, 3, 4, 6):
         row = projection(ell, 0, window=(4.0, 25.0))

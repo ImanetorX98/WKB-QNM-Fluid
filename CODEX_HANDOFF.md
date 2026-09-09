@@ -28,7 +28,9 @@ geometrica.
 nostro: la chiusura è l'eq. (1.2) di Delabaere–Dillinger–Pham. Il contributo sta
 in ciò che la geometria *immette* in \(q\), non nel risolverlo.
 
-Il documento da leggere per primo è
+Riassunto completo della sessione del 9 settembre, con tutti i numeri:
+[`research/SESSION_2026-09-09.md`](research/SESSION_2026-09-09.md).
+Il documento da leggere per la stesura è
 [`research/RESULTS_FOR_MANUSCRIPT.md`](research/RESULTS_FOR_MANUSCRIPT.md):
 indice consolidato, 23 sezioni, ogni voce dichiara se è derivata, misurata, nota
 in letteratura o corretta rispetto a un'affermazione precedente.
@@ -108,12 +110,36 @@ Sospetto residuo: la quadratura sulla griglia dell'ODE. Ma la stima dell'errore
 di trapezio a quella risoluzione è \(10^{-7}\), tre ordini sotto. **Non c'è
 un'ipotesi**, ed è per questo che ci si è fermati.
 
-### Primo passo suggerito
+### Il programma che genera l'errore
 
-Confrontare \(\int\text{pred}\,dr\) calcolato **sulla griglia dell'ODE** con
-\(F(b)-F(a)\), invece che su una griglia fine indipendente. Isola se la
-discrepanza sia nella quadratura o altrove. È un test da dieci righe e non è
-stato fatto.
+```bash
+python3.13 calculations/repro_numerator_discrepancy.py
+```
+
+Riproduttore minimo e autosufficiente. Stampa la discrepanza su quattro
+intervalli e i controlli che l'hanno già esclusa da cinque cause. Il docstring
+contiene la derivazione completa degli oggetti.
+
+### Cause escluse, con il numero
+
+| causa | test | esito |
+|---|---|---|
+| quadratura | trapezio contro Simpson | identici a 7 cifre |
+| metodo di derivata | \(G''\) da FD contro \(G''\) dall'ODE | stesso integrando |
+| costante \(C\) | troncamento di \(u\) da 6 a 26 termini | convergente a 12 cifre |
+| algebra delle serie | \(f\cdot(1/f)=1\); residuo della ricorsione | \(1.8	imes10^{-15}\) |
+| troncamento di \(V\) | 8, 12, 16, 20 termini | rapporto identico a 9 cifre |
+
+### Il paradosso da sciogliere
+
+- integrando numerico contro serie: rapporto **complesso** \(0.9999998\)
+- antiderivata contro \(\int W e^{2i\omega r_*}dr\) su griglia fine: \(1.000000000\)
+- **eppure** \(\int I\,dr\) contro \(F(b)-F(a)\): \(0.99983\)
+
+Se \(I\simeq	ext{serie}\) a \(2	imes10^{-7}\) e \(F\) è l'antiderivata esatta
+della serie, i loro integrali definiti dovrebbero coincidere a \(2	imes10^{-7}\).
+Non lo fanno. **Uno dei tre controlli sopra non misura ciò che sembra misurare**,
+ed è lì che va guardato per primo.
 
 ---
 
@@ -202,3 +228,21 @@ Aperto, in ordine di utilità:
    completa con lavoro *nostro*. Allungare con altra letteratura peggiora.
 4. **Citazioni.** 34 riferimenti, 13 citati nel testo. In stesura finale gli
    altri vanno agganciati o tolti.
+
+---
+
+## Aggiornamento Codex: audit dello scarto 1.65e-4 (9 settembre 2026)
+
+Vedere `research/vaidya_error_budget_deep_2026-09-09.md` e il driver
+`calculations/audit_vaidya_error_budget.py`. Il preciso esperimento storico
+non è ancora riprodotto, ma un disallineamento fra estremi nominali ed
+effettivi riproduce il paradosso: errore del trapezio 7.3e-8 e scarto rispetto
+alla primitiva 7.9e-4, che scompare usando gli stessi estremi. È la pista
+prioritaria da verificare nel driver originale, non una causa già accertata.
+
+Separatamente, dati iniziali di Frobenius nell'integratore diagnostico riducono
+il residuo del profilo da circa 1e-7 a 1e-11. Passano 11 test numerici e quattro
+controlli simbolici con il kernel Mathematica. Il numeratore QNM regolarizzato
+completo resta aperto. Il nuovo rapporto contiene anche il limite matematico
+che lega errore puntuale, condizionamento e scarto integrato, e la lista delle
+quantità da registrare per una diagnosi conclusiva.
