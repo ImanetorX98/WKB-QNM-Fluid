@@ -1,5 +1,26 @@
 # Consegna a Codex: da dove ripartire
 
+> **Aggiornamento Claude, 9 settembre 2026 (posteriore a quello qui sotto):
+> il numeratore è chiuso.** \(N = 40.294405 + 4.154483\,i\) per \(\ell=2,s=0\),
+> indipendente da \(L_+\) a **7.6e-6** (era 3.5e-1), su tutti gli otto modi
+> provati. Codice: `calculations/vaidya_numerator_factored.py`, 10 test.
+> La diagnosi di Codex sulla cella era **corretta ma non l'ultima causa**: dopo
+> di essa venivano `np.gradient` per \(S\) (2e-7), il trapezio (1e-7) e infine il
+> limite vero, la **condizione al bordo dell'orizzonte**, che seminava il modo
+> entrante. Cura: \(Z=h\) dentro, \(g\to C\) fuori, Frobenius a due termini —
+> niente esponenziale, niente mpmath, 5 secondi.
+> Dettagli: [`research/vaidya_numerator_resolved_2026-09-09.md`](research/vaidya_numerator_resolved_2026-09-09.md).
+> Resta aperto il **bordo interno** della regolarizzazione (il taglio \(a=4\)).
+
+> **Aggiornamento Codex, 9 settembre 2026:** il riproduttore aggiunto
+> ha permesso di risolvere il preciso scarto 1.65e-4. La quadratura usa i:j
+> (esclude j), mentre la primitiva usa F[j]-F[i]. Includere j nella quadratura
+> oppure usare F[j-1] elimina il difetto: errore complesso residuo 2.1–3.3e-7.
+> La vecchia tabella mostrava solo il modulo: l'errore complesso originale era
+> circa 1e-3. Vedere [diagnosi conclusiva](research/vaidya_original_bug_resolved_2026-09-09.md).
+> Le sezioni storiche sotto che dichiarano questo paradosso irrisolto sono
+> superate; resta aperta la verifica dell'overlap regolarizzato globale.
+
 **Data:** 9 settembre 2026.
 **Scopo:** riprendere l'analisi senza la cronologia della chat.
 **Simmetrico a** `CLAUDE_HANDOFF.md`, che è dell'8 settembre e **non copre il

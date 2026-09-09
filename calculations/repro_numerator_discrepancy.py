@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """RIPRODUTTORE MINIMO della discrepanza 1.65e-4 sul numeratore di Vaidya.
 
+DIAGNOSI CONFERMATA (Codex, 9 settembre 2026): la slice i:j esclude j,
+mentre F[j]-F[i] include l'ultima cella. La sezione storica e' conservata
+per riprodurre il difetto; la sezione finale confronta due correzioni
+equivalenti e stampa anche l'errore complesso, nascosto dai vecchi abs(ratio).
+Le affermazioni storiche di paradosso irrisolto qui sotto sono superate.
+
 QUESTO E' IL PROGRAMMA CHE GENERA L'ERRORE.  Eseguirlo stampa la discrepanza e
 i controlli che l'hanno gia' esclusa da quattro cause.
 
@@ -79,6 +85,21 @@ from vaidya_solvability import radial_mode  # noqa: E402
 ELL, SPIN = 2, 0
 
 
+def interval_diagnostic(r, integrand, primitive, low, high):
+    """Return historical and endpoint-consistent complex ratios."""
+    i, j = np.searchsorted(r, [low, high])
+    if not 0 <= i < j < len(r) or j-i < 2:
+        raise ValueError('Interval requires at least three in-range samples')
+    half_open = simpson(integrand[i:j], x=r[i:j])
+    closed = simpson(integrand[i:j+1], x=r[i:j+1])
+    return {
+        'original': half_open/(primitive[j]-primitive[i]),
+        'include_endpoint': closed/(primitive[j]-primitive[i]),
+        'move_primitive_endpoint': half_open/(primitive[j-1]-primitive[i]),
+        'missing_width': r[j]-r[j-1],
+    }
+
+
 def setup(points: int = 100001, x_max: float = 90.0):
     omega = leaver_qnm(ELL, 0, SPIN)
     data = radial_mode(ELL, SPIN, omega, 2.0001, x_max, points)
@@ -105,7 +126,7 @@ def main() -> None:
     print(f"costante di normalizzazione C = {constant.real:+.9f}{constant.imag:+.9f}i")
     print()
 
-    print("=== LA DISCREPANZA ===")
+    print("=== RIPRODUZIONE STORICA DEL BUG (interpretazioni sotto superate) ===")
     print("integrale numerico / differenza dell'antiderivata, su intervalli diversi")
     print("   da    a     trapezio        Simpson")
     for low, high in ((40.0, 50.0), (50.0, 60.0), (60.0, 70.0), (70.0, 80.0)):
@@ -151,6 +172,18 @@ def main() -> None:
     print("  Insensibile: il troncamento della serie non spiega la discrepanza,")
     print("  oppure `Series.truncate` non sta cambiando i termini efficaci.")
     print("  QUESTO E' IL PUNTO DA CUI RIPARTIRE.")
+    print()
+    print("=== DIAGNOSI: i:j ESCLUDE j, MA F[j]-F[i] LO INCLUDE ===")
+    print("Intervallo    rapporto corretto (complesso)       |vecchio-1|  |corretto-1|  |alternativo-1|")
+    for lo, hi in ((40.,50.), (50.,60.), (60.,70.), (70.,80.)):
+        row = interval_diagnostic(r, integrand, antiderivative, lo, hi)
+        fixed = row['include_endpoint']
+        print(f"{lo:4.0f}-{hi:2.0f}  {fixed.real:.10f}{fixed.imag:+.10f}i  "
+              f"{abs(row['original']-1):.3e}  {abs(fixed-1):.3e}  "
+              f"{abs(row['move_primitive_endpoint']-1):.3e}")
+    print("Correzione: integrare i:j+1 oppure usare F[j-1]-F[i].")
+    print("Lo scarto 1.65e-4 era nel MODULO; quello complesso era circa 1e-3.")
+    print("La correzione risolve questo bug, non certifica l'overlap QNM globale.")
 
 
 if __name__ == "__main__":
