@@ -19,6 +19,9 @@ QNM smorzato ha \(\operatorname{Im}\omega<0\).
 | `calculations/dirac_wkb_hydrodynamics_notes.md` | nota di calcolo Dirac |
 | `research/covariant_formalism.md` | base covariante statico → Kerr → Vaidya |
 | `research/RESEARCH_STATE.md` | documento autosufficiente per riprendere risultati e prossimi conti |
+| `research/spectral_audit_2026-09-08.md` | audit critico: formule chiuse, limiti predittivi, condizioni radiative e nuovo confronto spettrale |
+| `research/novelty_publication_assessment_2026-09-08.md` | precedenti verificati, originalità residua e requisiti per un articolo |
+| `CLAUDE_HANDOFF.md` | passaggio di consegne autosufficiente per una revisione indipendente di Claude |
 | `research/prior_art.md` | mappa aggiornata dei precedenti e confine di originalità |
 | `research/references.bib` | bibliografia verificata del nuovo programma |
 | `research/static_benchmark.md` | benchmark di \(\mathcal E_M\) contro Leaver per 69 modi statici |

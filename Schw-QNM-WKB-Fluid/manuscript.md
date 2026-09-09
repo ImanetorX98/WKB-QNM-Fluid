@@ -1,4 +1,4 @@
-# Il potenziale di Madelung come chiusura della gerarchia WKB per le perturbazioni di Schwarzschild
+# Ordinamento e ridondanza della decomposizione di Madelung per i modi quasi-normali dei buchi neri
 
 **Bozza di manoscritto — destinazione: rivista di fisica matematica**
 
@@ -6,38 +6,59 @@
 
 ## Abstract
 
-Per l'equazione master di tipo Schrödinger che governa le perturbazioni di un
-buco nero di Schwarzschild mostriamo che l'intera serie WKB, riorganizzata
-attorno al momento di fase pari, si chiude su un unico funzionale: il potenziale
-quantistico di Bohm–Madelung valutato sull'ampiezza WKB completa. La chiusura
+La riscrittura di Madelung di un'equazione master di tipo Schrödinger è una
+trasformazione esatta di variabili, e come tale non può aggiungere informazione
+allo spettro quasi-normale. Chiediamo allora una domanda più precisa: **quanta
+informazione contiene, e a quale ordine.** Rispondiamo con un risultato
+positivo e uno negativo, entrambi misurati.
 
-$$q = u^2 - \varepsilon^2\,\frac{(u^{-1/2})''}{u^{-1/2}}$$
+Il risultato positivo è un criterio di ordinamento. Nella riscalatura eikonale
+del potenziale di Regge–Wheeler, con la sostituzione di Langer
+$L=\ell+\tfrac12$, il potenziale si decompone **esattamente** come
+$V_s/L^2=h^2+\varepsilon^2v_2$: la serie termina al secondo ordine e non
+contiene termini di ordine $\varepsilon^1$. Poiché il funzionale di Madelung
+compare anch'esso a $\varepsilon^2$, spin e potenziale quantistico sono
+**degeneri in ordine** e separabili solo per forma funzionale.
 
-è esatta, equivalente all'equazione differenziale di partenza, e non
-un'approssimazione. Ne deriviamo tre conseguenze strutturali. Primo: la serie
-non contiene ordini dispari, e il funzionale di Madelung compare per la prima
-volta al **terzo termine della serie di fase** — dopo l'eikonale e dopo il
-trasporto — generando da solo tutti gli ordini successivi per valutazione
-autoconsistente. Secondo: nella riscalatura eikonale del potenziale di
-Regge–Wheeler lo spin del campo **non entra nel termine di testa**; tutta la sua
-traccia vive allo stesso ordine $\varepsilon^2$ del termine di Madelung, con cui
-diventa quindi indistinguibile per scaling e separabile solo per forma
-funzionale. Il caso gravitazionale assiale è quello in cui i due competono più
-da vicino. Terzo: la gerarchia si rompe nella regione di coalescenza dei turning
-point — precisamente dove la WKB di barriera costruisce le correzioni di
-Iyer–Will — e questo esclude una corrispondenza canonica fra i coefficienti
-locali di Madelung e quelle correzioni.
+Due casi rompono questa degenerazione, e in settori opposti. Su Kerr
+l'autovalore sferoidale porta un termine di ordine $\varepsilon^1$ che nessuna
+sostituzione di Langer rimuove: la rotazione produce struttura geometrica
+subprincipale **nel settore bosonico**. Per un campo di Dirac massless su
+Schwarzschild compare, allo stesso ordine, la connessione di spin dei partner di
+Darboux. Ne segue un criterio operativo — si misuri la pendenza in
+$\varepsilon$ del primo termine subprincipale: 2 identifica il regime puramente
+di Madelung, 1 segnala un contributo geometrico che lo precede. Le pendenze
+misurate sono 1.951 e 2.0000 nei casi statici senza rotazione, 0.963–1.014 su
+Kerr e 1.0000 per Dirac. Il criterio **non discrimina lo spin del campo**, ma la
+presenza di struttura geometrica: leggerlo come una firma fermionica, come
+facevamo in una versione precedente di questo lavoro, è un errore.
 
-Documentiamo inoltre due limiti negativi, entrambi misurati e non solo
-argomentati: per una frequenza quasi-normale complessa nessuna decomposizione a
-densità reale positiva ammette una legge di continuità conservata — il flusso
-obbedisce a $(\rho v)' = -\Gamma\rho$ con $\Gamma=\operatorname{Im}\omega^2\neq0$
-— e la struttura non è universale, poiché per un campo di Dirac massless compare
-un termine di connessione di spin all'ordine $\varepsilon^1$, che precede il
-funzionale di Madelung e non ne fa parte.
+Il risultato negativo delimita l'utilità del formalismo. Costruiamo il
+funzionale d'ampiezza più naturale che la decomposizione di Madelung suggerisce
+come diagnostico d'errore, e mostriamo che a overtone fissato esso è
+**proporzionale a $|\Lambda_3|$**, la correzione di Iyer–Will, con costante
+indipendente da $\ell$ e dallo spin (dispersione 0.15% su dodici modi). La
+lettura di Madelung dell'ampiezza WKB **riproduce** la correzione standard
+invece di estenderla, a un costo computazionale incomparabilmente maggiore.
 
-Il risultato è un'identità esatta con un dominio di validità netto, non una
-proposta di nuova fisica; non formuliamo previsioni osservative.
+Riportiamo inoltre due limiti strutturali: per frequenza complessa nessuna
+decomposizione a densità reale positiva ammette continuità conservata — il
+flusso obbedisce a $(\rho v)'=-\Gamma\rho$ con
+$\Gamma=\operatorname{Im}\omega^2\neq0$ — e la gerarchia locale si rompe nella
+regione di coalescenza dei turning point, dove la WKB di barriera costruisce
+proprio i $\Lambda_j$.
+
+Una precisazione di metodo, che conviene fare subito. Il macchinario analitico di
+questo lavoro **è l'equazione di Riccati** associata all'equazione master,
+espansa nel parametro eikonale: ponendo $y=\varepsilon\psi'/\psi$ si ottiene
+$\varepsilon y'+y^2+q=0$, la cui parte pari in $\varepsilon$ è il momento $u$ e
+la cui parte dispari è l'ampiezza. Chiusura, parità e ricorsione sono l'eq. (1.2)
+di Delabaere–Dillinger–Pham e i coefficienti WKB classici: su quel piano non
+rivendichiamo nulla, e ne segue anche che un'espansione della Riccati non può
+contenere più della WKB che essa è — il che rende attesa, e non sorprendente, la
+ridondanza del §11. Il lavoro riguarda invece ciò che la geometria **immette in
+$q$, e a quale ordine**: quantità che la Riccati prende come dato. Non formuliamo previsioni
+osservative: la trasformazione non sposta lo spettro.
 
 ---
 
@@ -56,7 +77,29 @@ scalari $\Lambda_j$ costruite dal getto del potenziale nel punto di massimo.
 
 In parallelo, la trasformazione di Madelung riscrive un'equazione di tipo
 Schrödinger come sistema idrodinamico, in cui l'unico termine estraneo alla
-meccanica dei fluidi classica è il potenziale quantistico di Bohm. È naturale
+meccanica dei fluidi classica è il potenziale quantistico di Bohm. Questa
+trasformazione ha una caratterizzazione geometrica esatta: Khesin, Misiołek e
+Modin [31, 32] mostrano che è un **simplettomorfismo** fra $T^*\mathrm{Dens}(M)$
+e lo spazio proiettivo delle funzioni d'onda non nulle, e un'**isometria** fra
+la metrica di Sasaki–Fisher-Rao e quella di Fubini–Study.
+
+Quel risultato però non si applica al problema quasi-normale, e il modo preciso
+in cui non si applica orienta tutto il presente lavoro. Le sue ipotesi sono
+densità **normalizzate** ($\int_M\varrho=1$) su varietà **compatta**, con
+evoluzione hamiltoniana e norma conservata. Un QNM viola le prime due — non è
+normalizzabile, e il dominio radiale non è compatto — e viola la terza in modo
+misurabile: con $\omega$ complessa il flusso obbedisce a
+$(\rho v)'=-\Gamma\rho$, $\Gamma=\operatorname{Im}\omega^2\neq0$ (§8).
+Sopravvive invece l'ipotesi di non annullamento, $\mathbb C\setminus\{0\}$ nel
+codominio di [31], che è esattamente la condizione $\psi\neq0$ del nostro
+Teorema 1.
+
+Le "limitazioni" che riportiamo nei §7 e §8 non sono quindi difetti del nostro
+trattamento: sono le **ostruzioni identificate** che separano il problema
+quasi-normale dal caso in cui la geometria della trasformazione è nota. Il
+lavoro misura le conseguenze di quelle ostruzioni, ordine per ordine in
+$\varepsilon$ — una domanda su cui il quadro geometrico, che riguarda la
+trasformazione e non un regime asintotico, non si pronuncia. È naturale
 chiedersi se la gerarchia WKB dei QNM ammetta una lettura in quei termini: se
 cioè le correzioni di ordine crescente siano, in qualche senso preciso, una
 famiglia di potenziali di Madelung.
@@ -77,33 +120,88 @@ decrescente, e stabilendo quale sia vera.
 La distinzione serve a impedire che un'identità algebrica utile venga promossa a
 dichiarazione ontologica.
 
-### 1.1 Contributo
+### 1.1 Contributo, e che cosa non lo è
 
-1. Dimostrazione della chiusura esatta e della sua equivalenza con l'ODE
-   (Teorema 1), con verifica simbolica indipendente.
-2. Dimostrazione dell'assenza di ordini dispari e della ricorsione generata da un
-   solo funzionale (Teorema 2, Corollario 3), con $u_2$ e $u_4$ espliciti.
-3. Individuazione precisa dell'ordine WKB di prima comparsa del termine di
-   Madelung (Proposizione 4).
-4. Osservazione, per Schwarzschild, che lo spin del campo è un effetto di ordine
-   $\varepsilon^2$ e quindi degenere in scaling con il termine di Madelung
-   (Proposizione 5), con tabella numerica per $s=0,1,2$.
-5. Misura quantitativa della rottura della gerarchia alla coalescenza dei turning
-   point (§7).
-6. Due risultati negativi netti: fluido aperto (§8) e non universalità rispetto
-   allo spin del campo, via Dirac (§9).
+Dichiariamo prima ciò che **non** rivendichiamo, perché in questo ambito la
+letteratura è densa e il rischio di riscoperta è alto.
+
+- **L'intero macchinario formale è l'equazione di Riccati in $\varepsilon$.**
+  Da $y=\varepsilon\psi'/\psi$ segue $\varepsilon y'+y^2+q=0$; la parte pari di
+  $y$ è il momento, la dispari è una derivata totale e dà l'ampiezza. La chiusura
+  esatta del §3 è l'equazione (1.2) di Delabaere, Dillinger e Pham [19], con
+  ampiezza $P^{-1/2}$ e $P$ "parte pari in $\hbar$ della soluzione della
+  Riccati"; il nostro Teorema 1 è quella formula, il Teorema 2 quella
+  caratterizzazione, e $u_2$, $u_4$ sono i coefficienti WKB classici. Nulla di
+  ciò è rivendicato.
+
+  Ne discende una conseguenza che preferiamo enunciare noi: **un'espansione della
+  Riccati non può contenere informazione che la WKB non contenga già**. Il
+  risultato negativo del §11 è quindi atteso; il suo interesse sta nel
+  quantificarlo, non nel constatarlo.
+
+  Quello che la Riccati **non** fornisce è il proprio input. I §5, §9 e §10 sono
+  enunciati sulla struttura di $q$ nella scalatura eikonale — da dove viene la
+  sua dipendenza da $\varepsilon$ e a quale ordine — e sono quelli il contenuto
+  del lavoro.
+- I coefficienti $u_2$ e $u_4$ sono i coefficienti WKB classici.
+- L'universalità del termine eikonale di testa, indipendente dallo spin, è
+  stabilita da Cardoso *et al.* [14] e non è nostra.
+- La decomposizione ampiezza–fase dei QNM, l'annullamento di un Wronskiano e
+  l'integrazione di una Riccati sono strumenti standard.
+- L'analisi WKB esatta dei QNM, con geometria di Stokes e periodi quantistici,
+  è un programma attivo e consolidato che non tocchiamo.
+
+Il contributo effettivo è duplice.
+
+1. **Criterio di ordinamento (§5, §9, §10).** La decomposizione esatta (5.1)
+   con sostituzione di Langer, l'osservazione che spin e Madelung sono degeneri
+   in ordine nel settore bosonico statico, e i **due** contro-esempi di ordine
+   $\varepsilon^1$ — la rotazione in Kerr, bosonica, e la connessione di spin di
+   Dirac, fermionica — da cui il criterio nella forma generale del §10.1.
+2. **Ridondanza del diagnostico di Madelung (§11).** Il funzionale d'ampiezza
+   naturale è proporzionale a $|\Lambda_3|$ a overtone fissato: la lettura di
+   Madelung dell'ampiezza WKB non estende la correzione di Iyer–Will, la
+   riproduce.
+
+Contorno di supporto, non rivendicato come nuovo: la misura della rottura alla
+coalescenza dei turning point (§7) e la legge di continuità con sorgente (§8),
+entrambe attese ma qui quantificate.
 
 ### 1.2 Stato della letteratura
 
-Una ricerca bibliografica mirata non ha identificato un precedente diretto che
-reinterpreti la gerarchia WKB dei QNM gravitazionali come gerarchia di potenziali
-di Madelung. Esistono tre filoni adiacenti ma distinti: (i) WKB di ordine elevato
-e Padé per QNM; (ii) equazione di Hamilton–Jacobi quantistica ed exact WKB, dove
-il momento quantistico e i suoi periodi sono oggetti centrali; (iii) buchi neri
-acustici in condensati di Bose–Einstein, dove il termine di pressione quantistica
-è fisicamente microscopico e non un artificio di riscrittura. L'assenza
-riscontrata è un esito di ricerca bibliografica, non una dimostrazione di
-inesistenza, e va letta come tale.
+Il territorio adiacente è occupato, e va dichiarato con precisione.
+
+**Idrodinamica di Dirac con QNM.** Meza-Domínguez e Matos presentano una
+formulazione chirale-idrodinamica covariante dell'equazione di Dirac in
+spaziotempo curvo, con potenziale quantistico esplicito in un'equazione di
+Hamilton–Jacobi radiale, specializzazione a Schwarzschild e calcolo dei QNM
+fermionici. È un precedente diretto per il tema del §10. Il loro approccio è però
+*esatto* — funzioni di Heun, conservazione del flusso chirale — e non sviluppa
+alcuna gerarchia in $\varepsilon$: l'ordinamento, che è il nostro oggetto, resta
+distinto.
+
+**WKB esatta per i QNM.** Aminov, Grassi e Hatsuda hanno collegato i QNM alla
+teoria di Seiberg–Witten con condizioni di quantizzazione esatte; Miyachi,
+Namba, Omiya e Oshita hanno costruito l'analisi WKB esatta dell'equazione di
+Regge–Wheeler, chiarendo la struttura delle curve di Stokes e le spirali
+logaritmiche emergenti dall'orizzonte. È un programma attivo, con contributi
+frequenti. Non lo tocchiamo: il nostro §7 osserva numericamente una rottura che
+quella letteratura descrive rigorosamente, e la citiamo come lo strumento
+appropriato piuttosto che riderivarla.
+
+**Diagnostica d'errore per risonanze.** Esistono stimatori pratici dell'errore
+WKB, in particolare $\Delta_k=|\omega_{k+1}-\omega_{k-1}|/2$ di Konoplya e
+collaboratori, e una letteratura di stimatori a residuo pesato per autovalori
+complessi di problemi aperti. Il §11 confronta esplicitamente con questi, e il
+suo esito è negativo per il nostro candidato.
+
+**Analoghi acustici.** Nei buchi neri acustici in condensati di Bose–Einstein il
+termine di pressione quantistica è fisicamente microscopico e non un artificio
+di riscrittura. È l'unico contesto in cui un termine di questa forma sarebbe
+misurabile; non stabiliamo alcuna corrispondenza con esso.
+
+Non abbiamo identificato, nelle fonti consultate, la formulazione
+dell'ordinamento del §10.1. Questo non dimostra priorità.
 
 ---
 
@@ -183,6 +281,20 @@ $A=u^{-1/2}$. Questa è la differenza sostanziale rispetto all'uso consueto del
 potenziale di Bohm come termine correttivo: qui è il funzionale che chiude la
 serie, non un contributo aggiunto.
 
+Vale la pena registrare che cosa sia $Q_M$ in termini invarianti, perché il §6
+rimprovera ai singoli $Q_{2j}$ proprio di non esserlo. Nella formulazione
+geometrica di [31] il termine di Bohm compare nel potenziale dell'equazione di
+Newton sullo spazio delle densità come $4I(\varrho)$, dove $I$ è il funzionale
+di **informazione di Fisher**. Il funzionale che chiude la serie WKB è dunque,
+variazionalmente, l'informazione di Fisher dell'ampiezza: un oggetto definito
+indipendentemente dalla coordinata, dalla variabile master e dalla convenzione
+con cui si introduce $\varepsilon$.
+
+Questo permette di enunciare in forma invariante il criterio del §10.1: la
+domanda non è a quale ordine compaia "il potenziale di Madelung", ma **a quale
+ordine in $\varepsilon$ l'informazione di Fisher dell'ampiezza diventi degenere
+con il contributo geometrico** — lo spin nel caso statico, la rotazione in Kerr.
+
 La (3.1) è un'identità, non un'approssimazione: non abbiamo troncato nulla. Il
 contenuto approssimativo entra solo quando si risolve la (3.1) per serie.
 
@@ -190,11 +302,34 @@ contenuto approssimativo entra solo quando si risolve la (3.1) per serie.
 
 ## 4. Assenza di ordini dispari e ricorsione
 
-> **Teorema 2 (parità della serie).** Cercando una soluzione della (3.1) nella
-> forma $u=\sqrt q+\varepsilon u_1+O(\varepsilon^2)$, il coefficiente di
+> **Teorema 2 (parità della serie).** Sia $q$ **indipendente da
+> $\varepsilon$**. Cercando una soluzione della (3.1) nella forma
+> $u=\sqrt q+\varepsilon u_1+O(\varepsilon^2)$, il coefficiente di
 > $\varepsilon^1$ impone $u_1\equiv0$. La serie è quindi in potenze di
 > $\varepsilon^2$:
 > $$u=u_0+\varepsilon^2u_2+\varepsilon^4u_4+\dots,\qquad u_0=\sqrt q .$$
+
+L'ipotesi di $\varepsilon$-indipendenza non è pleonastica, ed è bene isolarla
+subito perché il §9 la viola.
+
+> **Osservazione 2bis (dove la parità si rompe).** Se il potenziale riscalato ha
+> una propria espansione $q=q_0+\varepsilon q_1+\varepsilon^2q_2+\dots$, allora
+> l'ordine $\varepsilon^1$ della (3.1) dà
+> $$q_1=2u_0u_1\quad\Longrightarrow\quad u_1=\frac{q_1}{2\sqrt{q_0}}\neq0 ,$$
+> e il momento acquista un termine dispari. È esattamente il caso di Kerr, dove
+> $q_1=-\Delta A_1/H^2$ è generato dall'autovalore sferoidale (§9.1).
+
+La rottura della parità non si propaga però al funzionale di Madelung. Nella
+chiusura $P^2+Q_M=\operatorname{Re}q$ i termini di ordine $\varepsilon$ si
+cancellano identicamente, $q_1-2u_0u_1=0$, cosicché $Q_M$ resta di ordine
+$\varepsilon^2$ anche in presenza di rotazione. Questa cancellazione è il motivo
+per cui il criterio del §10.1 è ben posto: il termine di ordine $\varepsilon$
+vive nel *potenziale*, non nel funzionale di ampiezza, ed è per questo che si
+può misurarlo senza integrare l'equazione.
+
+In pratica, quando $q$ dipende da $\varepsilon$ conviene non separarlo in ordini
+e applicare la serie WKB direttamente al $q$ complesso completo; l'Appendice C
+raccoglie la forma dell'ampiezza che ne segue.
 
 Il contenuto dell'ordine dispari non è perduto: è stato assorbito nel prefattore
 $u^{-1/2}$, cioè nell'equazione di trasporto dell'ampiezza. Il momento $u$ è per
@@ -272,7 +407,8 @@ Il contenuto nuovo non è dunque l'universalità del termine di testa, che è
 nota, ma il fatto che il primo termine **non** universale cada esattamente
 all'ordine del funzionale di Madelung, rendendo i due indistinguibili con il
 solo criterio di scaling. È questa coincidenza di ordini a rendere il caso
-bosonico strutturalmente diverso da quello fermionico del §9.
+bosonico statico strutturalmente diverso sia da Kerr (§9) sia dal caso
+fermionico (§10).
 
 Il caso elettromagnetico è degenere in modo ancora più stretto: per $s=1$ si ha
 $2(1-s^2)=0$ e $v_2=-f/(4x^2)$ si riduce al **puro termine di Langer**, senza
@@ -330,10 +466,13 @@ Riproducibile con `verification/scalar_eikonal_scaling.py`.
 Le ragioni sono tre, di natura diversa.
 
 **(i) Tipo di oggetto.** I $\Lambda_j$ sono scalari: numeri costruiti dal getto
-del potenziale nel singolo punto di massimo e dall'indice di overtone
-$\alpha=n+\tfrac12$. I $Q_{2j}$ sono funzioni della coordinata. Nessuna mappa
-naturale porta le une negli altri senza una scelta arbitraria di funzionale di
-valutazione.
+di $Q=\Omega^2-V$ nel singolo punto di massimo e dall'indice di overtone
+$\alpha=n+\tfrac12$. La costruzione è esplicita in [7]: nella regione fra i
+turning point si approssima $-Q$ con uno sviluppo di Taylor "fino alla derivata
+sesta inclusa", e sono quelle sei derivate al picco — null'altro — a produrre
+$\Lambda_2$ e $\Lambda_3$. I $Q_{2j}$ sono invece funzioni della coordinata.
+Nessuna mappa naturale porta le une negli altri senza una scelta arbitraria di
+funzionale di valutazione.
 
 **(ii) Non unicità.** I singoli $Q_{2j}$ dipendono dalla coordinata scelta, dalla
 variabile master, dalla normalizzazione e dalla convenzione con cui si introduce
@@ -345,9 +484,32 @@ la scelta $L=\ell$ ne produrrebbe uno spurio.
 
 **(iii) Rottura nel punto sbagliato.** Le correzioni $\Lambda_j$ sono costruite
 proprio nella regione di coalescenza dei turning point, dove — come mostriamo
-quantitativamente nel §7 — la serie locale in potenze inverse di $q$ è singolare
-e va sostituita dalla forma normale parabolico-cilindrica. La gerarchia di
-Madelung e la gerarchia di Iyer–Will vivono in regioni di validità disgiunte.
+quantitativamente nel §7 — la serie locale in potenze inverse di $q$ è singolare.
+Questo non è un'inferenza nostra: è la ragione dichiarata per cui il metodo
+esiste. Iyer e Will [7] introducono la loro modifica del WKB proprio "per valori
+della frequenza tali che i turning point $x_1$ e $x_2$ siano vicini fra loro,
+presso il picco della barriera", dove "il matching standard non è più valido"; e
+la soluzione interna che usano per il raccordo è, in assenza dei termini in
+$\varepsilon$, una **funzione del cilindro parabolico** $D_\nu(t)$, cercata poi
+nella forma $f(t)D_\nu[g(t)]$.
+
+C'è di più, ed è il principio che governa l'intero metodo uniforme. Berry e
+Mount [17], §4.1, lo enunciano così: *nel limite semiclassico sono equivalenti
+tutti i problemi che hanno la stessa struttura di turning point*. Ne segue che
+una costruzione per equazione di confronto, come quella di [7], codifica la
+**struttura dei turning point**, non il potenziale locale: due potenziali diversi
+con la stessa disposizione di zeri di $q$ danno gli stessi $\Lambda_j$ a meno
+della mappa. I $Q_{2j}$ sono invece coefficienti di uno sviluppo locale, e
+distinguono potenziali che il metodo uniforme identifica. Sono oggetti di natura
+diversa non solo per tipo — scalari contro funzioni — ma per ciò che ciascuno è
+costruito per registrare.
+
+Le due gerarchie vivono dunque in regioni di validità **disgiunte per
+costruzione**: la serie di Madelung richiede $q\neq0$ e degenera dove i due
+turning point si fondono; la costruzione di Iyer–Will è definita esattamente
+là, e sostituisce la serie locale con una forma normale. Chiedere una
+corrispondenza $Q_{2j}\leftrightarrow\Lambda_j$ significa chiedere di
+identificare oggetti definiti su domini che non si intersecano.
 
 ---
 
@@ -357,7 +519,7 @@ Il punto (iii) è verificabile. Al massimo della barriera un QNM ha
 $q\to0$, i due turning point coalescono e $P\to0$: la (3.1), che divide per $u$,
 degenera. Misuriamo l'effetto confrontando le pendenze in $\varepsilon$ del
 termine di Madelung in due finestre, una lontana dai turning point e una centrata
-sul massimo. Per il campo di Dirac del §9, dove il confronto è più netto per la
+sul massimo. Per il campo di Dirac del §10, dove il confronto è più netto per la
 presenza di due termini di ordine diverso:
 
 | Regione | $\min\lvert P\rvert$ | pendenza del termine $\varepsilon^1$ | pendenza di $Q_{\rm M}$ |
@@ -372,6 +534,37 @@ degradano e $Q_{\rm M}$ cessa di seguire $\varepsilon^2$. La rottura non è un
 artefatto numerico: è il comportamento atteso di una serie asintotica valutata
 nel proprio punto singolare, e la sua posizione coincide con il punto di
 costruzione dei $\Lambda_j$.
+
+Il meccanismo è classificato. In linguaggio di equazioni di confronto [17],
+§4.2, la soluzione WKB non è valida presso un turning point classico, dove
+$p^2(x)$ ha uno zero, "perché la mappa non è più biunivoca": il termine
+trascurato nella costruzione diventa dominante e la condizione di validità è
+violata. Al massimo di barriera i due zeri di $q$ si fondono in un **turning
+point del secondo ordine**, il caso $\nu=2$ della classificazione di Langer, la
+cui equazione di confronto è quella del cilindro parabolico — la stessa che [7]
+usa per costruire i $\Lambda_j$. La degradazione misurata nella seconda riga
+della tabella è dunque la firma numerica di un fenomeno noto e classificato: il
+suo interesse non è la scoperta, ma il confronto quantitativo con la prima riga.
+
+L'exact WKB dà a questo la formulazione più tagliente. In [19] la rottura non è
+descritta come divergenza della serie, ma come **pinzatura del cammino di
+normalizzazione**: gli sviluppi WKB ben normalizzati "sono singolari per quei
+valori dell'energia per cui il cammino di normalizzazione è *pinched* dalla
+confluenza di alcuni turning point". Localmente si può sempre scegliere una base
+non pinzata; ciò che si perde è la regolarità **delle mappe di connessione** fra
+regioni. La singolarità è dunque nel problema di connessione, non nel singolo
+sviluppo.
+
+La cura è una riscalatura: si pone $E=E_{\rm crit}+E_r\hbar$ presso un punto
+critico quadratico del potenziale, e il problema di connessione riscalato dipende
+regolarmente da $E_r$ su tutto il piano complesso. Vale la pena notare che la
+condizione di quantizzazione di [7] ha esattamente quella forma —
+$q_0/\sqrt{2q_0''}=i\varepsilon(n+\tfrac12)$, cioè $q_0=O(\varepsilon)$ — per
+cui **i $\Lambda_j$ sono il contenuto troncato del problema di connessione
+riscalato a un turning point doppio**. Questo chiude il §6 dall'altro capo: i
+$Q_{2j}$ sono coefficienti dello sviluppo *non* riscalato, che è precisamente
+quello che diventa singolare; i $\Lambda_j$ appartengono al problema riscalato,
+che è regolare. Sono espansioni di oggetti diversi.
 
 ---
 
@@ -412,9 +605,170 @@ chiusura ma rende $u$ e $A$ complessi, e con essi si perde il significato
 ordinario di densità e velocità. Non è disponibile una terza via che conservi
 entrambe le proprietà. Riproducibile con `verification/open_continuity.py`.
 
+In termini geometrici, la sorgente è precisamente ciò che impedisce di
+collocare il problema su $T^*\mathrm{Dens}(M)$: lo spazio delle densità di [31]
+è definito da $\varrho>0$ e $\int\varrho=1$, e la seconda condizione è
+preservata dal flusso solo se la continuità è omogenea. Il termine
+$-\Gamma\rho$ misura quindi l'ostruzione, e $\Gamma=\operatorname{Im}\omega^2$
+la quantifica: si annulla esattamente per i modi normali, e mai per i
+quasi-normali.
+
 ---
 
-## 9. Non universalità: il contrappunto fermionico
+## 9. Kerr: la rotazione produce un termine di ordine $\varepsilon$
+
+Il §5 mostra che nel settore bosonico statico non esiste termine
+$\varepsilon^1$: la sostituzione di Langer dà $\ell(\ell+1)=L^2-\tfrac14$, e il
+$-\tfrac14$ è puro $\varepsilon^2$. Sarebbe naturale concluderne che la pendenza
+2 caratterizzi il settore bosonico. **Non è così**, e Kerr lo mostra.
+
+![Fig. 1](figures/fig1_ordinamento.pdf)
+
+**Figura 1.** Primo termine subprincipale della decomposizione contro
+$\varepsilon=1/L$, per i tre casi trattati. Ogni serie è riscalata in modo che
+la retta di fit passi per 1 a $\varepsilon=0.1$: le ampiezze assolute hanno
+significati fisici diversi e non sono confrontabili, le pendenze sì. Le rette
+grigie hanno pendenza 1 e 2. Schwarzschild gravitazionale, dove il primo termine
+è $\varepsilon^2v_2$, misura 2.00; Kerr scalare a $a=0.6$, con
+$-\varepsilon\Delta A_1/H^2$, misura 1.00; Dirac con la connessione di spin
+$\tau\varepsilon h'$ misura 1.00. I due casi a pendenza 1 stanno in settori
+opposti — bosonico con rotazione, fermionico statico — ed è questo a mostrare
+che l'oggetto discriminato è la struttura geometrica, non lo spin del campo.
+
+### 9.1 Decomposizione esatta
+
+Con $\Psi=\sqrt{r^2+a^2}R$, $H=r^2+a^2$, $\Delta=r^2-2r+a^2$,
+$\lambda=A+a^2\omega^2-2am\omega$ e la scalatura $\omega=L\hat\Omega$,
+$m=\mu L$, $\hat c=a\hat\Omega$, il potenziale radiale efficace si decompone
+esattamente come
+
+$$\frac{q}{L^2}=Q_0(r)
+-\varepsilon\,\frac{\Delta A_1}{H^2}
+-\varepsilon^2\left[\frac{\Delta A_2}{H^2}+\frac{h''}{h}\right],
+\qquad
+Q_0=\left(\hat\Omega-\frac{\mu a}{H}\right)^2-\frac{\Delta\bar A_0}{H^2},
+\tag{9.1}$$
+
+dove $A=A_0+A_1/L+A_2/L^2+\dots$ è l'espansione eikonale dell'autovalore
+sferoidale e $\bar A_0=A_0+\hat c^2-2\mu\hat c$. La (9.1) va confrontata
+direttamente con la (5.1) del caso statico e con la (10.1) del caso di Dirac:
+**hanno la stessa forma**, e differiscono solo per quale potenza di
+$\varepsilon$ porta il primo termine subprincipale.
+
+Le convenzioni alternative dell'equazione angolare differiscono per termini
+$a^2\omega^2=L^2\hat c^2$ e $2am\omega=2L^2\mu\hat c$, entrambi puramente
+$O(L^2)$: entrano in $\bar A_0$, non in $A_1$. Il risultato è quindi
+indipendente dalla convenzione.
+
+### 9.2 Misura non circolare
+
+Definire $A_1$ come coefficiente di $1/L$ e poi verificarne lo scaling sarebbe
+tautologico. Si procede invece così: a ogni $\ell$ si costruisce il potenziale
+con l'autovalore sferoidale **esatto** a quel $\ell$, lo si confronta con la sua
+forma di testa $Q_0$, e si misura la pendenza in $\varepsilon$ del residuo
+$D(r)=q/L^2-Q_0(r)$ su una finestra centrata sul picco.
+
+| $a$ | $\mu$ | $\hat\Omega$ | $r_{\rm picco}$ | $A_0$ | **pendenza** |
+|---|---|---|---|---|---|
+| 0.0 | 0.5 | 0.192450 | 3.00000 | 1.00000 | **1.951** |
+| 0.0 | 0.9 | 0.192450 | 3.00000 | 1.00000 | **1.951** |
+| 0.3 | 0.5 | 0.205614 | 2.78835 | 0.99857 | **0.963** |
+| 0.6 | 0.5 | 0.225120 | 2.47487 | 0.99315 | **0.996** |
+| 0.9 | 0.5 | 0.261204 | 1.93474 | 0.97924 | **1.006** |
+| 0.6 | 0.9 | 0.252767 | 2.23949 | 0.99778 | **1.014** |
+| 0.9 | 0.9 | 0.330631 | 1.60599 | 0.99135 | **0.997** |
+
+Il controllo statico dà 2, la rotazione dà 1, per ogni spin e ogni $\mu$
+provati. Il difetto del controllo rispetto a 2.000 è troncamento a
+$\ell\le160$, non struttura.
+
+### 9.3 Il termine non è un artefatto di parametrizzazione
+
+Nel caso sferico l'espansione dà $A_1=-1.4\times10^{-14}$ e
+$A_2=-0.25000000$, cioè esattamente il termine di Langer: il metodo riproduce il
+§5. Con rotazione $A_1\neq0$, e non è rimovibile. Ridefinendo $L\to L+\delta$ si
+ha $A_1\to A_1-2\delta A_0$; una costante unica assorbirebbe $A_1$ solo se
+$\delta=A_1/(2A_0)$ fosse comune ai modi, mentre i valori richiesti vanno da
+$-0.010$ a $-0.128$, con dispersione del 162%. È lo stesso test dell'Appendice B,
+che separa l'artefatto di Langer dal termine genuino.
+
+Per un overtone fissato $\operatorname{Im}\hat c=O(\varepsilon)$; facendo
+$\operatorname{Im}\hat c\to0$ la parte reale di $A_1$ resta stabile a $-0.0193$.
+Il termine sopravvive nel limite fisico ed è reale all'ordine dominante.
+
+### 9.4 Validazioni
+
+Per $a=0$ si ritrova $\hat\Omega=1/(3\sqrt3)$ e $r_{\rm picco}=3$, senza
+dipendenza da $\mu$. La condizione di radice doppia $Q_0(r_0)=Q_0'(r_0)=0$ è
+soddisfatta a $10^{-16}$–$10^{-12}$. I raggi trovati stanno sopra l'orbita
+fotonica equatoriale prograda $r_{\rm ph}=2[1+\cos(\tfrac23\arccos(-a))]$ e vi si
+avvicinano al crescere di $\mu$ — 2.788 e 2.239 contro 2.630 e 2.189 per
+$a=0.6$ — che è il comportamento corretto delle orbite fotoniche sferiche.
+
+### 9.5 Attribuzione
+
+Che $A_1\neq0$ per l'autovalore sferoidale è **noto**, ed è contenuto nella
+letteratura eikonale su Kerr [23, 24]. Non è questa la
+rivendicazione.
+
+Va distinta anche dalla WKB di barriera su Kerr di Seidel e Iyer [33], che
+applica il metodo di [7] ai modi **bassi** espandendo il potenziale in potenze
+di $a\omega$. È un parametro piccolo diverso dal nostro $\varepsilon=1/L$: quel
+lavoro non contiene autovalori sferoidali né limite eikonale, e le difficoltà
+che riporta ad alto $a$ derivano proprio dall'espansione in $a\omega$, che qui
+non si effettua — il problema angolare è risolto esattamente. Il contenuto di questa sezione è la collocazione di quel termine
+nella stessa casella della connessione di spin di Dirac, attraverso una misura
+operativa comune, e la conseguente correzione del criterio (§10.1).
+
+### 9.6 Il funzionale di ampiezza su Kerr
+
+L'ordinamento del §9.2 è misurato sul potenziale e non richiede di integrare
+l'equazione. Il funzionale $Q_M$ è però costruibile anche qui, e serve a
+verificare che nulla di patologico accada all'ampiezza in presenza di rotazione.
+
+La frequenza va determinata **autoconsistentemente col potenziale a quel
+$\ell$**, non presa dal limite eikonale: a $\omega$ fissata l'autovalore
+sferoidale è un numero, quindi $q(r)$ è esplicita e le sue derivate rispetto a
+$r_*$ si ottengono simbolicamente; la condizione di barriera di [7], scritta in
+termini di $q$,
+
+$$\frac{q_0}{\sqrt{2q_0''}}=\Lambda_2-i\left(n+\tfrac12\right)(1+\Lambda_3),
+\tag{9.2}$$
+
+si risolve per $(\omega,r_0)$ complessi simultaneamente. A $a=0$ il solutore
+riproduce il WKB3 scalare a $3\times10^{-11}$; su Kerr converge con residui
+$10^{-14}$–$10^{-12}$, e la frequenza si sposta rispetto a quella eikonale di
+$1.5\times10^{-3}$ a $1.4\times10^{-2}$.
+
+Quello spostamento non è trascurabile, perché $Q_M$ amplifica di due ordini di
+grandezza l'errore sulla frequenza (Appendice C). Confrontando la previsione
+analitica dell'Appendice C con $Q_M$ estratto dall'ampiezza integrata, errore
+relativo mediano nella finestra $20<r<50$:
+
+| $a$ | $\ell$ | con $\omega$ eikonale | con $\omega$ autoconsistente |
+|---|---|---|---|
+| 0.0 | 30 | $1.6\times10^{-3}$ | $3.4\times10^{-4}$ |
+| 0.3 | 30 | $3.6\times10^{-2}$ | $3.4\times10^{-4}$ |
+| 0.6 | 30 | $7.8\times10^{-2}$ | $4.4\times10^{-4}$ |
+| 0.6 | 70 | $1.2\times10^{-3}$ | $3.2\times10^{-5}$ |
+| 0.9 | 70 | $2.3\times10^{-1}$ | $1.5\times10^{-3}$ |
+| 0.9 | 100 | $1.9\times10^{-1}$ | $1.4\times10^{-3}$ |
+
+Con la frequenza consistente gli errori scendono nella banda
+$3\times10^{-5}$–$1.5\times10^{-3}$, comparabile al controllo statico, e il
+comportamento erratico scompare. La previsione dell'Appendice C, costruita e
+validata su Pöschl–Teller, vale dunque anche in presenza di rotazione: **non
+c'è nulla di patologico nell'ampiezza**, e la struttura di ordine del §9.2 è
+l'unico contenuto.
+
+*Limite dichiarato.* Il caso $a=0.9$, $\mu=0.9$ non è incluso: il bordo interno
+richiesto avvicina l'orizzonte al punto in cui l'integratore esaurisce la
+precisione di macchina. Il regime quasi estremale richiede un trattamento
+dedicato che non affrontiamo.
+
+---
+
+## 10. Non universalità: il contrappunto fermionico
 
 La struttura dei §§3–5 è specifica del settore bosonico. Per un campo di Dirac
 massless su Schwarzschild il sistema radiale è esattamente un sistema di Dirac
@@ -424,14 +778,14 @@ $V_\pm=W^2\pm W'$. Inserendo il parametro semiclassico **prima** di disaccoppiar
 il sistema — con $K=\lvert\kappa\rvert$, $\varepsilon=1/K$, $\omega=K\hat\Omega$,
 $h=\sqrt f/x$, $\tau=\sigma\operatorname{sgn}\kappa$ — si ottiene
 
-$$\frac{V_\tau}{K^2}=h^2+\tau\varepsilon h', \tag{9.1}$$
+$$\frac{V_\tau}{K^2}=h^2+\tau\varepsilon h', \tag{10.1}$$
 
-da confrontare direttamente con la (5.1). Il termine di testa è **lo stesso**
+da confrontare direttamente con la (5.1) e con la (9.1). Il termine di testa è **lo stesso**
 $h^2$ del caso bosonico, come deve essere: è il potenziale delle geodetiche nulle
 e non conosce lo spin del campo. Ma la prima correzione è ora di ordine
 $\varepsilon^1$, non $\varepsilon^2$. La chiusura diventa
 
-$$\operatorname{Re}\hat\Omega^2=P^2+h^2+\underbrace{\tau\varepsilon h'}_{O(\varepsilon)}+\underbrace{Q_{\rm M}}_{O(\varepsilon^2)} . \tag{9.2}$$
+$$\operatorname{Re}\hat\Omega^2=P^2+h^2+\underbrace{\tau\varepsilon h'}_{O(\varepsilon)}+\underbrace{Q_{\rm M}}_{O(\varepsilon^2)} . \tag{10.2}$$
 
 Il termine di ordine $\varepsilon$ è la connessione di spin, coincide con metà
 della separazione fra i partner, $V_+-V_-=2Kh'$, e **precede** il funzionale di
@@ -442,27 +796,114 @@ La conclusione è netta: per Dirac la famiglia efficace esiste localmente, ma no
 è una successione di soli potenziali di Madelung. La chiusura del Teorema 1
 sopravvive — è un enunciato su equazioni scalari di secondo ordine, e le
 componenti disaccoppiate lo sono — ma la sua interpretazione come *unico*
-contenuto subprincipale della gerarchia è falsa non appena il campo ha spin
-semintero. Ne segue un criterio di riconoscimento operativo, che è forse il
-risultato più utile del lavoro:
+contenuto subprincipale della gerarchia è falsa non appena esiste un termine
+$O(\varepsilon)$.
+
+### 10.1 Il criterio, nella forma generale
+
+Mettendo insieme i tre casi — Schwarzschild bosonico (§5), Kerr scalare (§9) e
+Dirac (§10) — si può ora formulare il criterio senza attribuirlo allo spin.
 
 > **Criterio.** Si misuri la pendenza in $\varepsilon$ del primo termine
-> subprincipale della chiusura. Pendenza 2: il regime è puramente di Madelung, e
-> spin e curvatura entrano degeneri con esso (settore bosonico, §5). Pendenza 1:
-> esiste un contributo geometrico che precede il Madelung e va trattato a parte
-> (settore fermionico, §9).
+> subprincipale della decomposizione. **Pendenza 2**: il regime è puramente di
+> Madelung, e spin e curvatura entrano degeneri con esso. **Pendenza 1**: esiste
+> un contributo geometrico che precede il funzionale di Madelung e va trattato a
+> parte.
+
+Il criterio **non distingue spin intero da semintero**, e sarebbe un errore
+leggerlo così. Ne conosciamo due sorgenti indipendenti di pendenza 1:
+
+| sorgente | settore | termine $O(\varepsilon)$ | pendenza misurata |
+|---|---|---|---|
+| separazione sferoidale da rotazione | bosonico, Kerr | $-\Delta A_1/H^2$ | 0.963 – 1.014 |
+| connessione di spin di Darboux | fermionico, statico | $\tau h'$ | 1.0000 |
+
+Che le due coesistano in settori opposti — una bosonica con rotazione, una
+fermionica senza — è ciò che mostra che l'oggetto discriminato è la **struttura
+geometrica**, non lo spin del campo. Una formulazione precedente di questo lavoro
+attribuiva la pendenza 1 al solo settore fermionico: il §9 la smentisce.
 
 ---
 
-## 10. Discussione
+## 11. Il diagnostico di Madelung riproduce $\Lambda_3$, non lo estende
+
+La decomposizione suggerisce un uso pratico: se $Q_M$ misura la deviazione
+dell'ampiezza dal comportamento WKB, un suo funzionale dovrebbe stimare l'errore
+della WKB. Costruiamo il candidato naturale, con finestra gaussiana $w$ centrata
+sul massimo di barriera e larghezza $\sigma=\sqrt{V_0/(-V_0'')}$:
+
+$$\mathcal E_M=\frac{\int w\,|Q_M|\,dx_*}{\int w\left(|\varepsilon\Omega|^2+\varepsilon^2|V|+P^2\right)dx_*}. \tag{11.1}$$
+
+Il risultato è negativo, e in modo netto.
+
+**(i) Degenerazione nella famiglia esattamente risolubile.** Per Pöschl–Teller
+$V=L^2\operatorname{sech}^2y$ con $n=0$ valgono le identità esatte
+$|\Omega/L|^2=1$ e $P^2=(1-\varepsilon^2/4)\tanh^2y$, da cui il denominatore
+della (11.1) vale $2-\tfrac{\varepsilon^2}{4}\tanh^2y$ e
+
+$$\mathcal E_M=\frac{\varepsilon^2(2-c_w)}{8-\varepsilon^2c_w},\qquad
+c_w=\frac{\int w\tanh^2y\,dy}{\int w\,dy}.$$
+
+Ogni ingrediente è una forma fissa moltiplicata per una funzione di
+$\varepsilon$: l'indicatore non ha margine per trasportare informazione.
+
+**(ii) Il segnale apparente ad overtone alto è il nodo.** Su Schwarzschild
+$\mathcal E_M/\varepsilon^2$ sembra dipendere da $\ell$ a $n=1$ (spread 85%),
+ma l'integrale è dominato all'89% dal picco di $|Q_M|$ al nodo, e la dominanza
+cresce con $\ell$. Sostituendo l'integrale con la mediana pesata, robusta al
+polo, lo spread crolla all'1.9%: il segnale era l'artefatto.
+
+**(iii) A $\varepsilon$ fissato l'indicatore ordina, ma non meglio dei
+controlli gratuiti.** Variando lo spin a $\ell$ fissato — che cambia la forma
+della barriera lasciando $\varepsilon$ identico — su 18 coppie:
+
+| predittore | concordanza | errore medio sul rapporto |
+|---|---|---|
+| $\mathcal E_M$ | 18/18 | 0.0179 |
+| $\Delta_2=|\omega_3-\omega_1|/2$ | 18/18 | 0.0185 |
+| $|\Lambda_3|$ | 18/18 | 0.0187 |
+
+**(iv) La ragione: proporzionalità esatta.** A overtone fissato,
+
+| $n$ | $\mathcal E_M/|\Lambda_3|$ su $s=0,2$, $\ell=3\ldots8$ | dispersione |
+|---|---|---|
+| 0 | 1.0426 | 0.15% |
+| 1 | 3.95 | 1.6% |
+
+L'indicatore è una riscalatura di $|\Lambda_3|$ con costante indipendente da
+$\ell$ e dallo spin. Ma $\Lambda_3$ è un sottoprodotto algebrico della formula
+WKB al terzo ordine, calcolato dal getto di $V$ nel massimo; $\mathcal E_M$
+richiede la frequenza esatta, dati iniziali di Frobenius e l'integrazione
+dell'ODE attraverso la barriera.
+
+> **Conclusione.** La lettura di Madelung dell'ampiezza WKB non produce
+> informazione diagnostica nuova. Riproduce la correzione di Iyer–Will a costo
+> molto maggiore. Questo è coerente con il Teorema 1: la chiusura è
+> un'identità, e un'identità non crea informazione. L'enunciato utile non è che
+> il formalismo fallisce, ma che il suo contenuto informativo è **esattamente**
+> quello della WKB da cui proviene — né più né meno — e che l'unico punto in cui
+> dice qualcosa di non ridondante è l'ordinamento dei §5, §9 e §10.
+
+## 12. Discussione
 
 Il verdetto complessivo è che l'ipotesi iniziale è **confermata in senso
 formale-locale e complessificato**, e **non confermata in senso forte, canonico e
-fisico**. Il candidato più robusto per una formulazione invariante non è una
-collezione di potenziali locali, bensì il momento quantistico visto come 1-forma,
-con i suoi periodi e i simboli di Voros — oggetti che sopravvivono alla
-continuazione analitica e alle linee di Stokes, cosa che i singoli $Q_{2j}$ non
-fanno.
+fisico**. Per il funzionale di chiusura una formulazione invariante esiste ed è
+nota: è l'informazione di Fisher dell'ampiezza (§3). Per la **gerarchia** invece
+il candidato robusto non è una collezione di potenziali locali. La formulazione
+appropriata esiste ed è quella dell'exact WKB: il momento vive sul rivestimento
+doppio $\dot{\mathbb C}_2$, superficie di Riemann di $p=(E-V)^{1/2}$, e gli
+sviluppi vanno trattati "come oggetti impliciti, il cui interesse principale sta
+nei piccoli esponenziali che generano attraverso il processo di risorgenza"
+[19]. È un contenuto invariante di natura diversa da un coefficiente locale: non
+sopravvive alla continuazione analitica *malgrado* le linee di Stokes, ma è
+definito *attraverso* di esse. I singoli $Q_{2j}$, coefficienti di uno sviluppo
+non riscalato e pinzato ai turning point doppi, non hanno quella proprietà.
+
+Va aggiunto che il problema quasi-normale rientra nell'ambito di [19] senza
+forzature: la ricerca di risonanze vi è definita come la ricerca dei valori
+complessi dell'energia per cui la componente riflessa dell'onda si annulla, che
+è la condizione QNM.
 
 **Sulla verificabilità sperimentale.** Non formuliamo previsioni osservative, e
 riteniamo che non ve ne siano di accessibili. La riscrittura di Madelung è una
@@ -478,7 +919,7 @@ rivendichiamo alcuna.
 
 **Direzioni aperte.** (a) Sostituire la serie locale con la forma normale
 parabolico-cilindrica nella regione di coalescenza, e verificare se la chiusura
-di Madelung ammetta lì un analogo uniforme. (b) Estendere il §9 a Kerr, dove la
+di Madelung ammetta lì un analogo uniforme. (b) Montare il funzionale $Q_M$ sul profilo radiale di Kerr del §9, dove la
 ricorsione proiettiva del sistema di Chandrasekhar è già stata verificata
 simbolicamente fino a $O(\varepsilon^2)$, e stabilire se la connessione di spin
 mantenga l'ordine $\varepsilon^1$ in presenza di rotazione. (c) Chiarire se il
@@ -501,22 +942,95 @@ deterministici e girano in meno di un minuto ciascuno.
 | Corollario 3, singolo funzionale | `verification/madelung_recursion.py` (e) | verificato |
 | Proposizione 5 e tabella §5.1 | `verification/scalar_eikonal_scaling.py` | pendenze 2.0000 / ≈1.87 |
 | Legge con sorgente, §8 | `verification/open_continuity.py` | residuo $\sim10^{-6}$ |
-| Eq. (9.1)–(9.2), pendenze §7 | `../core/dirac_madelung_profile.py --scaling` | pendenza spin 1.0000 |
-| QNM di riferimento | `../core/test_wkb.py`, `../core/test_dirac_madelung.py` | 14 test superati |
+| Eq. (10.1)–(10.2), pendenze §7 e §10 | `../core/dirac_madelung_profile.py --scaling` | pendenza spin 1.0000 |
+| §11, ridondanza di $\mathcal E_M$ | `../../calculations/robust_indicator_test.py` | $\mathcal E_M/|\Lambda_3|$ = 1.0426 ± 0.15% |
+| §9.1–9.3, termine $\varepsilon$ di Kerr | `../../calculations/kerr_eikonal_order_test.py` | $A_1\neq0$; Langer esatto per $a=0$ |
+| §9.2, pendenze di Kerr | `../../calculations/kerr_radial_order_profile.py` | 1.951 statico, 0.963–1.014 con rotazione |
+| Figura 1 | `figures/make_fig1.py` | pendenze 2.00 / 1.00 / 1.00 |
+| §9.6, frequenza autoconsistente | `../../calculations/kerr_wkb3_selfconsistent.py` | WKB3 scalare a $3\times10^{-11}$ per $a=0$ |
+| Frequenze esatte di riferimento | `../../core/leaver_qnm.py` | 10 cifre contro Leaver 1985 |
+| Appendice C, previsione e sensibilità | `../../calculations/madelung_wkb_prediction.py` | $1.7\times10^{-7}$ a $L=300$ |
+| Suite completa | `core/` e `calculations/` | **45 test superati** |
 
 I QNM di riferimento sono confrontati con Iyer–Will ($s=2$, $\ell=2$, $n=0$:
 $0.3732-0.0892i$) e con Cho ($\kappa=1,2$).
 
+Nota di convenzione: [7] costruisce i $\Lambda_j$ dalle derivate di
+$Q=\Omega^2-V$, mentre la nostra implementazione usa quelle di $V$. Le due
+coincidono perché $Q^{(k)}=-V^{(k)}$ per $k\geq1$ e le formule dei $\Lambda_j$
+contengono solo rapporti pari in cui il segno si cancella, come
+$V_4/V_2$ e $(V_3/V_2)^2$. Il test contro i valori di [8] lo conferma.
+
 ## Appendice B. Nota sulla scelta di Langer
 
-L'uso di $L=\ell+\tfrac12$ anziché $L=\ell$ nella (5.1) non è cosmetico. Con
-$L=\ell$ si otterrebbe $\ell(\ell+1)=L^2+L$, che genera un termine di ordine
-$\varepsilon^1$ nel potenziale riscalato. Quel termine è però un artefatto della
+L'uso di $L=\ell+\tfrac12$ anziché $L=\ell$ nella (5.1) non è cosmetico, ed è
+anzi **unico**. Berry e Mount [17], §5.1, discutono la famiglia di sostituzioni
+$\ell(\ell+1)\to\ell(\ell+1)+\alpha$ associate a una relazione lineare generale
+$L=(\ell+\beta)\hbar$ fra numero quantico e momento angolare classico. Richiedere
+che il termine centrifugo diventi esattamente $L^2$ impone
+$\ell^2+\ell+\alpha=(\ell+\beta)^2$, cioè $\beta=\tfrac12$ e $\alpha=\tfrac14$:
+non c'è altra scelta. È la modifica di Langer, che [17] indica come "la più
+naturale per problemi che coinvolgono il limite semiclassico".
+
+La sua origine non è di comodo: Langer (1937) mostrò che la WKB ingenua non è
+applicabile presso $r=0$, e che la sostituzione $r=e^x$ ne ripristina la
+validità. Il $-\tfrac14$ che compare nel nostro $v_2$ è quel termine.
+
+Con $L=\ell$ si otterrebbe invece $\ell(\ell+1)=L^2+L$, che genera un termine di
+ordine $\varepsilon^1$ nel potenziale riscalato. Quel termine è però un artefatto della
 parametrizzazione, non una connessione di spin: scompare con la sostituzione di
 Langer, mentre il termine $\tau\varepsilon h'$ del caso di Dirac non scompare per
 nessuna riparametrizzazione di $\kappa$, essendo fissato dalla separazione dei
 partner di Darboux. La distinzione fra i due è essenziale perché il criterio del
-§9 sia ben posto, e va dichiarata esplicitamente in ogni applicazione.
+§10.1 sia ben posto, e va dichiarata esplicitamente in ogni applicazione.
+Lo stesso test, applicato all'autovalore sferoidale, e' quello che nel §9.3
+mostra che il termine di rotazione non e' rimovibile.
+
+---
+
+## Appendice C. Ampiezza WKB con frequenza complessa, e suo condizionamento
+
+Con $\omega$ complessa l'ampiezza reale della decomposizione di Madelung non è
+$|u|^{-1/2}$. Da $\psi=u^{-1/2}\exp(i\!\int\! u/\varepsilon)$ segue
+
+$$\ln A=-\tfrac12\ln|u|-\frac1\varepsilon\int\operatorname{Im}u,
+\qquad
+Q_M=-\varepsilon^2\left[(\ln A)''+\big((\ln A)'\big)^2\right],$$
+
+e il secondo termine di $\ln A$ è $O(1)$, non trascurabile, perché per un QNM
+$\operatorname{Im}\hat\Omega=O(\varepsilon)$. Ometterlo sbaglia $Q_M$ di un
+fattore $\sim50$. Va inoltre scelto il ramo di $\sqrt q$ coerente con la
+condizione al contorno su ciascun lato della barriera: usarne uno solo produce
+un errore del 10% che **non svanisce** al crescere di $L$, e che quindi imita un
+difetto di teoria.
+
+Validazione su Pöschl–Teller $n=0$, dove $Q_M$ è noto in forma chiusa. Errore
+relativo mediano nella regione oscillatoria:
+
+| $L$ | $u=\sqrt q$ | $u=\sqrt q+\varepsilon^2u_2$ |
+|---|---|---|
+| 8 | $3.9\times10^{-3}$ | $6.9\times10^{-4}$ |
+| 50 | $1.0\times10^{-4}$ | $5.1\times10^{-6}$ |
+| 300 | $2.8\times10^{-6}$ | $1.7\times10^{-7}$ |
+
+**Condizionamento.** La stessa costruzione mostra un limite strutturale del
+funzionale di ampiezza. Perturbando $\omega$ di una frazione relativa e
+misurando lo scarto indotto su $Q_M$ (Schwarzschild, $\ell=70$):
+
+| $\delta\omega/\omega$ | $10^{-5}$ | $10^{-4}$ | $10^{-3}$ | $3\times10^{-3}$ |
+|---|---|---|---|---|
+| errore su $Q_M$ | $1.0\times10^{-3}$ | $1.2\times10^{-2}$ | $1.4\times10^{-1}$ | $4.8\times10^{-1}$ |
+
+L'amplificazione è di circa due ordini di grandezza e stabile. Ne segue che
+**nessun funzionale costruito su $Q_M$ può predire la frequenza**: calcolarlo a
+tre cifre richiede cinque cifre di ciò che si vorrebbe prevedere. Non è una
+difficoltà numerica superabile con più risoluzione, è il condizionamento del
+problema, e fornisce la ragione strutturale del risultato negativo del §11.
+
+Per contrasto, l'**ordinamento** è robusto: le pendenze in $\varepsilon$ del §5,
+§9 e §10 sopravvivono a errori sulla frequenza di ordine $10^{-3}$. È in questa
+asimmetria — ordinamento robusto, valori mal condizionati — che si colloca il
+potere predittivo effettivo del formalismo.
 
 ---
 
@@ -549,3 +1063,15 @@ accesso libero sono in `papers/`, i restanti sono elencati in
 20. C. M. Bender, S. A. Orszag, *Advanced Mathematical Methods for Scientists and Engineers I*, Springer (1999). doi:10.1007/978-1-4757-3069-2
 21. W. G. Unruh, *Experimental black-hole evaporation?*, Phys. Rev. Lett. **46**, 1351–1353 (1981). doi:10.1103/PhysRevLett.46.1351
 22. C. Barceló, S. Liberati, M. Visser, *Analogue gravity*, Living Rev. Relativity **29** (2026). doi:10.1007/s41114-026-00064-9, arXiv:gr-qc/0505065 — sostituisce l'edizione **14** (2011), doi:10.12942/lrr-2011-3
+23. S. R. Dolan, *Quasinormal mode spectrum of a Kerr black hole in the eikonal limit*, Phys. Rev. D **82**, 104003 (2010). doi:10.1103/PhysRevD.82.104003 — Publisher's Note: doi:10.1103/PhysRevD.82.109906
+24. H. Yang, D. A. Nichols, F. Zhang, A. Zimmerman, Z. Zhang, Y. Chen, *Quasinormal-mode spectrum of Kerr black holes and its geometric interpretation*, Phys. Rev. D **86**, 104006 (2012). doi:10.1103/PhysRevD.86.104006
+25. R. A. Konoplya, A. Zhidenko, A. F. Zinhailo, *Higher order WKB formula for quasinormal modes and grey-body factors: recipes for quick and accurate calculations*, Class. Quantum Grav. **36**, 155002 (2019). doi:10.1088/1361-6382/ab2e25, arXiv:1904.10333
+26. G. Aminov, A. Grassi, Y. Hatsuda, *Black hole quasinormal modes and Seiberg–Witten theory*, Ann. Henri Poincaré **23**, 1951–1977 (2022). doi:10.1007/s00023-021-01137-x, arXiv:2006.06111
+27. T. Miyachi, R. Namba, H. Omiya, N. Oshita, *Path to an exact WKB analysis of black hole quasinormal modes*, Phys. Rev. D **111** (2025). doi:10.1103/1gmr-9f1g, arXiv:2503.17245
+28. T. Miyachi, R. Namba, H. Omiya, N. Oshita, *Spectral instability of parametrized black hole quasinormal modes in the high-overtone limit via the exact WKB analysis*, Phys. Rev. D **113** (2026). doi:10.1103/gsht-7s9l, arXiv:2512.18631
+29. J. Meza-Domínguez, T. Matos, *A covariant chiral-hydrodynamic formulation of the Dirac equation in curved spacetime*, arXiv:2605.28887 (2026). Precedente diretto per il ramo Dirac; v1, nessuna pubblicazione su rivista rilevata.
+30. E. Abdalla, C. B. M. H. Chirenti, A. Saa, *Quasinormal modes for the Vaidya metric*, Phys. Rev. D **74**, 084029 (2006). doi:10.1103/PhysRevD.74.084029, arXiv:gr-qc/0609036
+31. B. Khesin, G. Misiołek, K. Modin, *Geometric hydrodynamics via Madelung transform*, Proc. Natl. Acad. Sci. **115**, 6165–6170 (2018). doi:10.1073/pnas.1719346115, arXiv:1711.00321
+32. B. Khesin, G. Misiołek, K. Modin, *Geometry of the Madelung transform*, Arch. Ration. Mech. Anal. **234**, 549–573 (2019). doi:10.1007/s00205-019-01397-2 — dimostrazioni del precedente
+33. E. Seidel, S. Iyer, *Black-hole normal modes: a WKB approach. IV. Kerr black holes*, Phys. Rev. D **41**, 374–382 (1990). doi:10.1103/PhysRevD.41.374
+34. L. Capuano, L. Santoni, E. Barausse, *Perturbations of the Vaidya metric in the frequency domain: quasinormal modes and tidal response*, Phys. Rev. D **110**, 084081 (2024). doi:10.1103/PhysRevD.110.084081, arXiv:2407.06009

@@ -1,5 +1,12 @@
 # Mappa della letteratura e confine di originalità
 
+> **Aggiornamento dell'8 settembre 2026:** la
+> [valutazione di originalità e pubblicabilità](novelty_publication_assessment_2026-09-08.md)
+> aggiunge precedenti di perturbazione logaritmica, diagnostica WKB,
+> residui aggiunti e sensibilità spettrale. Restringe ulteriormente le
+> rivendicazioni plausibili elencate nella mappa storica sottostante.
+> Leggerla insieme all'[audit matematico](spectral_audit_2026-09-08.md).
+
 **Ricerca in corso — aggiornata al 7 settembre 2026.** La mancata
 identificazione di un precedente non dimostra che il precedente non esista.
 Questa mappa serve a formulare rivendicazioni controllabili e a guidare una

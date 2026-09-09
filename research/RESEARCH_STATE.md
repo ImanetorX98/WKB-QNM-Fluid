@@ -1,5 +1,17 @@
 # Stato della ricerca e documento di ripresa
 
+> **Aggiornamento critico — 8 settembre 2026:** leggere prima
+> [l'audit spettrale](spectral_audit_2026-09-08.md). Ricava l'indicatore
+> fondamentale Pöschl–Teller in forma chiusa e gli errori WKB asintotici;
+> chiarisce che il riferimento quadratico attuale usa la frequenza esatta
+> e non soddisfa la quantizzazione QNM della parabola. La priorità di §14
+> va quindi aggiornata con il matching spettrale descritto nell'audit.
+> Lo snapshot storico sottostante resta invariato.
+
+> **Originalità e passaggio di consegne:** vedere anche la
+> [valutazione bibliografica/editoriale](novelty_publication_assessment_2026-09-08.md)
+> e il [file autosufficiente per Claude](../CLAUDE_HANDOFF.md).
+
 **Snapshot:** 7 settembre 2026
 
 **Repository pubblica:** https://github.com/ImanetorX98/WKB-QNM-Fluid

@@ -1,5 +1,11 @@
 # Barriera esatta, residui per ordine e zeri del fluido di Madelung
 
+> **Rilettura dell'8 settembre 2026:** il successivo
+> [audit spettrale](spectral_audit_2026-09-08.md) precisa il contenuto
+> informativo della correlazione e le condizioni al bordo del riferimento
+> uniforme. I dati di questa nota restano riproducibili; il loro uso come
+> stimatore di un errore ignoto non è ancora dimostrato.
+
 **Nota di calcolo — 7 settembre 2026.** Questa nota registra sia un controllo
 positivo fuori dalla famiglia di Schwarzschild sia un risultato negativo che
 obbliga a modificare il programma di ricerca.
