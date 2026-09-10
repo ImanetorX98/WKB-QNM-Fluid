@@ -223,6 +223,17 @@ frequenti. Non lo tocchiamo: il nostro §12 osserva numericamente una rottura ch
 quella letteratura descrive rigorosamente, e la citiamo come lo strumento
 appropriato piuttosto che riderivarla.
 
+**Espansione in multipolo inverso.** Il nostro parametro $\varepsilon=1/L$ non è
+isolato: Konoplya e Zhidenko [41] hanno costruito espressioni analitiche per QNM
+e fattori di corpo grigio «nel limite eikonale e oltre», procedendo per potenze
+inverse del numero di multipolo, e il metodo è stato applicato a metriche
+parametrizzate. Quel programma espande **la frequenza** ordine per ordine in
+$1/L$ a partire dal getto del potenziale nel picco; noi non calcoliamo
+frequenze, ma classifichiamo a quale ordine la geometria immetta struttura in
+$q$. Le due cose usano lo stesso parametro e rispondono a domande diverse, e
+l'esistenza di quel programma è la ragione per cui il §9 non rivendica la
+scoperta di un termine $\varepsilon^1$ su Kerr (§9.5).
+
 **Pseudospettro e condizionamento dei QNM.** Esiste una letteratura consolidata
 sul condizionamento del problema quasi-normale: Jaramillo, Panosso Macedo e Al
 Sheikh [36] costruiscono lo pseudospettro di Schwarzschild in approccio
@@ -876,7 +887,19 @@ dedicato che non affrontiamo.
 
 ## 10. Non universalità: il contrappunto fermionico
 
-La struttura dei §§3–5 è specifica del settore bosonico. Per un campo di Dirac
+La coppia di potenziali che questa sezione usa ha una struttura di Darboux
+nota, che non è nostra. Glampedakis,
+Johnson e Kennefick [42] ne danno il trattamento sistematico nella teoria delle
+perturbazioni di buco nero, osservando che quella che in letteratura relativistica
+è nota come trasformazione di Chandrasekhar è da un secolo la trasformazione di
+Darboux dei matematici, e che il risultato «è stato ripetutamente reintrodotto
+sotto nomi diversi» — avvertimento che vale anche per noi. Che i due potenziali di
+Dirac siano **isospettrali** è stabilito [42, 43]. Il nostro enunciato non
+riguarda lo spettro, che è identico per costruzione, ma l'**ordine in
+$\varepsilon$** al quale il termine di connessione compare nel potenziale
+riscalato.
+
+La struttura dei §§3–4 e §8 è specifica del settore bosonico. Per un campo di Dirac
 massless su Schwarzschild il sistema radiale è esattamente un sistema di Dirac
 unidimensionale con massa spaziale $W=\kappa\sqrt f/x$, e le componenti scalari
 obbediscono a equazioni di Schrödinger con potenziali partner di Darboux
@@ -1382,3 +1405,7 @@ accesso libero sono in `papers/`, i restanti sono elencati in
 38. K. Lin, Y.-Y. Sun, H. Zhang, *Quasinormal modes for dynamical black holes*, Phys. Rev. D **103**, 084015 (2021). doi:10.1103/PhysRevD.103.084015, arXiv:2104.06631
 39. C.-M. Yoo, M. Kimura, A. Ishibashi, R. Ohashi, *Ringdown in Vaidya spacetimes: time-dependent frequencies, Penrose limit and time-domain analyses*, arXiv:2510.25062 (2025). Nessun DOI di rivista registrato.
 40. D. Fusca, *The Madelung transform as a momentum map*, arXiv:1512.04611 (2015). Nessun DOI di rivista registrato.
+41. R. A. Konoplya, A. Zhidenko, *Analytic expressions for quasinormal modes and grey-body factors in the eikonal limit and beyond*, Class. Quantum Grav. **40**, 245005 (2023). doi:10.1088/1361-6382/ad0a52, arXiv:2309.02560
+42. K. Glampedakis, A. D. Johnson, D. Kennefick, *Darboux transformation in black hole perturbation theory*, Phys. Rev. D **96**, 024036 (2017). doi:10.1103/PhysRevD.96.024036, arXiv:1702.06459
+43. V. K. Oikonomou, *Hidden supersymmetry in Dirac fermion quasinormal modes of black holes*, Int. J. Mod. Phys. A **28**, 1350057 (2013). doi:10.1142/S0217751X13500577, arXiv:1204.2395
+44. M. Meynig, *Non-perturbative asymptotics of the eigenvalues of the spheroidal equation*, arXiv:2503.06780 (2025). Trattamento in WKB esatta della stessa equazione angolare del §9, con periodi quantistici; non riguarda QNM né Kerr.
