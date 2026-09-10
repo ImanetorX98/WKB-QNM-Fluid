@@ -157,3 +157,40 @@ sferoidale: molto meno di un Leaver per Kerr.
 Finché non c'è, i numeri di \(Q_M\) su Kerr **non vanno riportati come
 risultato**. Quelli sul potenziale (§9 del manoscritto) sono invece indipendenti
 da questo problema, perché non richiedono di integrare l'ODE.
+
+---
+
+## ADDENDUM del 10 settembre — la tabella del §4 non è riproducibile
+
+Tentando di disegnarne la figura è emerso che **il codice che genera la tabella
+di amplificazione qui sopra non è nel repository.** `madelung_wkb_prediction.py`
+contiene solo la validazione su Pöschl–Teller e rimanda a questo file. La
+tabella «Schwarzschild, ℓ=70, finestra 20<r<50» non ha uno script.
+
+Due ricostruzioni indipendenti, entrambe negative.
+
+**Su Pöschl–Teller**, dove $Q_M$ è noto in forma chiusa, l'amplificazione vale
+**1.41 e non dipende da $L$** (misurata a $L=8,20,50,120,300,700$). Il caso è
+però speciale: $Q_M=-\tfrac{\varepsilon^2}{4}(1+\operatorname{sech}^2y)$ **non
+dipende dalla frequenza**, quindi non può esibire il fenomeno. Test inconcludente
+per costruzione.
+
+**Su Schwarzschild** (`calculations/madelung_conditioning_schwarzschild.py`, nuovo)
+l'amplificazione risulta $\lesssim2$ a ogni $\ell$ provato — ma la ricostruzione
+è essa stessa difettosa: lo scarto a frequenza esatta **cresce come $L^2$**
+(3.1e-3, 1.2e-2, 3.7e-2, 7.8e-2 a $\ell=20,40,70,100$) invece di calare. Il
+pavimento è indipendente dalla risoluzione a tre valori di griglia, quindi è uno
+scarto di modello, non rumore. La sostituzione di Langer, primo sospetto, non lo
+cambia di una cifra.
+
+### Stato
+
+L'enunciato del §5 del manoscritto — l'ostruzione di condizionamento, che due
+giorni fa ho proposto come **risultato di testa** — non è al momento verificabile:
+il codice originale è assente e la ricostruzione non converge, quindi non può né
+confermarlo né smentirlo.
+
+Va risolto prima di qualunque invio. Le opzioni sono ricostruire la misura
+correttamente, oppure ridurre l'enunciato a ciò che è dimostrabile.
+
+**La figura 2 non va prodotta finché il numero non è verificato.**
