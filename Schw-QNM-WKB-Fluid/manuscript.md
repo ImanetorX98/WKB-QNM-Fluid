@@ -94,7 +94,12 @@ meccanica dei fluidi classica è il potenziale quantistico di Bohm. Questa
 trasformazione ha una caratterizzazione geometrica esatta: Khesin, Misiołek e
 Modin [31, 32] mostrano che è un **simplettomorfismo** fra $T^*\mathrm{Dens}(M)$
 e lo spazio proiettivo delle funzioni d'onda non nulle, e un'**isometria** fra
-la metrica di Sasaki–Fisher-Rao e quella di Fubini–Study.
+la metrica di Sasaki–Fisher-Rao e quella di Fubini–Study. Fusca [40] ne dà una
+lettura complementare: la trasformazione di Madelung è una **momentum map**
+associata all'azione del prodotto semidiretto
+$\mathrm{Diff}(\mathbb R^n)\ltimes H^\infty(\mathbb R^n)$ — lo spazio delle
+configurazioni di un fluido comprimibile — sullo spazio delle funzioni d'onda, e
+fornisce quindi variabili di Clebsch per il sistema idrodinamico.
 
 Quel risultato però non si applica al problema quasi-normale, e il modo preciso
 in cui non si applica orienta tutto il presente lavoro. Le sue ipotesi sono
@@ -218,11 +223,47 @@ frequenti. Non lo tocchiamo: il nostro §12 osserva numericamente una rottura ch
 quella letteratura descrive rigorosamente, e la citiamo come lo strumento
 appropriato piuttosto che riderivarla.
 
+**Pseudospettro e condizionamento dei QNM.** Esiste una letteratura consolidata
+sul condizionamento del problema quasi-normale: Jaramillo, Panosso Macedo e Al
+Sheikh [36] costruiscono lo pseudospettro di Schwarzschild in approccio
+iperboloidale, stabilendo la stabilità del modo fondamentale sotto perturbazioni
+che rispettano la struttura asintotica e l'instabilità di tutti gli overtoni
+sotto perturbazioni ultraviolette; Gasperín e Jaramillo [37] mostrano che il
+verdetto dipende dal prodotto scalare adottato e ne propongono uno fondato sulle
+scale di energia.
+
+La relazione con il §5 va dichiarata, perché i due enunciati **non sono lo stesso
+oggetto** pur avendo entrambi la forma di un condizionamento. Lo pseudospettro
+misura la sensibilità **dello spettro a perturbazioni del potenziale**: è una
+proprietà dell'operatore, e riguarda quanto siano affidabili le frequenze stesse.
+Il §5 misura la sensibilità **di un funzionale della soluzione alla frequenza**,
+a operatore fissato: riguarda quanto sia affidabile $Q_M$ una volta che $\omega$
+sia nota. Le due amplificazioni si comporrebbero, e in questo senso i risultati
+sono complementari; ma nessuno dei due implica l'altro, e il nostro non è
+derivato da quella letteratura.
+
 **Diagnostica d'errore per risonanze.** Esistono stimatori pratici dell'errore
 WKB, in particolare $\Delta_k=|\omega_{k+1}-\omega_{k-1}|/2$ di Konoplya e
 collaboratori, e una letteratura di stimatori a residuo pesato per autovalori
 complessi di problemi aperti. Il §6 confronta esplicitamente con questi, e il
 suo esito è negativo per il nostro candidato.
+
+**QNM su Vaidya.** Il sistema del §11 è studiato. Abdalla, Chirenti e Saa [30]
+ne hanno calcolato i QNM nel dominio del tempo; Lin, Sun e Zhang [38] hanno
+analizzato le condizioni al contorno appropriate a un buco nero dinamico,
+trovando frequenze diverse all'orizzonte apparente e all'infinito nullo; Capuano,
+Santoni e Barausse [34] hanno trattato il problema nel dominio delle frequenze.
+Più vicino a noi, Yoo, Kimura, Ishibashi e Ohashi [39] estraggono frequenze
+dipendenti dal tempo dalla geometria del limite di Penrose attorno alla fotosfera
+**dinamica**, confrontandole con simulazioni nel dominio del tempo, e osservano
+che il limite adiabatico di quella geometria «riflette più dettagli della
+geometria dinamica del limite adiabatico ingenuo della geometria originale».
+
+L'osservazione è adiacente alla nostra (11.2), il metodo è distinto: [39]
+confronta previsioni adiabatiche con forme d'onda numeriche, mentre noi
+calcoliamo analiticamente il **residuo** dell'ansatz adiabatico e ne esibiamo la
+forma chiusa. Nessuno dei lavori citati costruisce la condizione di solvibilità
+risonante, né adotta il linguaggio di Madelung.
 
 **Analoghi acustici.** Nei buchi neri acustici in condensati di Bose–Einstein il
 termine di pressione quantistica è fisicamente microscopico e non un artificio
@@ -459,6 +500,13 @@ L'amplificazione è di circa due ordini di grandezza e stabile. Ne segue che
 tre cifre richiede cinque cifre di ciò che si vorrebbe prevedere. Non è una
 difficoltà numerica superabile con più risoluzione, è il condizionamento del
 problema, e fornisce la ragione strutturale del risultato negativo del §6.
+
+Va distinto dal condizionamento **spettrale** studiato con lo pseudospettro
+[36, 37], che misura la reazione delle frequenze a perturbazioni del potenziale.
+Qui il potenziale è fissato e le frequenze sono prese esatte, da frazioni
+continue di Leaver: ciò che si amplifica è la mappa da $\omega$ a un funzionale
+della soluzione. Un'analisi che volesse propagare l'incertezza fisica fino a
+$Q_M$ dovrebbe comporre le due amplificazioni; non lo facciamo qui.
 
 Per contrasto, l'**ordinamento** è robusto: le pendenze in $\varepsilon$ del §8,
 §9 e §10 sopravvivono a errori sulla frequenza di ordine $10^{-3}$. È in questa
@@ -934,8 +982,19 @@ ortogonale genera una correzione vera.
 
 L'operatore congelato è autoaggiunto rispetto al prodotto **bilineare** — senza
 coniugazione — $\langle u,v\rangle=\int\mu\,u\,v\,dr$ con
-$\mu=e^{-2i\omega r_*}$, che è il prodotto corretto per problemi di risonanza
-non autoaggiunti. L'integrale non converge, come tutti gli integrali
+$\mu=e^{-2i\omega r_*}$.
+
+La scelta va motivata, perché non è l'unica in circolazione: Gasperín e Jaramillo
+[37] mostrano che nel problema quasi-normale il prodotto scalare è una struttura
+**libera**, il cui esercizio cambia le conclusioni, e ne propongono uno fondato
+sulle scale di energia. Le due scelte rispondono però a domande diverse. Un
+prodotto sesquilineare di energia serve a misurare la **taglia** di una
+perturbazione, ed è ciò che occorre per uno pseudospettro. Qui serve invece che
+$\mathcal L_M$ sia formalmente autoaggiunto, così che l'alternativa di Fredholm
+sia disponibile e la condizione di solvibilità sia ben posta: è il prodotto
+bilineare a garantirlo, ed è quello adottato da [35]. Con un prodotto
+sesquilineare $\mathcal L_M$ non sarebbe autoaggiunto e la proiezione non avrebbe
+il significato che le attribuiamo. L'integrale non converge, come tutti gli integrali
 quasi-normali, e va regolarizzato con la norma generalizzata di Leung, Liu,
 Suen, Tam e Young [35], eq. (2.16), i cui termini di superficie rendono
 numeratore e denominatore **separatamente** indipendenti dai punti di raccordo.
@@ -1227,6 +1286,11 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.3, numeratore ai due bordi | `../../calculations/vaidya_numerator_factored.py` | $N=20.666542-40.326537\,i$; disp. $1.1\times10^{-7}$ |
 | Suite completa | `core/` e `calculations/` | **56 test superati** |
 
+I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
+sotto paywall e le due monografie sono elencate in
+`codex-download-manifest.tsv`. Sono citate per attribuzione e nessun
+enunciato di questo lavoro dipende dal loro contenuto.
+
 I QNM di riferimento sono confrontati con Iyer–Will ($s=2$, $\ell=2$, $n=0$:
 $0.3732-0.0892i$) e con Cho ($\kappa=1,2$).
 
@@ -1313,3 +1377,8 @@ accesso libero sono in `papers/`, i restanti sono elencati in
 33. E. Seidel, S. Iyer, *Black-hole normal modes: a WKB approach. IV. Kerr black holes*, Phys. Rev. D **41**, 374–382 (1990). doi:10.1103/PhysRevD.41.374
 34. L. Capuano, L. Santoni, E. Barausse, *Perturbations of the Vaidya metric in the frequency domain: quasinormal modes and tidal response*, Phys. Rev. D **110**, 084081 (2024). doi:10.1103/PhysRevD.110.084081, arXiv:2407.06009
 35. P. T. Leung, Y. T. Liu, W. M. Suen, C. Y. Tam, K. Young, *Logarithmic perturbation theory for quasinormal modes*, J. Phys. A: Math. Gen. **31**, 3271–3286 (1998). doi:10.1088/0305-4470/31/14/013, arXiv:physics/9712037 — Nota di attribuzione: gli autori sono **cinque**; il lavoro è correntemente citato come “Leung–Liu–Young”.
+36. J. L. Jaramillo, R. Panosso Macedo, L. Al Sheikh, *Pseudospectrum and black hole quasinormal mode instability*, Phys. Rev. X **11**, 031003 (2021). doi:10.1103/PhysRevX.11.031003, arXiv:2004.06434
+37. E. Gasperín, J. L. Jaramillo, *Energy scales and black hole pseudospectra: the structural role of the scalar product*, Class. Quantum Grav. **39**, 115010 (2022). doi:10.1088/1361-6382/ac5054, arXiv:2107.12865
+38. K. Lin, Y.-Y. Sun, H. Zhang, *Quasinormal modes for dynamical black holes*, Phys. Rev. D **103**, 084015 (2021). doi:10.1103/PhysRevD.103.084015, arXiv:2104.06631
+39. C.-M. Yoo, M. Kimura, A. Ishibashi, R. Ohashi, *Ringdown in Vaidya spacetimes: time-dependent frequencies, Penrose limit and time-domain analyses*, arXiv:2510.25062 (2025). Nessun DOI di rivista registrato.
+40. D. Fusca, *The Madelung transform as a momentum map*, arXiv:1512.04611 (2015). Nessun DOI di rivista registrato.
