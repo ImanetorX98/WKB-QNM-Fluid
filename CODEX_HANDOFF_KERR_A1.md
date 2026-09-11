@@ -1,8 +1,47 @@
 # Consegna a Codex — 12 settembre 2026
 
-> **Precede tutti gli altri handoff.** Questo invalida il §9 del manoscritto, che
-> era uno dei due pilastri della tesi. `CODEX_HANDOFF_CONDIZIONAMENTO.md` resta
-> valido su Kerr §9.6 e sulla sensibilità; `CODEX_HANDOFF.md` su Vaidya.
+> **Correzione di attribuzione, in testa perché è il punto principale.**
+> Questo handoff era stato scritto come se il crollo di \(A_1\) fosse una nostra
+> scoperta da consegnare. **Non lo è.** Codex lo aveva già stabilito l'11
+> settembre in `kerr_fixed_mu_radial.py` e
+> `research/kerr_fixed_mu_and_vaidya_transport_2026-09-11.md` §1, con
+> `Fraction` per costruire sequenze a \(m\) intero esatto, un fit con il
+> coefficiente \(1/L\) **libero**, e insiemi di riferimento disgiunti — cioè con
+> un protocollo migliore del nostro.
+>
+> Quello che segue è quindi una **conferma indipendente** più un tassello che
+> mancava a entrambi, non una consegna.
+
+---
+
+## 0. Il quadro completo, mettendo insieme le due analisi
+
+| affermazione | chi | esito |
+|---|---|---|
+| \(A_1\) intrinseco a \(\hat c\) fissato | Codex 11/9, confermato 12/9 | **zero** |
+| pendenza radiale a \(\hat\omega\) reale fissata | Codex | **2.000000** su \(\mu=2/5,2/3,4/5\) e \(a\le0.9\) |
+| pendenza al picco eikonale autoconsistente | Codex | 2.0000000–2.0000051 |
+| il vecchio \(A_1\neq0\) | noi 11/9 | arrotondamento di \(m\): cambia segno con la parità di \(\ell\) |
+| **termine \(\varepsilon^1\) lungo la traiettoria fisica** | Codex lo segnala, noi lo calcoliamo | **esiste ma è immaginario puro** |
+
+L'ultima riga è il tassello. Codex avverte giustamente che, anche con \(A_1\)
+intrinseco nullo, lungo una traiettoria \(\hat\omega(L)=\Omega_0+\Omega_1/L\) si
+genera un termine \(\partial_{\hat c}A_0\cdot a\Omega_1/L\). Misurato:
+
+\[
+\partial_{\hat c}A_0\big|_{\hat c=0.6}=-0.34922246+0.0\,i \quad(\textbf{reale}),
+\]
+
+e \(\Omega_1\) eikonale è lo smorzamento, **immaginario puro**. Quindi il termine
+indotto è immaginario: a \(a=0.6\) vale \(+4.03\times10^{-2}\,i\), con parte
+reale **esattamente nulla**.
+
+> Il criterio del manoscritto è formulato su \(\operatorname{Re}\hat q\) (§4: nella
+> chiusura i termini di ordine \(\varepsilon\) si cancellano in
+> \(P^2+Q_M=\operatorname{Re}q\)). **Quindi Kerr dà pendenza 2 nella quantità che
+> conta**, sia a frequenza reale congelata sia lungo la traiettoria fisica.
+
+La questione è chiusa: non c'è \(\varepsilon^1\) bosonico.
 
 ---
 
@@ -108,14 +147,15 @@ chi legge, ed è verificabile in dieci righe.
 
 ## 3. Quattro compiti, in ordine di priorità
 
-### (a) Verificare \(A_1=0\) con un solutore indipendente — **bloccante**
+### (a) Un solutore angolare indipendente — **ancora bloccante**
 
-Il nostro `spheroidal_eigenvalue` usa la matrice in base sferica armonica. Se
-avesse un difetto suo, tutta la diagnosi cade. Serve un secondo metodo —
+Entrambe le analisi, la vostra e la nostra, usano lo **stesso**
+`spheroidal_eigenvalue`, matrice in base armonica sferica. Due conferme che
+condividono il solutore non sono due conferme. Serve un secondo metodo —
 frazioni continue di Leaver per l'angolare, oppure l'*asymptotic iteration
-method* — e la stessa tabella di \(A_2\).
+method*.
 
-**Non fidatevi del nostro numero perché è nostro.**
+È l'unico punto in cui il risultato resta appeso a un singolo pezzo di codice.
 
 ### (b) Dimostrare \(A_1=0\), non solo misurarlo
 
@@ -133,8 +173,10 @@ correzione di ordine successivo alla quantizzazione si annulla — come accade p
 due turning point semplici con la sostituzione di Langer — allora \(A_1=0\) è un
 **teorema**, non una misura.
 
-Questo trasformerebbe il §9 nella sezione più solida del lavoro. È il compito con
-il rapporto valore/sforzo migliore.
+Questo trasformerebbe il §9 nella sezione più solida del lavoro. Con la pendenza
+2.000000 già misurata su dodici combinazioni di \((\mu,a)\), la dimostrazione è
+il passo che manca per trasformare un fatto numerico ben stabilito in un
+enunciato.
 
 ### (c) Cercare lo stesso difetto altrove nel repository
 
@@ -143,6 +185,9 @@ regressione continua**. Da controllare in particolare:
 
 - `kerr_radial_order_profile.py` righe 64 e 109 (`int(round`), due occorrenze)
 - `kerr_madelung_profile.py` riga 108 e `kerr_wkb3_selfconsistent.py` riga 112
+- `kerr_madelung_analytic.py` riga 50 — **nostro, scritto il 10 settembre**, ha
+  lo stesso `int(round`; l'audit del §9.6 va quindi rifatto su sequenze a \(m\)
+  esatto
 - il settore di Dirac: \(\kappa\) è discreto. Riteniamo sia al sicuro perché
   \(V_\tau/K^2=h^2+\tau\varepsilon h'\) è un'identità **per ogni \(K\)**, quindi
   non c'è nulla da adattare — ma va confermato, non assunto.
@@ -165,6 +210,9 @@ doveva contare, contava.**
 | condizionamento \(10^2\) | il metodo di derivata |
 | secolare «polinomiale» | la base di funzioni del fit |
 | \(A_1\) di Kerr | la parità di \(\ell\) |
+
+A cui se ne aggiunge un quarto, di natura diversa: **non avevamo letto il lavoro
+del collaboratore prima di scrivergli**. Codex aveva la risposta da un giorno.
 
 Nessuno dei tre è stato trovato rileggendo il ragionamento. Il controllo che li
 avrebbe presi tutti è lo stesso:
