@@ -12,6 +12,7 @@ import sympy as sp
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from vaidya_retarded_uniformity import (  # noqa: E402
+    exact_cancellation_in_far_zone,
     outgoing_characteristic_is_exact,
     secular_coefficient_from_retardation,
     secular_coefficient_from_source,
@@ -39,6 +40,15 @@ class RetardedUniformityTest(unittest.TestCase):
         omega1 = sp.Symbol("omega_1", positive=True)
         from_retard, _ = secular_coefficient_from_retardation()
         self.assertEqual(sp.simplify(from_retard - 2 * sp.I * omega1), 0)
+
+
+    def test_far_zone_correction_is_entirely_retardation(self):
+        """chi = 2 i omega r^2 - 2K r azzera ESATTAMENTE la sorgente forzata."""
+        omega, transport = sp.Symbol("omega"), sp.Symbol("K")
+        quad, lin, residue = exact_cancellation_in_far_zone()
+        self.assertEqual(sp.simplify(quad - 2 * sp.I * omega), 0)
+        self.assertEqual(sp.simplify(lin + 2 * transport), 0)
+        self.assertEqual(sp.simplify(residue), 0)
 
 
 if __name__ == "__main__":

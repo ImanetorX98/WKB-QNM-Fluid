@@ -84,3 +84,84 @@ Riscrivere \(Z_1\) nella variabile ritardata e verificare numericamente che il
 secolare sparisca — qui è dimostrato analiticamente nella regione esterna
 asintotica, non su tutto il dominio. Il raccordo con la regione della barriera,
 dove \(u\) non è più caratteristica, è il punto delicato.
+
+---
+
+## 7. Seguito: nella zona esterna la correzione è **interamente** ritardo
+
+Il conto è più forte di quanto scritto sopra. Con la sottrazione generale
+\(\chi=a\,r^2+b\,r\), l'annullamento simultaneo del termine lineare e della
+costante nella sorgente forzata dà
+
+\[
+a = 2i\omega,\qquad b = -2K,\qquad \text{residuo} = \mathbf{0}\ \text{esatto}.
+\]
+
+Non «più piccolo»: **zero simbolico**. A ordine \(\dot M\), nella zona esterna,
+la correzione forzata non contiene nulla oltre la retrodatazione:
+
+- il **quadratico** è la deriva di massa, \(\theta''=\omega_M\dot M\);
+- il **lineare** è lo shift di frequenza di ordine \(\dot M\), anch'esso
+  valutato al tempo di emissione.
+
+### La struttura asintotica, in forma chiusa
+
+**Correzione al primo tentativo.** La verifica sul dominio vero era fatta
+adattando \(H/G\) a un polinomio in \(r_*\). Un adattamento su intervallo
+finito non distingue \(r^2\) da \(r_*^2\) e assorbe un logaritmo nei
+coefficienti polinomiali: ne usciva un quadratico basso dello 0.5% e la
+conclusione, **sbagliata**, che \(H/G\) fosse un polinomio.
+
+Rifatto analiticamente (`calculations/vaidya_secular_series.py`). L'equazione
+per \(p=Dy\) è del **primo ordine**, quindi si inverte per serie senza
+integrare nulla:
+
+\[
+D^2y+\Big(2i\omega+2f\tfrac{u'}{u}\Big)Dy=\frac{f\,(S-2KG_r)}{G},
+\qquad D=\partial_{r_*} .
+\]
+
+I coefficienti sono serie pure in \(1/r\), quindi la forma asintotica è
+**forzata**:
+
+\[
+\frac{H}{G}=2i\omega\,r^2+c_1 r+c_{\log}\ln r+\sum_k c_k r^{-k}.
+\]
+
+| | risultato |
+|---|---|
+| quadratico | \(2i\omega\) con scarto **zero macchina** (0.0, 2.2e-16, 1.1e-16) |
+| in \(r\), non \(r_*\) | un \(r_*^2\) produrrebbe \(r\ln r\), assente |
+| \(c_{\log}\neq0\) | \(H/G\) **non** è un polinomio |
+
+### Universalità, e forma chiusa
+
+I rapporti a \(2i\omega\) valgono **8 e 24 esatti** per tutti e sei i modi
+provati (\(\ell=2,3,4\); \(s=0,1,2\)); da \(1/r\) in poi dipendono dal modo.
+I tre termini di testa sono dunque **geometrici**, non del modo, e si
+riconoscono:
+
+\[
+\frac{H}{G}=4i\omega\!\int\!\frac{r}{f}\,dr_*+O(1/r),
+\]
+
+\[
+\int\frac{r\,dr}{f^2}=\frac{16M^3+(2M-r)\big(24M^2\ln(r-2M)+8Mr+r^2\big)}{2(2M-r)}
+=\frac{r^2}{2}+4Mr+12M^2\ln r+O(1/r).
+\]
+
+Moltiplicando per \(4i\omega\) si ottengono esattamente \(2i\omega(r^2+8r+24\ln r)\)
+a \(M=1\).
+
+> Il secolare di testa è il **trasporto di fase lungo il raggio uscente**, pesato
+> da \((dr_*/dr)^2\), e non conosce né il multipolo né lo spin.
+
+### La conseguenza che conta
+
+Nella zona esterna la correzione forzata è, ai tre ordini di testa, una quantità
+puramente geometrica: nessuna informazione sul modo, quindi nessuna memoria.
+Ciò che dipende dal modo comincia a \(O(1/r)\) — **decadente**.
+
+Qualunque effetto genuino deve vivere nella regione della **barriera**. È un
+restringimento utile: elimina il settore dove i numeri sono enormi e le
+cancellazioni peggiori.

@@ -88,6 +88,28 @@ def secular_coefficient_from_retardation() -> sp.Expr:
     return sp.simplify(coefficient.subs(mass, 1)), epsilon
 
 
+def exact_cancellation_in_far_zone():
+    """Sottrazione di ritardo che azzera la sorgente forzata, zona esterna.
+
+    Con chi = a r^2 + b r, l'annullamento simultaneo del termine lineare e della
+    costante da' a = 2 i omega e b = -2K, e il residuo e' **esattamente zero**:
+    a ordine Mdot la correzione forzata nella zona esterna e' interamente
+    ritardo, non una correzione dinamica.
+    """
+    r, omega, transport = sp.symbols("r omega K")
+    quad, lin = sp.symbols("a b")
+    mode = sp.exp(2 * sp.I * omega * r)
+    operator = lambda X: sp.diff(X, r, 2) - 2 * sp.I * omega * sp.diff(X, r)
+    local = sp.expand(sp.simplify(
+        (2 * sp.diff(r * sp.diff(mode, r), r) - 2 * transport * sp.diff(mode, r)) / mode))
+    chi = quad * r**2 + lin * r
+    retarded = sp.expand(sp.simplify(local - operator(mode * chi) / mode))
+    poly = sp.Poly(retarded, r)
+    solution = sp.solve([poly.coeff_monomial(r), poly.coeff_monomial(1)],
+                        [quad, lin], dict=True)[0]
+    return solution[quad], solution[lin], sp.simplify(retarded.subs(solution))
+
+
 def main() -> None:
     print("1. Ogni F(v - 2 r_*) risolve esattamente l'equazione esterna?")
     print(f"   {outgoing_characteristic_is_exact()}")
@@ -110,6 +132,14 @@ def main() -> None:
     print()
     print("Se la differenza e' zero, il secolare e' interamente il ritardo,")
     print("e la cura e' congelare a v - 2 r_* invece che a v.")
+    print()
+    quad, lin, residue = exact_cancellation_in_far_zone()
+    print("4. Sottrazione completa nella zona esterna, chi = a r^2 + b r:")
+    print(f"   a = {quad}   b = {lin}")
+    print(f"   residuo della sorgente forzata: {residue}")
+    print("   Zero: a ordine Mdot la correzione esterna e' TUTTA ritardo.")
+    print("   Il quadratico e' la deriva di massa, il lineare lo shift di frequenza,")
+    print("   entrambi valutati al tempo di emissione.")
 
 
 if __name__ == "__main__":

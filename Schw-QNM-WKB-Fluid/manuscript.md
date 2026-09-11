@@ -1133,11 +1133,48 @@ forzata.
 > diversa, e congelarla a $v$ accumula un errore di fase quadratico nella
 > distanza percorsa.
 
+L'enunciato è in realtà più forte. Cercando la sottrazione generale
+$\chi=a\,r_*^2+b\,r_*$ che annulli simultaneamente il termine lineare e la
+costante della sorgente forzata, si trova
+
+$$a=2i\omega,\qquad b=-2K,\qquad \text{residuo}=0 \tag{11.6}$$
+
+**esattamente**: a ordine $\dot M$ la correzione forzata nella zona esterna non
+contiene nulla oltre la retrodatazione. Il quadratico è la deriva di massa
+$\theta''=\omega_M\dot M$, il lineare è lo shift di frequenza di ordine
+$\dot M$, entrambi valutati al tempo di emissione.
+
+La struttura completa si ricava in forma chiusa, senza adattamenti. Posto
+$p=Dy$ con $D=\partial_{r_*}$, l'equazione è del **primo ordine**,
+$Dp+(2i\omega+2fu'/u)p=f(S-2KG_r)/G$, e si inverte per serie; poiché i suoi
+coefficienti sono serie pure in $1/r$, la forma asintotica è forzata:
+
+$$\frac{H}{G}=2i\omega\,r^2+c_1r+c_{\log}\ln r+\sum_k c_kr^{-k}. \tag{11.7}$$
+
+Il coefficiente quadratico è $2i\omega$ con scarto a zero macchina, ed è in $r$
+**non** in $r_*$ — un termine $r_*^2$ produrrebbe $r\ln r$, che è assente. Il
+termine logaritmico invece **non si annulla**: $H/G$ non è un polinomio.
+
+I rapporti $c_1/(2i\omega)$ e $c_{\log}/(2i\omega)$ valgono **8 e 24 esatti** per
+tutti i modi provati ($\ell=2,3,4$; $s=0,1,2$), mentre da $O(1/r)$ in poi
+dipendono dal modo. I tre termini di testa sono dunque geometrici, e si
+riconoscono in forma chiusa:
+
+$$\frac{H}{G}=4i\omega\!\int\!\frac{r}{f}\,dr_*+O(1/r),\qquad
+\int\frac{r\,dr}{f^2}=\frac{r^2}{2}+4Mr+12M^2\ln r+O(1/r). \tag{11.8}$$
+
+> Il secolare di testa è il trasporto di fase lungo il raggio uscente, pesato da
+> $(dr_*/dr)^2$: non conosce né il multipolo né lo spin, quindi non porta
+> informazione sul modo. Ciò che dipende dal modo comincia a $O(1/r)$, ed è
+> **decadente**.
+
+Nella zona esterna non c'è dunque memoria da trovare. Qualunque effetto genuino
+deve vivere nella regione della **barriera**, dove $\mathcal Z$ varia e il
+profilo non è una semplice esponenziale — cioè dove i numeri sono piccoli e le
+cancellazioni miti, invece che nel settore lontano dove sono enormi.
+
 La (11.2) non è toccata: è un enunciato a raggio fissato e ordine $\dot M$,
-mentre il secolare riguarda il comportamento a grande $r$ della correzione.
-Resta da riscrivere $Z_1$ nella variabile ritardata su tutto il dominio; il
-punto delicato è il raccordo con la regione della barriera, dove $u$ non è più
-caratteristica.
+mentre il secolare riguarda il comportamento a grande $r$.
 
 ### 11.5 Che cosa questa sezione stabilisce, e che cosa no
 
@@ -1372,8 +1409,9 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.3, numeratore ai due bordi | `../../calculations/vaidya_numerator_factored.py` | $N=20.666542-40.326537\,i$; disp. $1.1\times10^{-7}$ |
 | §11.2, identità $P=i\omega\mathcal N$ | `../../calculations/vaidya_transport_denominator.py` | $5\times10^{-11}$ relativo |
 | §11.3, controllo Wronskiano | `../../calculations/vaidya_forced_boundary.py` | residuo $\sim10^{-6}$, controllo selettivo |
-| §11.4, secolare $=$ ritardo | `../../calculations/vaidya_retarded_uniformity.py` | due derivazioni, differenza simbolica nulla |
-| Suite completa | `core/` e `calculations/` | **76 test superati** |
+| §11.4, secolare $=$ ritardo | `../../calculations/vaidya_retarded_uniformity.py` | residuo simbolico **esattamente nullo** |
+| §11.4, serie secolare esatta | `../../calculations/vaidya_secular_series.py` | quadratico $=2i\omega$ a zero macchina; rapporti 8 e 24 universali |
+| Suite completa | `core/` e `calculations/` | **81 test superati** |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
