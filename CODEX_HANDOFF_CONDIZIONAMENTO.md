@@ -1,5 +1,45 @@
 # Consegna a Codex — 11 settembre 2026
 
+> **Verifica successiva del bordo forzato:** integrata direttamente L H=S-2K G_r,
+> con H analitica all'orizzonte. Il Wronskiano pesato meno la primitiva uscente
+> si annulla al K candidato entro 2.5e-6 assoluti per r=30–40 (rtol=1e-12);
+> due perturbazioni di K producono il residuo complesso previsto -2 deltaK P.
+> Tre test e un'identità Mathematica superati. Limite emerso: H/G~2i omega r^2,
+> quindi l'espansione adiabatico-radiale non è uniforme fino all'infinito.
+> La prescrizione del problema congelato è verificata; resta il raccordo al
+> problema temporale uscente. [Nota completa](research/vaidya_forced_boundary_check_2026-09-11.md).
+
+> **Ultimo progresso Vaidya:** calcolato separatamente P=Reg integral mu G G_r
+> e la norma generalizzata, verificando P=i omega Norm a circa 1e-10 relativo
+> per cutoff 40–60. K=N/(2P)=1.1642938694+4.3489002268i è ancora un candidato:
+> manca la verifica dei bordi della sorgente temporale per identificarlo con
+> il trasporto fisico completo. Sono tabulati anche i primi valori candidati
+> di Xi=K+partial_M ln G. 15 test e due identità Mathematica superati.
+> [Nota e comandi](research/vaidya_denominator_progress_2026-09-11.md).
+
+> **Aggiornamento successivo su Kerr/Vaidya:** non è più valida la rassicurazione
+> storica del §5 di questo handoff sull'ordinamento Kerr. Il test arrotondava m,
+> variando mu=m/L di ordine 1/L. Il nuovo confronto a mu esattamente fisso dà
+> pendenza 2 su dodici casi scalari, confermata anche sul picco eikonale
+> autoconsistente. Su Vaidya il numeratore supera i test, ma cambia sotto
+> normalizzazioni dipendenti da M: il nuovo obiettivo è il trasporto combinato
+> con la derivata del profilo, non N da solo. Dettagli e condizioni ancora
+> aperte: [Kerr corretto e trasporto Vaidya](research/kerr_fixed_mu_and_vaidya_transport_2026-09-11.md).
+> 23 test numerici e quattro identità Mathematica superati in questa analisi.
+
+> **Aggiornamento Codex, risultato consolidato:** il fattore 2 è direzionale,
+> non universale. Per omega=a+ib, Q_infinity=-b^2/L^2: lungo delta omega
+> proporzionale a omega la sensibilità è 2; rispetto a perturbazioni complesse
+> arbitrarie normalizzate a |omega| è 2|omega|/|b|. A ell=70,s=2 il limite è
+> 281.9565; il calcolo esterno con derivate analitiche dà mediana puntuale
+> 282.9420 e condizionamento L2 del profilo 283.1606. Non recupera il teorema
+> di impossibilità del vecchio §5. **20 test numerici e 4 identità Mathematica
+> superati.** Presso il picco i risultati cambiano fortemente fra ordini WKB
+> e rimangono non validati; Kerr non ricontrollato.
+> Stato e testo sostitutivo proposto:
+> [conditioning_consolidated_2026-09-11.md](research/conditioning_consolidated_2026-09-11.md).
+> Le affermazioni storiche sotto di universalità del fattore 2 sono superate.
+
 > **Precedenza su `CODEX_HANDOFF.md`** per quanto riguarda il §5 del manoscritto.
 > Quel documento e' ancora valido su Kerr, Vaidya e sul numeratore.
 

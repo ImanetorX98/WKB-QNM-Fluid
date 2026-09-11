@@ -1024,9 +1024,21 @@ numeratore e denominatore **separatamente** indipendenti dai punti di raccordo.
 La forma semplificata (2.19) di [35] non è applicabile: vale per potenziali
 senza code, e Regge–Wheeler ha code di potenza.
 
-Il denominatore regolarizzato risulta indipendente dal raccordo esterno allo
-0.2% fra finestre che differiscono di tre ordini di grandezza nell'integrale
-nudo.
+Il denominatore regolarizzato non è soltanto stabile: è **identico**, a meno
+del fattore $i\omega$, alla norma generalizzata di [35]. Con
+$P=\mathrm{Reg}\!\int\!\mu\,G\,G_r\,dr$ e le primitive locali
+$F_{\rm norm}=-D_\omega R^2/(2\omega)$, $F_P=(1-iD_\omega)R^2/2$, dove $D$ è la
+derivata logaritmica rispetto a $r_*$ del ramo selezionato, le identità
+$D'+D^2+\omega^2-V=0$ e $(D_\omega)'+2DD_\omega=-2\omega$ danno
+
+$$P=i\omega\,\mathcal N . \tag{11.4}$$
+
+Le due primitive sono verificate simbolicamente; numericamente l'identità regge a
+$5\times10^{-11}$ relativo, e $P$ varia di meno di $3\times10^{-11}$ spostando il
+raccordo interno di un fattore cinque. Va notato che l'integrabilità al bordo
+interno **non si trasferisce** fra i due integrandi: per il fondamentale la
+primitiva di $P$ tende a zero all'orizzonte, mentre la norma richiede il proprio
+termine di superficie, per via del fattore $1/f$.
 
 ### 11.3 Il numeratore, regolarizzato ai due bordi
 
@@ -1069,6 +1081,17 @@ Il risultato è un numeratore finito e privo di tagli arbitrari:
 | 3 | 2 | $+26.7652152-51.7881564\,i$ | $2.0\times10^{-7}$ | $7.3\times10^{-9}$ |
 | 2 | 1 | $+10.4233793-39.4370806\,i$ | $2.8\times10^{-7}$ | $2.4\times10^{-8}$ |
 
+Il numeratore ha inoltre una verifica **indipendente dalla quadratura**.
+Integrando insieme al modo la correzione forzata $H$, con
+$\mathcal L H=S-2KG_r$ e dati iniziali da una ricorrenza di Frobenius
+disomogenea, il Wronskiano bilineare pesato
+$J=\mu f\,(GH_r-G_rH)$ obbedisce esattamente a $J_r=\mu G(S-2KG_r)$, identità
+verificata simbolicamente. La scelta $K=N/(2P)$ annulla la costante residua
+$J-J_{\rm out}$, e spostare $K$ di $\delta K$ reintroduce il residuo previsto
+$-2\,\delta K\,P$ — verificato su due perturbazioni complesse con segnale
+$\sim0.1$ contro residuo numerico $\sim10^{-6}$. È un controllo **selettivo**:
+distingue una condizione soddisfatta da un azzeramento automatico.
+
 Il numeratore **non si annulla** per nessun modo fondamentale esaminato. La
 sovrapposizione fra sorgente risonante e modo è genuina, dunque $Z_1\neq0$: la
 correzione non adiabatica esiste, e il candidato di memoria — che per la (11.2)
@@ -1081,7 +1104,42 @@ sedici cifre della doppia precisione. I valori riportati sopra sono quindi
 limitati ai fondamentali, e l'estensione agli overtoni richiede aritmetica
 multiprecisione all'estremo esterno.
 
-### 11.4 Che cosa questa sezione stabilisce, e che cosa no
+### 11.4 Non uniformità a grande raggio, e la variabile che la rimuove
+
+L'espansione in $\dot M$ costruita sopra è organizzata attorno al tempo
+**locale** $v$, e in quella variabile non è uniforme. Scrivendo la correzione
+forzata come $H=GY$, l'equazione esterna dà $Y\sim k r^2$ con $k=2i\omega$,
+quindi
+
+$$\frac{\dot M\,H}{G}\sim \dot M\,|\omega|\,r^2 , \tag{11.5}$$
+
+e il rapporto cessa di essere piccolo per $r\gtrsim(\dot M|\omega|)^{-1/2}$: i
+limiti adiabatico e di grande distanza non commutano.
+
+La crescita è però **secolare**, ed è interamente identificata. Nella regione
+esterna la (11.1) si riduce a $2\psi_{vr}+\psi_{rr}=0$, e si verifica per
+sostituzione diretta che *ogni* funzione della coordinata uscente
+$u=v-2r_*$ la risolve **esattamente**, senza alcuna ipotesi su $M(v)$: attorno a
+$u$ l'adiabaticità non è un'approssimazione. Sviluppare $F(v-2r_*)$ attorno a
+$v$ a raggio fissato produce $F-2r_*F'+2r_*^2F''-\dots$, e il termine quadratico
+è esattamente la (11.5). Il coefficiente coincide, non solo l'ordine: con
+$\omega\propto1/M$ la parte lineare in $\dot M$ di $2r^2F''/F$ vale
+$-2i\,\omega'(M)=+2i\omega=k$, la stessa costante ricavata dall'equazione
+forzata.
+
+> Il difetto è nella scelta della variabile, non nell'espansione. L'ansatz
+> adiabatico va congelato al **tempo di emissione** $v-2r_*$, non al tempo
+> locale: l'onda uscente osservata a raggio $r$ è partita quando la massa era
+> diversa, e congelarla a $v$ accumula un errore di fase quadratico nella
+> distanza percorsa.
+
+La (11.2) non è toccata: è un enunciato a raggio fissato e ordine $\dot M$,
+mentre il secolare riguarda il comportamento a grande $r$ della correzione.
+Resta da riscrivere $Z_1$ nella variabile ritardata su tutto il dominio; il
+punto delicato è il raccordo con la regione della barriera, dove $u$ non è più
+caratteristica.
+
+### 11.5 Che cosa questa sezione stabilisce, e che cosa no
 
 Stabilisce che il termine misto di ordine $\dot M$ è **esattamente** una
 derivata mista della famiglia congelata, e che la proiezione risonante che ne
@@ -1089,6 +1147,11 @@ deriva è finita e non nulla. Non stabilisce l'esistenza di una memoria
 osservabile: $N\neq0$ garantisce $Z_1\neq0$, non che $Z_1$ produca un effetto
 misurabile in una forma d'onda. La distanza fra le due affermazioni è la stessa
 che separa il §5 dal §6 — un funzionale ben definito non è ancora un osservabile.
+
+Va aggiunto il limite del §11.4: l'espansione è uniforme solo per
+$r\lesssim(\dot M|\omega|)^{-1/2}$ nella variabile locale, e la sua estensione a
+tutto il dominio richiede la coordinata ritardata. Finché quel passaggio non è
+compiuto, $N\neq0$ è un enunciato sulla regione in cui l'espansione vale.
 
 
 ---
@@ -1307,7 +1370,10 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.1, residuo adiabatico di Vaidya | `../../calculations/vaidya_adiabatic_residual.py` | residuo $=2\,\partial_r\partial_M Z$, simbolico |
 | §11.2, denominatore regolarizzato | `../../calculations/vaidya_solvability.py` | indipendente da $L_+$ allo 0.2% |
 | §11.3, numeratore ai due bordi | `../../calculations/vaidya_numerator_factored.py` | $N=20.666542-40.326537\,i$; disp. $1.1\times10^{-7}$ |
-| Suite completa | `core/` e `calculations/` | **56 test superati** |
+| §11.2, identità $P=i\omega\mathcal N$ | `../../calculations/vaidya_transport_denominator.py` | $5\times10^{-11}$ relativo |
+| §11.3, controllo Wronskiano | `../../calculations/vaidya_forced_boundary.py` | residuo $\sim10^{-6}$, controllo selettivo |
+| §11.4, secolare $=$ ritardo | `../../calculations/vaidya_retarded_uniformity.py` | due derivazioni, differenza simbolica nulla |
+| Suite completa | `core/` e `calculations/` | **76 test superati** |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
