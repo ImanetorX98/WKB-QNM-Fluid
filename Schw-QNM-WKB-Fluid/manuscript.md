@@ -17,16 +17,15 @@ che la decomposizione suggerisce come diagnostico d'errore è, a overtone
 fissato, **proporzionale a $|\Lambda_3|$** — la correzione di Iyer–Will — con
 costante indipendente da $\ell$ e dallo spin (dispersione 0.15% su dodici modi).
 Non estende la correzione standard: la riproduce, a costo incomparabilmente
-maggiore. La ragione non è accidentale ed è misurabile a monte. Con frequenza
-complessa l'ampiezza reale contiene un termine
-$-\varepsilon^{-1}\!\int\!\operatorname{Im}u$ che è $O(1)$, e il potenziale
-quantistico che ne deriva **amplifica di circa due ordini di grandezza**
-l'errore sulla frequenza: un errore relativo $10^{-3}$ su $\omega$ ne produce
-uno del 14% su $Q_M$. Nessun funzionale costruito su $Q_M$ può quindi predire
-la frequenza — calcolarlo a tre cifre ne richiede cinque di ciò che si vorrebbe
-prevedere. Questa è un'**ostruzione di condizionamento**, non una difficoltà
-numerica superabile con più risoluzione, ed è ciò che un lettore tentato da
-questa via ha bisogno di sapere prima di percorrerla.
+maggiore. La ragione non è accidentale: è che **un'espansione della Riccati non può
+contenere più della WKB che essa è**, e la misura ne quantifica l'effetto. Con
+frequenza complessa l'ampiezza reale contiene un termine
+$-\varepsilon^{-1}\!\int\!\operatorname{Im}u$ che è $O(1)$ e va incluso — ometterlo
+sbaglia $Q_M$ di un fattore $\sim50$ — ma la sensibilità del funzionale alla
+frequenza è soltanto un fattore **2**, come segue da
+$Q_M\propto(\operatorname{Im}\omega)^2$. Una versione precedente di questo lavoro
+riportava $\sim10^2$ e ne deduceva un'ostruzione di principio: l'enunciato era
+sbagliato ed è ritrattato nel §5.
 
 **Il risultato positivo: l'ordinamento.** Ciò che la riscrittura non rende
 ridondante è a quale potenza di $\varepsilon$ compaia il primo termine
@@ -173,17 +172,11 @@ Il contributo effettivo è triplice, e l'organizzazione del lavoro segue quella
 divisione: la Parte II stabilisce che cosa la riscrittura non aggiunge, la
 Parte III che cosa ordina.
 
-1. **Ostruzione di condizionamento (§5).** Con frequenza complessa il potenziale
-   quantistico amplifica di circa due ordini di grandezza l'errore sulla
-   frequenza. Ne segue che nessun funzionale costruito su $Q_M$ può predire
-   $\omega$: calcolarlo a tre cifre ne richiede cinque di ciò che si vorrebbe
-   prevedere. È il risultato che delimita l'intero programma, e la ragione
-   strutturale del punto 2.
-2. **Ridondanza del diagnostico di Madelung (§6).** Il funzionale d'ampiezza
+1. **Ridondanza del diagnostico di Madelung (§6).** Il funzionale d'ampiezza
    naturale è proporzionale a $|\Lambda_3|$ a overtone fissato, con costante
    indipendente da $\ell$ e dallo spin: la lettura di Madelung dell'ampiezza WKB
    non estende la correzione di Iyer–Will, la riproduce.
-3. **Criterio di ordinamento (§8, §9, §10), esteso a Vaidya (§11).** La
+2. **Criterio di ordinamento (§8, §9, §10), esteso a Vaidya (§11).** La
    decomposizione esatta (8.1) con sostituzione di Langer, l'osservazione che
    spin e Madelung sono degeneri in ordine nel settore bosonico statico, e i
    **due** contro-esempi di ordine $\varepsilon^1$ — la rotazione in Kerr,
@@ -192,9 +185,13 @@ Parte III che cosa ordina.
    (11.2): il termine misto di ordine $\dot M$ è una derivata della famiglia
    congelata, quindi non porta informazione dinamica nuova.
 
-Che il punto 1 preceda il punto 3 è deliberato. Un lettore che consideri questa
-via ha bisogno di sapere per prima cosa che essa non produce frequenze, e solo
-dopo che cosa produce.
+Che il punto 1 preceda il punto 2 è deliberato. Un lettore che consideri questa
+via ha bisogno di sapere per prima cosa che il funzionale d'ampiezza riproduce
+una correzione già nota, e solo dopo che cosa la riscrittura ordini davvero.
+
+Il §5, che una versione precedente contava come terzo contributo sotto il nome
+di «ostruzione di condizionamento», è **ritrattato**: la sensibilità misurata è
+2, non $10^2$. Resta come sezione tecnica sulla costruzione dell'ampiezza.
 
 Contorno di supporto, non rivendicato come nuovo: l'assenza di corrispondenza
 locale con i $\Lambda_j$ (§7), la misura della rottura alla coalescenza dei
@@ -248,10 +245,9 @@ oggetto** pur avendo entrambi la forma di un condizionamento. Lo pseudospettro
 misura la sensibilità **dello spettro a perturbazioni del potenziale**: è una
 proprietà dell'operatore, e riguarda quanto siano affidabili le frequenze stesse.
 Il §5 misura la sensibilità **di un funzionale della soluzione alla frequenza**,
-a operatore fissato: riguarda quanto sia affidabile $Q_M$ una volta che $\omega$
-sia nota. Le due amplificazioni si comporrebbero, e in questo senso i risultati
-sono complementari; ma nessuno dei due implica l'altro, e il nostro non è
-derivato da quella letteratura.
+a operatore fissato, e la trova pari a 2 — cioè assente come fenomeno. Non
+rivendichiamo quindi alcun risultato di condizionamento: citiamo [36, 37] perché
+è la letteratura di riferimento sul tema, non perché vi contribuiamo.
 
 **Diagnostica d'errore per risonanze.** Esistono stimatori pratici dell'errore
 WKB, in particolare $\Delta_k=|\omega_{k+1}-\omega_{k-1}|/2$ di Konoplya e
@@ -457,19 +453,18 @@ superati).
 
 # Parte II — Che cosa la riscrittura **non** aggiunge
 
-## 5. Il condizionamento del funzionale di ampiezza
+## 5. L'ampiezza con frequenza complessa
 
-La chiusura del §3 è un'identità, e le identità non creano informazione. Resta
-però la possibilità che la riscrittura sia comunque **utile**: che $Q_M$, pur
-non contenendo nulla di nuovo, sia una via di calcolo o una diagnostica
-conveniente. Questa sezione la esclude, e lo fa a monte del §6 — non
-constatando che un particolare funzionale fallisce, ma misurando la ragione per
-cui ogni funzionale di quella famiglia deve fallire.
+Prima di misurare che cosa il funzionale d'ampiezza produca (§6), va costruito
+correttamente. Con $\omega$ complessa la costruzione ha due trappole, entrambe
+in grado di imitare un difetto di teoria, e questa sezione le documenta insieme
+alla validazione su un caso esattamente risolubile.
 
-Il punto è che $Q_M$ non è una quantità misurabile in modo indipendente. Si
-costruisce dalla soluzione, e costruire la soluzione richiede $\omega$. Non c'è
-nulla da invertire: $Q_M$ è una funzione della frequenza che si sa valutare solo
-conoscendo già la frequenza. Quantifichiamo **quanto** lo sia.
+Chiude poi con una **ritrattazione**. Una versione precedente di questo lavoro
+sosteneva che $Q_M$ amplificasse di circa due ordini di grandezza l'errore sulla
+frequenza, e ne deduceva un'ostruzione di principio alla predizione. La misura
+corretta dà **2**, ed è una regola della catena. L'enunciato era falso e il §6
+non ne dipende.
 
 ### 5.1 L'ampiezza reale con frequenza complessa
 
@@ -496,33 +491,39 @@ relativo mediano nella regione oscillatoria:
 | 50 | $1.0\times10^{-4}$ | $5.1\times10^{-6}$ |
 | 300 | $2.8\times10^{-6}$ | $1.7\times10^{-7}$ |
 
-### 5.2 L'amplificazione, misurata
+### 5.2 La sensibilità alla frequenza vale 2
 
-La stessa costruzione mostra il limite strutturale. Perturbando $\omega$ di una
-frazione relativa e misurando lo scarto indotto su $Q_M$ (Schwarzschild,
-$\ell=70$):
+Perturbando $\omega$ di una frazione relativa $\delta$ e misurando lo scarto
+indotto su $Q_M$ rispetto al valore esatto — con condizione al bordo di
+Frobenius, griglia uniforme in $r_*$ e derivate analitiche — si ottiene
+un'amplificazione di **2.0**, a $\ell=20,40,70,100$, per $s=0$ e $s=2$, e su tre
+finestre radiali distinte.
 
-| $\delta\omega/\omega$ | $10^{-5}$ | $10^{-4}$ | $10^{-3}$ | $3\times10^{-3}$ |
-|---|---|---|---|---|
-| errore su $Q_M$ | $1.0\times10^{-3}$ | $1.2\times10^{-2}$ | $1.4\times10^{-1}$ | $4.8\times10^{-1}$ |
+Il valore ha una spiegazione in una riga. Nella regione esterna $Q_M$ è dominato
+da $-\varepsilon^2(\operatorname{Im}u/\varepsilon)^2$ con
+$\operatorname{Im}u\to\operatorname{Im}(\omega)/L$, dunque
+$Q_M\propto(\operatorname{Im}\omega)^2$ e
+$\delta Q_M/Q_M=2\,\delta\omega/\omega$. Regola della catena, nessuna ostruzione.
 
-L'amplificazione è di circa due ordini di grandezza e stabile. Ne segue che
-**nessun funzionale costruito su $Q_M$ può predire la frequenza**: calcolarlo a
-tre cifre richiede cinque cifre di ciò che si vorrebbe prevedere. Non è una
-difficoltà numerica superabile con più risoluzione, è il condizionamento del
-problema, e fornisce la ragione strutturale del risultato negativo del §6.
+> **Ritrattazione.** Una versione precedente riportava un'amplificazione
+> $\sim10^2$ e ne deduceva che nessun funzionale di $Q_M$ potesse predire la
+> frequenza. Quel numero proveniva da un calcolo con condizione al bordo
+> troncata, griglia non uniforme in $r_*$ e derivata seconda per differenze
+> finite; rimossi i tre difetti, il pavimento a frequenza esatta **cala** con
+> $\ell$ — come deve — e l'amplificazione si legge pulita.
 
-Va distinto dal condizionamento **spettrale** studiato con lo pseudospettro
-[36, 37], che misura la reazione delle frequenze a perturbazioni del potenziale.
-Qui il potenziale è fissato e le frequenze sono prese esatte, da frazioni
-continue di Leaver: ciò che si amplifica è la mappa da $\omega$ a un funzionale
-della soluzione. Un'analisi che volesse propagare l'incertezza fisica fino a
-$Q_M$ dovrebbe comporre le due amplificazioni; non lo facciamo qui.
+La ragione della ridondanza del §6 non è quindi il condizionamento, ed era già
+enunciata nel §1.1: **un'espansione della Riccati non può contenere più della
+WKB che essa è**. Il §6 misura quell'affermazione; non ha bisogno di questa.
 
-Per contrasto, l'**ordinamento** è robusto: le pendenze in $\varepsilon$ del §8,
-§9 e §10 sopravvivono a errori sulla frequenza di ordine $10^{-3}$. È in questa
-asimmetria — ordinamento robusto, valori mal condizionati — che si colloca il
-potere predittivo effettivo del formalismo.
+Va distinto, per completezza, dal condizionamento **spettrale** studiato con lo
+pseudospettro [36, 37], che misura la reazione delle frequenze a perturbazioni
+del potenziale. Sono oggetti diversi, e nessuno dei due implica l'altro.
+
+Resta vero, e indipendente da questa sezione, che l'**ordinamento** è robusto:
+le pendenze in $\varepsilon$ del §8, §9 e §10 sono misurate sul potenziale e non
+richiedono di integrare l'equazione, quindi non ereditano alcuna sensibilità
+alla frequenza.
 
 ---
 
@@ -857,10 +858,8 @@ riproduce il WKB3 scalare a $3\times10^{-11}$; su Kerr converge con residui
 $10^{-14}$–$10^{-12}$, e la frequenza si sposta rispetto a quella eikonale di
 $1.5\times10^{-3}$ a $1.4\times10^{-2}$.
 
-Quello spostamento non è trascurabile, perché $Q_M$ amplifica di due ordini di
-grandezza l'errore sulla frequenza (§5). Confrontando la previsione
-analitica del §5 con $Q_M$ estratto dall'ampiezza integrata, errore
-relativo mediano nella finestra $20<r<50$:
+Confrontando la previsione analitica del §5 con $Q_M$ estratto dall'ampiezza
+integrata, errore relativo mediano nella finestra $20<r<50$:
 
 | $a$ | $\ell$ | con $\omega$ eikonale | con $\omega$ autoconsistente |
 |---|---|---|---|
@@ -871,12 +870,21 @@ relativo mediano nella finestra $20<r<50$:
 | 0.9 | 70 | $2.3\times10^{-1}$ | $1.5\times10^{-3}$ |
 | 0.9 | 100 | $1.9\times10^{-1}$ | $1.4\times10^{-3}$ |
 
-Con la frequenza consistente gli errori scendono nella banda
-$3\times10^{-5}$–$1.5\times10^{-3}$, comparabile al controllo statico, e il
-comportamento erratico scompare. La previsione del §5, costruita e
-validata su Pöschl–Teller, vale dunque anche in presenza di rotazione: **non
-c'è nulla di patologico nell'ampiezza**, e la struttura di ordine del §9.2 è
+Con la frequenza consistente gli errori scendono e il comportamento erratico
+scompare: la previsione del §5 vale anche in presenza di rotazione, **non c'è
+nulla di patologico nell'ampiezza**, e la struttura di ordine del §9.2 resta
 l'unico contenuto.
+
+*Sulla precisione di questa tabella.* Le cifre della colonna di destra non vanno
+lette come accuratezza. Il riferimento numerico usa una condizione al bordo
+troncata all'orizzonte e una derivata seconda per differenze finite sul modulo
+dell'ampiezza; rifacendo la stessa misura con derivate **analitiche** ricavate
+dall'ODE, il $Q_M$ di riferimento si sposta dello $0.2\%$ a $a=0$ e fino al
+$5\%$ a $a=0.9$, mentre variare l'offset all'orizzonte lo sposta dello $0.4\%$
+con rotazione. Le voci $3\times10^{-5}$ e $3\times10^{-4}$ stanno quindi **sotto
+l'incertezza sistematica del proprio riferimento**. Ciò che la tabella
+stabilisce è il **confronto fra le due colonne** — la frequenza autoconsistente
+migliora di due ordini di grandezza — non il valore assoluto della seconda.
 
 *Limite dichiarato.* Il caso $a=0.9$, $\mu=0.9$ non è incluso: il bordo interno
 richiesto avvicina l'orizzonte al punto in cui l'integratore esaurisce la
@@ -1168,10 +1176,29 @@ $$\frac{H}{G}=4i\omega\!\int\!\frac{r}{f}\,dr_*+O(1/r),\qquad
 > informazione sul modo. Ciò che dipende dal modo comincia a $O(1/r)$, ed è
 > **decadente**.
 
-Nella zona esterna non c'è dunque memoria da trovare. Qualunque effetto genuino
-deve vivere nella regione della **barriera**, dove $\mathcal Z$ varia e il
-profilo non è una semplice esponenziale — cioè dove i numeri sono piccoli e le
-cancellazioni miti, invece che nel settore lontano dove sono enormi.
+Nella zona esterna non c'è dunque memoria da trovare. Che il contenuto non
+geometrico viva sulla **barriera** non richiede però uno studio numerico di
+quella regione: si isola esattamente. Posto
+
+$$\rho=\frac{G'}{G}-\frac{2i\omega}{f} \tag{11.9}$$
+
+— che misura di quanto il modo non sia puramente uscente, ed è nulla nella zona
+esterna e $O(1)$ sulla barriera — vale l'identità
+
+$$\frac{H}{G}=4i\omega\!\int\!\frac{r}{f}\,dr_*+\tilde y,\qquad
+\mathfrak S_{\tilde y}=2f\big(\rho+r\rho'+r\rho^2\big)-2K\big(f\rho+2i\omega\big),
+\tag{11.10}$$
+
+verificata simbolicamente con $\rho$ **arbitraria**, dunque senza alcuno
+sviluppo asintotico. Il primo termine è la (11.8): forma chiusa, nessuna
+dipendenza dal modo, e porta tutta la crescita $r^2$. Il resto è sorgentato
+unicamente da $\rho$.
+
+Numericamente $\tilde y$ cresce in modo **lineare** — un fattore $2.0$ al
+raddoppiare di $r$, contro $4$ del quadratico — e la sua quota di $H/G$ scende
+dal 76% a $r=10$ al 2.9% a $r=320$. Quella crescita residua è il termine
+costante $-4i\omega K$ della (11.10), cioè lo shift di frequenza, riassorbibile
+nella convenzione di fase. Dopo le due sottrazioni non resta crescita.
 
 La (11.2) non è toccata: è un enunciato a raggio fissato e ordine $\dot M$,
 mentre il secolare riguarda il comportamento a grande $r$.
@@ -1305,13 +1332,13 @@ La domanda era quanta informazione la riscrittura di Madelung contenga, e a
 quale ordine. La risposta si separa nettamente lungo la divisione fra le Parti
 II e III.
 
-**Sui valori, nulla, e per una ragione strutturale.** Il potenziale quantistico
-amplifica di $\sim10^2$ l'errore sulla frequenza (§5), quindi non è una presa
-indipendente su $\omega$ ma una lente d'ingrandimento su una frequenza che si
-deve già conoscere. La conseguenza si misura: il diagnostico d'ampiezza è
-proporzionale a $|\Lambda_3|$ allo 0.15% (§6), e non esiste corrispondenza locale
-fra i coefficienti della gerarchia e i $\Lambda_j$ (§7). Tre enunciati, un solo
-contenuto: un'espansione della Riccati non contiene più della WKB che essa è.
+**Sui valori, nulla, e per una ragione strutturale.** Il diagnostico d'ampiezza
+è proporzionale a $|\Lambda_3|$ allo 0.10% (§6), e non esiste corrispondenza
+locale fra i coefficienti della gerarchia e i $\Lambda_j$ (§7). Due enunciati, un
+solo contenuto: un'espansione della Riccati non contiene più della WKB che essa
+è. Non vi aggiungiamo un argomento di condizionamento: la sensibilità di $Q_M$
+alla frequenza è un fattore 2 (§5), e la rivendicazione contraria di una
+versione precedente è ritrattata.
 
 **Sull'ordinamento, qualcosa, e in tre geometrie.** La potenza di $\varepsilon$
 alla quale compare il primo termine subprincipale è informazione sulla
@@ -1323,9 +1350,10 @@ spin la porta a 1 nel fermionico (§10). Su Vaidya la stessa tesi si presenta in
 forma non asintotica: il termine misto è una derivata della famiglia congelata
 (§11).
 
-È in questa asimmetria — **ordinamento robusto, valori mal condizionati** — che
-si colloca il potere predittivo effettivo del formalismo, e riteniamo sia questo
-il dato che un lettore tentato da questa via deve avere prima di percorrerla.
+L'asimmetria che conta è dunque fra **ciò che si misura sul potenziale** — le
+pendenze, che non richiedono di integrare l'equazione — e **ciò che richiede la
+soluzione**, che riproduce quanto la WKB già dava. È questo il dato che un
+lettore tentato da questa via deve avere prima di percorrerla.
 
 ### 14.2 Dove vive il contenuto invariante
 
@@ -1411,7 +1439,10 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.3, controllo Wronskiano | `../../calculations/vaidya_forced_boundary.py` | residuo $\sim10^{-6}$, controllo selettivo |
 | §11.4, secolare $=$ ritardo | `../../calculations/vaidya_retarded_uniformity.py` | residuo simbolico **esattamente nullo** |
 | §11.4, serie secolare esatta | `../../calculations/vaidya_secular_series.py` | quadratico $=2i\omega$ a zero macchina; rapporti 8 e 24 universali |
-| Suite completa | `core/` e `calculations/` | **81 test superati** |
+| §11.4, separazione geometria/barriera | `../../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
+| §9.6, audit con derivate analitiche | `../../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
+| §5, sensibilità alla frequenza | `../../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
+| Suite completa | `core/` e `calculations/` | **83 test superati** |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
