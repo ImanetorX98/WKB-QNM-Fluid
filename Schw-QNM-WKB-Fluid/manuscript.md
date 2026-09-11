@@ -15,7 +15,7 @@ riscrittura riproduce da ciò che ordina, e misurando entrambi.
 **Il risultato negativo, e la sua causa strutturale.** Il funzionale d'ampiezza
 che la decomposizione suggerisce come diagnostico d'errore è, a overtone
 fissato, **proporzionale a $|\Lambda_3|$** — la correzione di Iyer–Will — con
-costante indipendente da $\ell$ e dallo spin (dispersione 0.15% su dodici modi).
+costante indipendente da $\ell$ e dallo spin (dispersione 0.10% su dodici modi).
 Non estende la correzione standard: la riproduce, a costo incomparabilmente
 maggiore. La ragione non è accidentale: è che **un'espansione della Riccati non può
 contenere più della WKB che essa è**, e la misura ne quantifica l'effetto. Con
@@ -57,6 +57,14 @@ suo numeratore non si annulla per alcun modo fondamentale esaminato. Al bordo
 interno l'esponente vale $4M\operatorname{Im}\omega\simeq-0.39>-1$ per $s=0,1,2$:
 per il modo fondamentale la singolarità è **integrabile** e la regolarizzazione
 non è necessaria.
+
+La correzione forzata che ne deriva si separa poi in forma chiusa. Posto
+$\rho=G'/G-2i\omega/f$, che si annulla nella zona esterna ed è $O(1)$ sulla
+barriera, vale l'identità esatta
+$H/G=4i\omega\!\int\!(r/f)\,dr_*+\tilde y$ con $\tilde y$ sorgentata unicamente da
+$\rho$: **tutta** la crescita secolare $r^2$ è nel primo termine, che ha forma
+chiusa e non conosce né il multipolo né lo spin. La memoria non può quindi
+vivere nella zona esterna, dove la correzione è pura contabilità di fase.
 
 **Precisazione di metodo.** Il macchinario analitico è l'equazione di Riccati
 associata all'equazione master, espansa nel parametro eikonale: da
@@ -168,9 +176,9 @@ letteratura è densa e il rischio di riscoperta è alto.
 - L'analisi WKB esatta dei QNM, con geometria di Stokes e periodi quantistici,
   è un programma attivo e consolidato che non tocchiamo.
 
-Il contributo effettivo è triplice, e l'organizzazione del lavoro segue quella
-divisione: la Parte II stabilisce che cosa la riscrittura non aggiunge, la
-Parte III che cosa ordina.
+Il contributo effettivo è duplice, e l'organizzazione del lavoro segue quella
+divisione: la Parte II stabilisce che cosa la riscrittura non aggiunge — il §5 ne
+è il prerequisito tecnico, non un risultato — e la Parte III che cosa ordina.
 
 1. **Ridondanza del diagnostico di Madelung (§6).** Il funzionale d'ampiezza
    naturale è proporzionale a $|\Lambda_3|$ a overtone fissato, con costante
@@ -272,7 +280,7 @@ calcoliamo analiticamente il **residuo** dell'ansatz adiabatico e ne esibiamo la
 forma chiusa. Nessuno dei lavori citati costruisce la condizione di solvibilità
 risonante, né adotta il linguaggio di Madelung.
 
-**Analoghi acustici.** Nei buchi neri acustici in condensati di Bose–Einstein il
+**Analoghi acustici.** Nei buchi neri acustici [21, 22] in condensati di Bose–Einstein il
 termine di pressione quantistica è fisicamente microscopico e non un artificio
 di riscrittura. È l'unico contesto in cui un termine di questa forma sarebbe
 misurabile; non stabiliamo alcuna corrispondenza con esso.
@@ -298,7 +306,9 @@ $$\frac{d^2\psi}{dx_*^2}+\left[\Omega^2-V_s(x)\right]\psi=0,\qquad
 V_s(x)=f\left[\frac{\ell(\ell+1)}{x^2}+\frac{2(1-s^2)}{x^3}\right],$$
 
 con $s=0$ scalare, $s=1$ elettromagnetico, $s=2$ gravitazionale assiale
-(Regge–Wheeler). In forma canonica scriviamo
+(Regge–Wheeler [3]; il settore polare obbedisce all'equazione di Zerilli [4],
+isospettrale a quella assiale per trasformazione di Darboux [42]). In forma
+canonica scriviamo
 
 $$\varepsilon^2\psi''+q(x_*)\psi=0,\qquad q=\Omega^2-V,$$
 
@@ -396,6 +406,10 @@ subito perché il §9 la viola.
 > e il momento acquista un termine dispari. È esattamente il caso di Kerr, dove
 > $q_1=-\Delta A_1/H^2$ è generato dall'autovalore sferoidale (§9.1).
 
+Della stessa equazione angolare esiste un trattamento in WKB esatta, con periodi
+quantistici e correzioni esponenziali non perturbative [44]; non riguarda i QNM
+né Kerr, ed è la controparte non perturbativa dell'espansione usata qui.
+
 La rottura della parità non si propaga però al funzionale di Madelung. Nella
 chiusura $P^2+Q_M=\operatorname{Re}q$ i termini di ordine $\varepsilon$ si
 cancellano identicamente, $q_1-2u_0u_1=0$, cosicché $Q_M$ resta di ordine
@@ -482,7 +496,9 @@ condizione al contorno su ciascun lato della barriera: usarne uno solo produce
 un errore del 10% che **non svanisce** al crescere di $L$, e che quindi imita un
 difetto di teoria.
 
-Validazione su Pöschl–Teller $n=0$, dove $Q_M$ è noto in forma chiusa. Errore
+Validazione su Pöschl–Teller $n=0$ — la famiglia esattamente risolubile
+introdotta come modello di barriera per i QNM da Ferrari e Mashhoon [13] — dove
+$Q_M$ è noto in forma chiusa. Errore
 relativo mediano nella regione oscillatoria:
 
 | $L$ | $u=\sqrt q$ | $u=\sqrt q+\varepsilon^2u_2$ |
@@ -569,8 +585,13 @@ della barriera lasciando $\varepsilon$ identico — su 18 coppie:
 
 | $n$ | $\mathcal E_M/|\Lambda_3|$ su $s=0,2$, $\ell=3\ldots8$ | dispersione |
 |---|---|---|
-| 0 | 1.0426 | 0.15% |
-| 1 | 3.95 | 1.6% |
+| 0 | 1.0437 | **0.10%** |
+| 1 | 3.9456 | 1.14% |
+
+I valori usano la **mediana pesata** del punto (ii), non l'integrale nudo: con
+quest'ultimo la dispersione a $n=1$ sale al 31%, ed è l'artefatto del nodo già
+documentato. La scelta dello stimatore va dichiarata perché la proporzionalità
+è un enunciato sulla quantità robusta, non su qualunque funzionale di $|Q_M|$.
 
 L'indicatore è una riscalatura di $|\Lambda_3|$ con costante indipendente da
 $\ell$ e dallo spin. Ma $\Lambda_3$ è un sottoprodotto algebrico della formula
@@ -604,7 +625,8 @@ funzionale di valutazione.
 
 **(ii) Non unicità.** I singoli $Q_{2j}$ dipendono dalla coordinata scelta, dalla
 variabile master, dalla normalizzazione e dalla convenzione con cui si introduce
-$\varepsilon$. L'exact WKB moderno insiste su questo punto: l'introduzione del
+$\varepsilon$. L'exact WKB moderno [18, 19] insiste su questo punto, e il
+meccanismo di base è già nei trattati classici di asintotica [20]: l'introduzione del
 parametro formale non è unica, e qualunque lettura "fisica" dei coefficienti deve
 dichiarare per intero quelle scelte. Il nostro §8 ne è un esempio: la scelta di
 Langer $L=\ell+\tfrac12$ produce la (8.1) senza termine $\varepsilon^1$, mentre
@@ -1425,24 +1447,24 @@ deterministici e girano in meno di un minuto ciascuno.
 | Proposizione 5 e tabella §8.1 | `verification/scalar_eikonal_scaling.py` | pendenze 2.0000 / ≈1.87 |
 | Legge con sorgente, §13 | `verification/open_continuity.py` | residuo $\sim10^{-6}$ |
 | Eq. (10.1)–(10.2), pendenze §12 e §10 | `../core/dirac_madelung_profile.py --scaling` | pendenza spin 1.0000 |
-| §6, ridondanza di $\mathcal E_M$ | `../../calculations/robust_indicator_test.py` | $\mathcal E_M/|\Lambda_3|$ = 1.0426 ± 0.15% |
-| §9.1–9.3, termine $\varepsilon$ di Kerr | `../../calculations/kerr_eikonal_order_test.py` | $A_1\neq0$; Langer esatto per $a=0$ |
-| §9.2, pendenze di Kerr | `../../calculations/kerr_radial_order_profile.py` | 1.951 statico, 0.963–1.014 con rotazione |
+| §6, ridondanza di $\mathcal E_M$ | `../calculations/robust_indicator_test.py` | $\mathcal E_M/|\Lambda_3|$ = 1.0437 ± 0.10% |
+| §9.1–9.3, termine $\varepsilon$ di Kerr | `../calculations/kerr_eikonal_order_test.py` | $A_1\neq0$; Langer esatto per $a=0$ |
+| §9.2, pendenze di Kerr | `../calculations/kerr_radial_order_profile.py` | 1.951 statico, 0.963–1.014 con rotazione |
 | Figura 1 | `figures/make_fig1.py` | pendenze 2.00 / 1.00 / 1.00 |
-| §9.6, frequenza autoconsistente | `../../calculations/kerr_wkb3_selfconsistent.py` | WKB3 scalare a $3\times10^{-11}$ per $a=0$ |
-| Frequenze esatte di riferimento | `../../core/leaver_qnm.py` | 10 cifre contro Leaver 1985 |
-| §5, previsione e sensibilità | `../../calculations/madelung_wkb_prediction.py` | $1.7\times10^{-7}$ a $L=300$ |
-| §11.1, residuo adiabatico di Vaidya | `../../calculations/vaidya_adiabatic_residual.py` | residuo $=2\,\partial_r\partial_M Z$, simbolico |
-| §11.2, denominatore regolarizzato | `../../calculations/vaidya_solvability.py` | indipendente da $L_+$ allo 0.2% |
-| §11.3, numeratore ai due bordi | `../../calculations/vaidya_numerator_factored.py` | $N=20.666542-40.326537\,i$; disp. $1.1\times10^{-7}$ |
-| §11.2, identità $P=i\omega\mathcal N$ | `../../calculations/vaidya_transport_denominator.py` | $5\times10^{-11}$ relativo |
-| §11.3, controllo Wronskiano | `../../calculations/vaidya_forced_boundary.py` | residuo $\sim10^{-6}$, controllo selettivo |
-| §11.4, secolare $=$ ritardo | `../../calculations/vaidya_retarded_uniformity.py` | residuo simbolico **esattamente nullo** |
-| §11.4, serie secolare esatta | `../../calculations/vaidya_secular_series.py` | quadratico $=2i\omega$ a zero macchina; rapporti 8 e 24 universali |
-| §11.4, separazione geometria/barriera | `../../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
-| §9.6, audit con derivate analitiche | `../../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
-| §5, sensibilità alla frequenza | `../../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
-| Suite completa | `core/` e `calculations/` | **83 test superati** |
+| §9.6, frequenza autoconsistente | `../calculations/kerr_wkb3_selfconsistent.py` | WKB3 scalare a $3\times10^{-11}$ per $a=0$ |
+| Frequenze esatte di riferimento | `../core/leaver_qnm.py` | 10 cifre contro Leaver 1985 |
+| §5, previsione e sensibilità | `../calculations/madelung_wkb_prediction.py` | $1.7\times10^{-7}$ a $L=300$ |
+| §11.1, residuo adiabatico di Vaidya | `../calculations/vaidya_adiabatic_residual.py` | residuo $=2\,\partial_r\partial_M Z$, simbolico |
+| §11.2, denominatore regolarizzato | `../calculations/vaidya_solvability.py` | indipendente da $L_+$ allo 0.2% |
+| §11.3, numeratore ai due bordi | `../calculations/vaidya_numerator_factored.py` | $N=20.666542-40.326537\,i$; disp. $1.1\times10^{-7}$ |
+| §11.2, identità $P=i\omega\mathcal N$ | `../calculations/vaidya_transport_denominator.py` | $5\times10^{-11}$ relativo |
+| §11.3, controllo Wronskiano | `../calculations/vaidya_forced_boundary.py` | residuo $\sim10^{-6}$, controllo selettivo |
+| §11.4, secolare $=$ ritardo | `../calculations/vaidya_retarded_uniformity.py` | residuo simbolico **esattamente nullo** |
+| §11.4, serie secolare esatta | `../calculations/vaidya_secular_series.py` | quadratico $=2i\omega$ a zero macchina; rapporti 8 e 24 universali |
+| §11.4, separazione geometria/barriera | `../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
+| §9.6, audit con derivate analitiche | `../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
+| §5, sensibilità alla frequenza | `../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
+| Suite completa | `core/` e `calculations/` | **103 test superati** (83 in , 20 in ) |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
