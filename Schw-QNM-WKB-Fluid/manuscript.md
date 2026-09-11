@@ -1464,7 +1464,7 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.4, separazione geometria/barriera | `../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
 | §9.6, audit con derivate analitiche | `../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
 | §5, sensibilità alla frequenza | `../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
-| Suite completa | `core/` e `calculations/` | **103 test superati** (83 in , 20 in ) |
+| Suite completa | `core/` e `calculations/` | **103 test superati**: 83 in `calculations/`, 20 in `core/` |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
