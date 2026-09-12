@@ -3,8 +3,9 @@
 
 MOTIVO.  Il §9.6 attribuisce il miglioramento della previsione di Q_M, passando
 dalla frequenza eikonale a quella autoconsistente, all'amplificazione ~10^2 del
-§5.  **Quell'amplificazione e' falsa: vale 2**
-(`madelung_conditioning_schwarzschild.py`).  Inoltre `kerr_madelung_profile.py`
+§5. Il fattore 2 riguarda soltanto variazioni proporzionali di omega, non
+perturbazioni complesse arbitrarie (vedere conditioning_consolidated_2026-09-11.md).
+Inoltre `kerr_madelung_profile.py`
 calcola A''/A con `np.gradient` applicato due volte a |psi|, che e' il difetto
 numerico piu' grave trovato nell'audit di Schwarzschild.
 
@@ -42,8 +43,20 @@ from kerr_madelung_profile import eikonal_frequency, kerr_profile  # noqa: E402
 from kerr_eikonal_order_test import spheroidal_eigenvalue  # noqa: E402
 
 
+def geometric_term(r,spin):
+    """(D_*^2 sqrt(H))/sqrt(H), D_*=(Delta/H)d/dr.
+
+    The previous expression omitted the outer Delta/H factor.
+    """
+    H=r**2+spin**2
+    delta=r**2-2*r+spin**2
+    speed=delta/H
+    speed_r=(2*r-2)/H-2*r*delta/H**2
+    return speed*(speed_r*r/H+speed*spin**2/H**2)
+
+
 def analytic_profile(ell, spin, mu, omega=None, horizon_offset=1.0e-6,
-                     points=60001, r_max_factor=18.0):
+                     points=60001, r_max_factor=18.0, boundary_order=0):
     """Q_M da derivate analitiche, stessa geometria di `kerr_profile`."""
     large_l = ell + 0.5
     epsilon = 1.0 / large_l
@@ -54,18 +67,14 @@ def analytic_profile(ell, spin, mu, omega=None, horizon_offset=1.0e-6,
     separation = eigen + spin**2 * omega**2 - 2.0 * spin * m * omega
 
     r_plus = 1.0 + np.sqrt(max(1.0 - spin**2, 0.0))
-    reference = kerr_profile(ell, spin, mu)
-    r0, r_max = float(reference["r_peak"]), float(reference["r_max"])
+    r0 = float(eikonal_frequency(spin, mu, 0, large_l)[1]["r_peak"])
+    r_max = 60.0  # Historical measurement domain; r_max_factor was unused.
 
     def potential(r):
         h_squared = r**2 + spin**2
         delta = r**2 - 2.0 * r + spin**2
-        h = np.sqrt(h_squared)
-        d2h = (delta / h_squared * (1.0 / h - r**2 / h**3)
-               - 2.0 * r * delta / h_squared**2 * (r / h)
-               + (2.0 * r - 2.0) / h_squared * (r / h))
         return ((omega - m * spin / h_squared) ** 2
-                - delta * separation / h_squared**2 - d2h / h)
+                - delta * separation / h_squared**2 - geometric_term(r,spin))
 
     def rhs(_t, y):
         psi, chi, r = y
@@ -76,15 +85,27 @@ def analytic_profile(ell, spin, mu, omega=None, horizon_offset=1.0e-6,
                         dtype=complex)
 
     r_start = r_plus + horizon_offset * (r0 - r_plus)
-    sample = np.linspace(r_start, r_max, 40000)
-    span = float(np.trapezoid(
-        (sample**2 + spin**2) / (sample**2 - 2.0 * sample + spin**2), sample))
+    r_minus = 1.0 - np.sqrt(1.0-spin**2)
+    if r_plus == r_minus:
+        raise ValueError("Extremal Kerr requires a separate boundary treatment")
+    span = (r_max-r_start
+            + 2*r_plus/(r_plus-r_minus)*np.log((r_max-r_plus)/(r_start-r_plus))
+            - 2*r_minus/(r_plus-r_minus)*np.log((r_max-r_minus)/(r_start-r_minus)))
     horizon_frequency = spin / (r_plus**2 + spin**2)
     wavenumber = omega - m * horizon_frequency
+    z_start = -1j*wavenumber
+    if boundary_order == 1:
+        # v z_r = -q-z^2, z=psi_*/psi=z0+z1(r-r_plus)+...
+        step = 1e-5
+        q1 = (potential(r_plus+step)-potential(r_plus-step))/(2*step)
+        v1 = (r_plus-r_minus)/(r_plus**2+spin**2)
+        z_start += -q1/(v1-2j*wavenumber)*(r_start-r_plus)
+    elif boundary_order != 0:
+        raise ValueError("boundary_order must be 0 or 1")
 
     grid = np.linspace(0.0, span, points)
     solution = solve_ivp(rhs, (grid[0], grid[-1]),
-                         np.array([1.0 + 0j, -1j * wavenumber, r_start], dtype=complex),
+                         np.array([1.0 + 0j, z_start, r_start], dtype=complex),
                          t_eval=grid, method="DOP853", rtol=2.0e-12, atol=2.0e-14)
     if not solution.success:
         raise RuntimeError(solution.message)

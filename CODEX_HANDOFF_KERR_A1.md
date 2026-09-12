@@ -1,5 +1,69 @@
 # Consegna a Codex — 12 settembre 2026
 
+> **Sesto avanzamento, preparazione commit/push richiesti:** dimostrata
+> l'indipendenza dal matching di numeratore e denominatore perturbativi
+> con D esterni esatti; derivata N=-psi(b)F_omega nella normalizzazione
+> specificata. [Prova e limiti](research/matching_invariance_proof_2026-09-12.md).
+> Aggiunto controllo F per Claude. Verifica pre-commit:12 test Python e17
+> controlli Wolfram OK. I sei nuovi file Claude già staged restano esclusi
+> dal commit Codex e intatti; il loro resoconto è stato solo parzialmente letto.
+
+> **Quinto avanzamento:** letta anche Leung §2.2–2.3; la risposta della
+> funzione d'onda è già nella eq.2.21 e va attribuita. Estesa l'algebra a
+> q(omega,eta) e bordi logaritmici esatti dipendenti da frequenza; specializzata
+> a Kerr scalare includendo a A_c nel q_omega. Derivata A_c con pairing
+> angolare bilineare senza coniugazione. Tre controlli WolframKernel OK.
+> [Derivazione e limiti fisici](research/kerr_nonlinear_spectral_proof_2026-09-12.md).
+> Aggiunto controllo E al protocollo Claude; non eseguito sweep Kerr nuovo.
+
+> **Quarto avanzamento: studio analitico e prescrizione numerica.**
+> [Nuova derivazione](research/analytic_core_response_2026-09-12.md): per
+> perturbazioni esclusivamente esterne alla regione interna invariata,
+> unicità dell'ODE implica E=F(Re omega,Im omega). Derivata esplicita tramite
+> k=partial_omega(psi'/psi), risposta reale di rango al più due. Quattro
+> identità Mathematica superate. Il test della derivata discreta concorda
+> circa1e-5; la derivata del funzionale continuo non è ancora convergente
+> con quadratura globale, a causa della sensibilità ai cambi di segno e
+> degli altri errori da separare. Non dichiararla verificata ad alta precisione.
+> Aggiornato [protocollo Claude](CLAUDE_COMPUTE_BRIEF_2026-09-12.md) con gate
+> spettrale, quadratura spezzata, test di fattorizzazione/rango e controlli
+> negativi. Prescrizione scritta, nessuna sessione Claude avviata.
+
+> **Terzo avanzamento, prova del perimetro del core:** derivata la risposta
+> spettrale con norma generalizzata e bordi uscenti, attribuita a Leung1998.
+> Implementato test on-shell su barriere lisce compatte: getto al picco
+> invariato ma frequenza e diagnostico integrale variabili. Cinque modi
+> continuati in eta, controllo perturbativo relativo1.27e-7, due test OK.
+> Non è una nuova soluzione di Einstein né una prova di utilità predittiva
+> o originalità. Vedere [prova e limiti](research/core_proof_scope_2026-09-12.md).
+> Preparato [incarico opzionale per Claude Code](CLAUDE_COMPUTE_BRIEF_2026-09-12.md),
+> NON ancora assegnato. Nessuna esecuzione Claude avviata.
+
+> **Secondo avanzamento Codex, originalità e riferimento radiale:** ricerca
+> mirata completata; il core non è ancora dimostrato originale/pubblicabile.
+> Confronti primari con Dolan–Ottewill, Yang, Leung, Capuano e Yoo; attenzione
+> a distinguere la riscrittura esatta dalla WKB troncata. Nuovi controlli
+> mostrano che la rivendicazione di indipendenza dalla variabile master è
+> troppo forte e che il fit con Lambda3 non ne dimostra l'identità esatta.
+> Completate 30 integrazioni Kerr a mu=2/3 esatto, bordo entrante ordine 0/1,
+> span tortoise analitico e geometria corretta. Il riferimento è più stabile;
+> NON è ancora la rigenerazione integrale degli errori §9.6. Tre nuove
+> identità Mathematica e due test geometrici superati. Manoscritto marcato
+> esplicitamente come bozza da revisionare, non riscritto integralmente.
+> [Originalità, limiti e prossimi esperimenti](research/originality_core_audit_2026-09-12.md).
+> [Output completo e controlli numerici](research/kerr_corrected_profile_results_2026-09-12.md).
+
+> **Avanzamento Codex del 12 settembre:** implementata collocazione Chebyshev
+> dell'ODE angolare, indipendente dalla matrice armonica, con versione MP a
+> 55 cifre. Il fit indipendente dà A1=8.8e-8 a mu=2/3,chat=0.6; casi reali e
+> complessi verificati. Derivato A1=0 nella quantizzazione formale WKB scalare
+> con due turning point semplici e parametri riscalati fissi, NON per ogni
+> settore bosonico. La regola universale proposta sotto basata sull'ordine
+> differenziale non segue (i partner Dirac sono già del secondo ordine).
+> Audit rounding completato; trovato e corretto un fattore Delta/H mancante
+> in kerr_madelung_analytic.py. Il §9.6 va ancora rimisurato. 10 test e quattro
+> controlli Mathematica superati. [Procedura, prova e risultati](research/kerr_handoff_progress_2026-09-12.md).
+
 > **Correzione di attribuzione, in testa perché è il punto principale.**
 > Questo handoff era stato scritto come se il crollo di \(A_1\) fosse una nostra
 > scoperta da consegnare. **Non lo è.** Codex lo aveva già stabilito l'11

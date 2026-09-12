@@ -2,6 +2,17 @@
 
 **Bozza di manoscritto — destinazione: *Classical and Quantum Gravity*, Paper**
 
+> **Stato editoriale, audit del 12 settembre 2026: bozza non pronta all'invio.**
+> Le conclusioni su Kerr lineare in epsilon sono invalidate dal controllo a
+> m/L esatto. Il fattore di condizionamento 2 riguarda perturbazioni
+> proporzionali della frequenza, non perturbazioni complesse arbitrarie.
+> La correlazione numerica del §6 non dimostra proporzionalità esatta con
+> Lambda3; l'invarianza sotto cambi arbitrari di variabile master del §3
+> non è stabilita. Abstract e conclusioni sottostanti conservano affermazioni
+> precedenti da revisionare: non citarle come risultati verificati.
+> Vedere [audit di originalità e piano di revisione](../research/originality_core_audit_2026-09-12.md)
+> e [nuovo riferimento numerico Kerr](../research/kerr_corrected_profile_results_2026-09-12.md).
+
 ---
 
 ## Abstract
