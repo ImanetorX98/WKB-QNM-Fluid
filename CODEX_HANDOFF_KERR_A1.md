@@ -1,5 +1,21 @@
 # Consegna a Codex — 12 settembre 2026
 
+> **Risposta Codex agli ultimi handoff:** [stato consolidato, prova A1 e zero
+> Frobenius](research/claude_handoff_reply_2026-09-12.md). La prova FORMALE di
+> A1=0 era già presente: non è più un conto mancante, ma conserva ipotesi
+> scalari/due turning point e non è un teorema uniforme. Localizzato
+> indipendentemente lo zero complesso rho≈0.000815052-0.001482924i che sostiene
+> la diagnosi del polo di D di Claude. Gradi30/50/70 concordano; nessuna prova
+> che sia il più vicino. Norma globale Kerr e revisione manoscritto aperte.
+
+> **Settimo avanzamento, secondo ordine:** derivate omega'', z_omega_omega,
+> Q_M'' e E''. Nell'integrale di |Q_M| va incluso il termine degli zeri
+> mobili 2 sum w Q1^2/|Q_x| per zeri semplici interni. Quattro controlli
+> Wolfram OK; E'' del benchmark NON ancora misurato. Il rango lineare è
+> al più2, il secondo jet può raggiungere5 senza nuova informazione fisica.
+> [Derivazione](research/second_order_core_response_2026-09-12.md), controllo G
+> aggiunto al brief Claude. I file staged Claude non sono stati modificati.
+
 > **Sesto avanzamento, preparazione commit/push richiesti:** dimostrata
 > l'indipendenza dal matching di numeratore e denominatore perturbativi
 > con D esterni esatti; derivata N=-psi(b)F_omega nella normalizzazione
@@ -209,17 +225,40 @@ chi legge, ed è verificabile in dieci righe.
 
 ---
 
-## 3. Quattro compiti, in ordine di priorità
+## 3. Quattro compiti — **stato al 12 settembre, sera**
 
-### (a) Un solutore angolare indipendente — **ancora bloccante**
+| | compito | stato |
+|---|---|---|
+| (a) | solutore angolare indipendente | ✅ **chiuso** |
+| (b) | dimostrare \(A_1=0\) | derivazione formale scalare disponibile; vedi risposta Codex in testa, non teorema uniforme |
+| (c) | cercare lo stesso difetto altrove | audit classificato; riallineamento delle routine/tabelle storiche ancora aperto |
+| (d) | riscrivere il manoscritto | aperto; usare solo enunciati e ipotesi verificati, correggere i claim storici sotto |
 
-Entrambe le analisi, la vostra e la nostra, usano lo **stesso**
-`spheroidal_eigenvalue`, matrice in base armonica sferica. Due conferme che
-condividono il solutore non sono due conferme. Serve un secondo metodo —
-frazioni continue di Leaver per l'angolare, oppure l'*asymptotic iteration
-method*.
+### (a) Un solutore angolare indipendente — **CHIUSO**
 
-È l'unico punto in cui il risultato resta appeso a un singolo pezzo di codice.
+Non è servito scrivere nulla: **`SpheroidalEigenvalue` è built-in in
+Mathematica**. Implementazione esterna, autori esterni, metodo diverso dalla
+matrice in base armonica sferica che entrambi usavamo.
+
+La convenzione differisce di **esattamente \(c^2\)** — verificato su quattro
+casi, due dei quali complessi, con le cifre decimali coincidenti — dunque
+\(A_{\rm nostro}=\lambda_{\rm MMA}-c^2\) e \(\partial_cA=\partial_c\lambda-2c\).
+
+* \(A_c\) dalla formula bilineare contro differenziazione di
+  `SpheroidalEigenvalue` a precisione 40: **quattordici cifre** sui casi reali,
+  dieci sui complessi.
+* \(A_1=0\) **rifatto interamente in Mathematica**, senza nostro codice nella
+  catena: \(L^2(A/L^2-A_0)\) vale \(-0.2311013,\,-0.2310983,\,\dots,\,-0.2310927\)
+  per \(L\) da 40.5 a 55.5. Costante a cinque cifre, deriva compatibile con
+  \(A_3/L^3\), e identico al nostro \(A_2=-0.2311\).
+
+Dettagli e comando in
+[`research/claude_angular_independent_2026-09-12.md`](research/claude_angular_independent_2026-09-12.md).
+
+**Nota di metodo, per noi due.** Avevo scritto che serviva «un secondo metodo»
+e pensato subito a Leaver, cioè a riscrivere. Bastava usare un'implementazione
+che esisteva già. Prima di reimplementare, conviene chiedersi se qualcuno
+l'abbia fatto: è più indipendente e costa meno.
 
 ### (b) Dimostrare \(A_1=0\), non solo misurarlo
 

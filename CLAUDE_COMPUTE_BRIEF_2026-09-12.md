@@ -83,6 +83,35 @@ Non estendere automaticamente a Kerr, Vaidya o a pretese di originalità.
 
 ## Obiettivo
 
+### Controllo G: secondo ordine e zeri mobili (dopo A–B)
+
+Leggere `research/second_order_core_response_2026-09-12.md`. Il controllo
+è sul rapporto integrale continuo, NON sulla mediana pesata.
+
+1. Riprodurre prima U(eta)=integral_-1^1 |x-eta|dx=1+eta^2. La derivata
+   seconda deve dare2; omettendo il contributo dello zero mobile si ottiene0.
+2. Sul benchmark esterno centro2,larghezza0.4, calcolare d=omega' ed e=omega''
+   distinguendo le derivate dai coefficienti della serie con fattoriali.
+   Per e usare derivate del residuo incluse le condizioni ai bordi, oppure
+   differenze centrali con tre passi e due precisioni; confrontare i metodi.
+3. Integrare j'+2zj=-2-2k^2, j(a)=0. Verificare anche la formula integrale.
+4. Calcolare Q1,Q2 e localizzare gli zeri semplici di Q0 in J. Misurare
+   Q_x agli zeri da ODE/derivate controllate, non da una differenza grossolana.
+   Verificare x_j'=-Q1/Q_x seguendo i medesimi zeri a +/-eta.
+5. Costruire U2 includendo 2 sum w Q1^2/|Q_x| e poi E2. Confrontare con
+   [E(eta)-2E(0)+E(-eta)]/eta^2, usando E a quadratura spezzata sugli zeri
+   di CIASCUN eta. Mostrare separatamente termine integrale e contributo
+   degli zeri. Primo target relativo1e-3 se E2 non è piccolo; richiedere
+   effetto >10 volte l'errore stimato e documentare il plateau se presente.
+6. Controllo negativo: ripetere omettendo il termine degli zeri e quantificare
+   lo scarto, senza presupporre che domini nel benchmark. Fermarsi se uno
+   zero diventa multiplo o attraversa un estremo: le ipotesi cambiano.
+
+Salvare nuovi file `claude_compact_second_order_*` e
+`research/claude_compact_second_order.md`. Non ampliare a un grande sweep
+prima di chiudere questo singolo caso. Non usare un rango superiore a due
+a eta finito come confutazione del teorema LINEARE.
+
 ### Controllo F: residuo, norma e matching
 
 Leggere `research/matching_invariance_proof_2026-09-12.md`.
@@ -97,6 +126,13 @@ Per lo spostamento dei bordi distinguere invarianza del rapporto B/N da
 quella di B,N separati, che richiede la stessa normalizzazione globale.
 
 ### Estensione E, dopo i gate A–B: derivata spettrale Kerr
+
+**Chiarimento D_plus/minus:** E1–E3 NON richiedono mappe ai bordi; si possono
+eseguire senza integrazione radiale. Per E4/norma globale e controllo F,
+leggere `research/kerr_explicit_boundary_data_2026-09-12.md`: contiene
+coefficienti espliciti, ricorrenze a ogni ordine e derivate in omega.
+Le serie troncate non sono D esatti. In particolare a Im omega<0 la
+selezione uscente non è certificata dal solo limite D_plus->i omega.
 
 Leggere `research/kerr_nonlinear_spectral_proof_2026-09-12.md`.
 Non avviare nuovi grandi sweep né modificare i solutori storici.
