@@ -83,6 +83,16 @@ Non estendere automaticamente a Kerr, Vaidya o a pretese di originalità.
 
 ## Obiettivo
 
+### Controllo H: Bohr–Sommerfeld indipendente dal fit
+
+Leggere `research/bohr_sommerfeld_action_2026-09-12.md`. Usare A0 ottenuto
+dall'azione in `angular_bohr_sommerfeld_action.py`, non da Richardson su due
+L. A mu=2/3,chat=0.6 vale A0≈0.8974781212181061173. Confrontare gli
+autovalori indipendenti su sequenze esatte e fittare A1 LIBERO insieme ad A2
+e termini superiori, variando intervallo e grado. Non tentare ancora una
+quadratura reale ingenua di p2 ai turning point: la prescrizione del secondo
+periodo è un compito analitico aperto. Limite obbligatorio chat=0:A2=-1/4.
+
 ### Controllo G: secondo ordine e zeri mobili (dopo A–B)
 
 Leggere `research/second_order_core_response_2026-09-12.md`. Il controllo
