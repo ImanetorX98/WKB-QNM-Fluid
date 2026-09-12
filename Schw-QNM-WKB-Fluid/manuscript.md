@@ -977,32 +977,37 @@ $10^{-14}$–$10^{-12}$, e la frequenza si sposta rispetto a quella eikonale di
 $1.5\times10^{-3}$ a $1.4\times10^{-2}$.
 
 Confrontando la previsione analitica del §5 con $Q_M$ estratto dall'ampiezza
-integrata, errore relativo mediano nella finestra $20<r<50$:
+integrata — su sequenze a $m$ **intero esatto** ($\mu=2/3$, $\ell\equiv1\bmod3$),
+e con derivate analitiche invece che per differenze finite — l'errore relativo
+mediano nella finestra $20<r<50$ è
 
 | $a$ | $\ell$ | con $\omega$ eikonale | con $\omega$ autoconsistente |
 |---|---|---|---|
-| 0.0 | 30 | $1.6\times10^{-3}$ | $3.4\times10^{-4}$ |
-| 0.3 | 30 | $3.6\times10^{-2}$ | $3.4\times10^{-4}$ |
-| 0.6 | 30 | $7.8\times10^{-2}$ | $4.4\times10^{-4}$ |
-| 0.6 | 70 | $1.2\times10^{-3}$ | $3.2\times10^{-5}$ |
-| 0.9 | 70 | $2.3\times10^{-1}$ | $1.5\times10^{-3}$ |
-| 0.9 | 100 | $1.9\times10^{-1}$ | $1.4\times10^{-3}$ |
+| 0.0 | 40 | $2.3\times10^{-3}$ | $7.3\times10^{-4}$ |
+| 0.3 | 40 | $3.4\times10^{-2}$ | $8.1\times10^{-4}$ |
+| 0.3 | 100 | $1.3\times10^{-1}$ | $5.0\times10^{-3}$ |
+| 0.6 | 40 | $7.4\times10^{-2}$ | $1.6\times10^{-3}$ |
+| 0.6 | 100 | $2.8\times10^{-1}$ | $9.8\times10^{-3}$ |
+| 0.9 | 40 | $6.9\times10^{-1}$ | $3.2\times10^{-2}$ |
 
-Con la frequenza consistente gli errori scendono e il comportamento erratico
-scompare: la previsione del §5 vale anche in presenza di rotazione, **non c'è
-nulla di patologico nell'ampiezza**, e la struttura di ordine del §9.2 resta
-l'unico contenuto.
+La frequenza autoconsistente migliora di **uno o due ordini di grandezza** a ogni
+spin e multipolo, e il comportamento erratico scompare: la previsione del §5 vale
+anche in presenza di rotazione, **non c'è nulla di patologico nell'ampiezza**, e
+la struttura di ordine del §9.2 resta l'unico contenuto.
 
-*Sulla precisione di questa tabella.* Le cifre della colonna di destra non vanno
-lette come accuratezza. Il riferimento numerico usa una condizione al bordo
-troncata all'orizzonte e una derivata seconda per differenze finite sul modulo
-dell'ampiezza; rifacendo la stessa misura con derivate **analitiche** ricavate
-dall'ODE, il $Q_M$ di riferimento si sposta dello $0.2\%$ a $a=0$ e fino al
-$5\%$ a $a=0.9$, mentre variare l'offset all'orizzonte lo sposta dello $0.4\%$
-con rotazione. Le voci $3\times10^{-5}$ e $3\times10^{-4}$ stanno quindi **sotto
-l'incertezza sistematica del proprio riferimento**. Ciò che la tabella
-stabilisce è il **confronto fra le due colonne** — la frequenza autoconsistente
-migliora di due ordini di grandezza — non il valore assoluto della seconda.
+> **Che cosa misura davvero la colonna di destra.** Non l'accuratezza della
+> previsione. Variando l'offset con cui la condizione entrante è imposta a
+> $r=r_++\delta$, l'errore scala con $\delta$: a $a=0$, $\ell=100$ vale
+> $7.7\times10^{-2},\;1.8\times10^{-2},\;4.5\times10^{-3},\;1.1\times10^{-3}$ per
+> $\delta=10^{-4}\ldots10^{-7}$. È la **condizione al bordo troncata** a dominare,
+> non il modello — ed è anche la ragione per cui quei numeri crescono con $\ell$
+> invece di calare.
+>
+> Il confronto **fra le due colonne** è quindi il contenuto della tabella; i
+> valori assoluti sono un limite del riferimento numerico. Il bordo interno di
+> Kerr ammette una rappresentazione **convergente** in funzioni di Heun
+> confluenti — la radiale è un'equazione di Heun confluente, e la serie converge
+> fino a $|r-r_+|<r_+-r_-$ — che rimuove il troncamento; non è stata usata qui.
 
 *Limite dichiarato.* Il caso $a=0.9$, $\mu=0.9$ non è incluso: il bordo interno
 richiesto avvicina l'orizzonte al punto in cui l'integratore esaurisce la
@@ -1010,6 +1015,7 @@ precisione di macchina. Il regime quasi estremale richiede un trattamento
 dedicato che non affrontiamo.
 
 ---
+
 
 ## 10. Non universalità: il contrappunto fermionico
 
@@ -1582,7 +1588,9 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.4, secolare $=$ ritardo | `../calculations/vaidya_retarded_uniformity.py` | residuo simbolico **esattamente nullo** |
 | §11.4, serie secolare esatta | `../calculations/vaidya_secular_series.py` | quadratico $=2i\omega$ a zero macchina; rapporti 8 e 24 universali |
 | §11.4, separazione geometria/barriera | `../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
-| §9.6, audit con derivate analitiche | `../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
+| §9.6, audit a $m$ intero esatto | `../calculations/claude_kerr_amplitude_exact_m.py` | l'errore scala con l'offset al bordo |
+| §9.6, derivate analitiche | `../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5% |
+| §9.6, forma di Heun confluente | `../calculations/claude_kerr_heun_parameters.py` | matching a residuo nullo |
 | §5, sensibilità alla frequenza | `../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
 | Suite completa | `core/` e `calculations/` | **114 test superati**: 94 in `calculations/`, 20 in `core/` |
 
