@@ -41,7 +41,8 @@ Con una rappresentazione **convergente** l'ambiguità non esiste per costruzione
 Cosa serve, concretamente:
 
 1. la ricorrenza a tre termini di Jaffé/Leaver per la radiale di Kerr **nelle
-   nostre convenzioni** — variabile master \(\Psi=\sqrt{H}R\), \(e^{-i\omega t}\),
+   nostre convenzioni**, per il **solo bordo esterno** — quello interno è chiuso
+   da `HeunC`, vedi N1 — variabile master \(\Psi=\sqrt{H}R\), \(e^{-i\omega t}\),
    \(\lambda=A+a^2\omega^2-2am\omega\) — con i prefattori espliciti;
 2. il dominio di convergenza dichiarato, e la relazione fra convergenza della
    serie e condizione uscente;
@@ -81,7 +82,23 @@ sulla barriera, dove \(\rho=O(1)\). È il punto in cui l'eventuale memoria vive.
 
 ## Traccia numerica — mia
 
-### N1. `HeunC` per i bordi di Kerr — **da fare per primo**
+### N1. `HeunC` per i bordi di Kerr — **ESEGUITO: riuscito a metà**
+
+> **Esito.** Bordo **interno risolto**: la radiale è confluente Heun, i parametri
+> escono con residuo di matching nullo, e \(D_-\) da `HeunC` concorda con la serie
+> di Frobenius a **undici cifre** dove quella vale, con residuo della Riccati
+> \(10^{-13}\) fino a \(\rho=1\) — contro un raggio di \(1.7\times10^{-3}\) della
+> serie, cioè un fattore \(\sim600\).
+>
+> Bordo **esterno non risolto**: `HeunC` è la soluzione al punto singolare
+> **regolare**, e per l'infinito irregolare servirebbero i coefficienti di
+> connessione, che *Mathematica* non espone.
+>
+> **A1 resta necessario ma dimezzato**: solo il bordo esterno, e solo se il
+> bersaglio di accuratezza supera il budget. Dettagli in
+> [`research/claude_kerr_heun_2026-09-12.md`](research/claude_kerr_heun_2026-09-12.md).
+
+### N1 (testo originale)
 
 Mathematica ha le Heun built-in e nessun pacchetto Teukolsky installato. La
 radiale di Kerr è confluente Heun, con punti singolari regolari in \(r_\pm\) e
