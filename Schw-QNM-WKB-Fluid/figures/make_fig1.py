@@ -37,12 +37,16 @@ BLUE, VERMILLION, GREEN = "#0072B2", "#D55E00", "#009E73"
 
 
 def gather() -> list[dict]:
+    from fractions import Fraction
+
     from dirac_madelung_profile import hierarchy_scaling
-    from kerr_radial_order_profile import order_measurement
+    from kerr_fixed_mu_radial import measure
     from scalar_eikonal_scaling import scaling_table
 
     scalar = scaling_table(ell_values=(4, 8, 16, 32), spin=2)
-    kerr = order_measurement(0.6, 0.5, ells=(40, 60, 80, 120, 160))
+    # Kerr su sequenze a m INTERO ESATTO: con m arrotondato la pendenza
+    # misurerebbe 1, ed e' l'artefatto documentato nel manoscritto, §9.3.
+    kerr = measure(a=0.6, mu=Fraction(2, 3))
     dirac = hierarchy_scaling(kappa_values=(2.0, 4.0, 8.0, 16.0), region="far")
 
     return [
@@ -55,10 +59,10 @@ def gather() -> list[dict]:
             "marker": "o",
         },
         {
-            "label": "Kerr, $a=0.6$",
-            "detail": r"$-\varepsilon\,\Delta A_1/H^2$",
-            "eps": list(kerr["epsilons"]),
-            "val": list(kerr["deviations"]),
+            "label": "Kerr, $a=0.6$, $m$ esatto",
+            "detail": r"$A_1=0$",
+            "eps": [1.0 / (ell + 0.5) for ell, _ in kerr["modes"]],
+            "val": list(kerr["errors"]),
             "color": VERMILLION,
             "marker": "s",
         },

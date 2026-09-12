@@ -40,24 +40,28 @@ sbagliato ed è ritrattato nel §5.
 
 **Il risultato positivo: l'ordinamento.** Ciò che la riscrittura non rende
 ridondante è a quale potenza di $\varepsilon$ compaia il primo termine
-subprincipale, e se il termine d'ampiezza sia solo o preceduto da struttura
-geometrica. Nella riscalatura eikonale del potenziale di Regge–Wheeler, con la
-sostituzione di Langer $L=\ell+\tfrac12$, il potenziale si decompone
+subprincipale. Nella riscalatura eikonale del potenziale di Regge–Wheeler, con
+la sostituzione di Langer $L=\ell+\tfrac12$, il potenziale si decompone
 **esattamente** come $V_s/L^2=h^2+\varepsilon^2v_2$: la serie termina al secondo
 ordine e non contiene termini di ordine $\varepsilon^1$. Poiché il funzionale di
 Madelung compare anch'esso a $\varepsilon^2$, spin e potenziale quantistico sono
-**degeneri in ordine** e separabili solo per forma funzionale. Due casi rompono
-la degenerazione, in settori opposti: su Kerr l'autovalore sferoidale porta un
-termine $\varepsilon^1$ che nessuna sostituzione di Langer rimuove — struttura
-geometrica subprincipale **nel settore bosonico** — e per un campo di Dirac
-massless su Schwarzschild compare, allo stesso ordine, la connessione di spin
-dei partner di Darboux. Ne segue un criterio operativo: la pendenza in
-$\varepsilon$ del primo termine subprincipale vale 2 nel regime puramente di
-Madelung, 1 quando un contributo geometrico lo precede. Le pendenze misurate
-sono 1.951 e 2.0000 nei casi statici senza rotazione, 0.963–1.014 su Kerr,
-1.0000 per Dirac. Il criterio **non discrimina lo spin del campo** ma la
-presenza di struttura geometrica: leggerlo come firma fermionica, come facevamo
-in una versione precedente di questo lavoro, è un errore.
+**degeneri in ordine** e separabili solo per forma funzionale.
+
+La degenerazione si rompe in un solo caso, ed è il **settore fermionico**: per un
+campo di Dirac massless la connessione di spin dei partner di Darboux dà
+$V_\tau/K^2=h^2+\tau\varepsilon h'$, con il primo termine a $\varepsilon^1$. La
+rotazione **non** la rompe: mostriamo che il coefficiente di $1/L$ dell'autovalore
+sferoidale è esattamente nullo, perché la quantizzazione angolare di
+Bohr–Sommerfeld contiene solo potenze pari di $\varepsilon$, e ne segue
+$q/L^2=Q_0+O(\varepsilon^2)$ identicamente su Kerr.
+
+Il discriminante è dunque **l'ordine dell'equazione** — primo contro secondo — e
+tutte e tre le righe del criterio sono identità esatte o loro conseguenze, non
+pendenze adattate. Una versione precedente attribuiva a Kerr un termine
+$\varepsilon^1$ e ne deduceva che il criterio distinguesse «struttura
+geometrica» anziché lo spin: quella pendenza era un artefatto
+dell'arrotondamento dell'ordine $m$ all'intero, documentato nel §9.3 perché è
+facile da ripetere.
 
 **Terza geometria.** Su Vaidya entrante il residuo dell'ansatz adiabatico
 all'ordine $\dot M$ è **esattamente** $2\,\partial_r\partial_M Z$, senza altri
@@ -197,12 +201,13 @@ divisione: la Parte II stabilisce che cosa la riscrittura non aggiunge — il §
    non estende la correzione di Iyer–Will, la riproduce.
 2. **Criterio di ordinamento (§8, §9, §10), esteso a Vaidya (§11).** La
    decomposizione esatta (8.1) con sostituzione di Langer, l'osservazione che
-   spin e Madelung sono degeneri in ordine nel settore bosonico statico, e i
-   **due** contro-esempi di ordine $\varepsilon^1$ — la rotazione in Kerr,
-   bosonica, e la connessione di spin di Dirac, fermionica — da cui il criterio
-   nella forma generale del §10.1. Su Vaidya la stessa tesi assume la forma
-   (11.2): il termine misto di ordine $\dot M$ è una derivata della famiglia
-   congelata, quindi non porta informazione dinamica nuova.
+   spin e Madelung sono degeneri in ordine nel settore bosonico, e l'unico
+   contro-esempio di ordine $\varepsilon^1$ — la connessione di spin di Darboux
+   nel settore fermionico. Che la rotazione **non** rompa la degenerazione è
+   l'enunciato (9.3), $A_1=0$, con la dimostrazione dalla struttura pari della
+   quantizzazione angolare. Su Vaidya la stessa tesi assume la forma (11.2): il
+   termine misto di ordine $\dot M$ è una derivata della famiglia congelata,
+   quindi non porta informazione dinamica nuova.
 
 Che il punto 1 preceda il punto 2 è deliberato. Un lettore che consideri questa
 via ha bisogno di sapere per prima cosa che il funzionale d'ampiezza riproduce
@@ -766,25 +771,21 @@ Riproducibile con `verification/scalar_eikonal_scaling.py`.
 
 ---
 
-## 9. Kerr: la rotazione produce un termine di ordine $\varepsilon$
+## 9. Kerr: la rotazione **non** rompe la degenerazione
 
 Il §8 mostra che nel settore bosonico statico non esiste termine
 $\varepsilon^1$: la sostituzione di Langer dà $\ell(\ell+1)=L^2-\tfrac14$, e il
-$-\tfrac14$ è puro $\varepsilon^2$. Sarebbe naturale concluderne che la pendenza
-2 caratterizzi il settore bosonico. **Non è così**, e Kerr lo mostra.
+$-\tfrac14$ è puro $\varepsilon^2$. È naturale chiedersi se la rotazione lo
+introduca — l'autovalore sferoidale dipende dalla frequenza e la simmetria
+sferica è rotta, quindi un termine dispari non sarebbe sorprendente.
 
-![Fig. 1](figures/fig1_ordinamento.pdf)
+**Non lo introduce**, e la ragione è strutturale: il coefficiente di $1/L$
+dell'autovalore sferoidale è **esattamente nullo**. Kerr conferma quindi
+l'ordinamento $\varepsilon^2$ del settore bosonico invece di smentirlo.
 
-**Figura 1.** Primo termine subprincipale della decomposizione contro
-$\varepsilon=1/L$, per i tre casi trattati. Ogni serie è riscalata in modo che
-la retta di fit passi per 1 a $\varepsilon=0.1$: le ampiezze assolute hanno
-significati fisici diversi e non sono confrontabili, le pendenze sì. Le rette
-grigie hanno pendenza 1 e 2. Schwarzschild gravitazionale, dove il primo termine
-è $\varepsilon^2v_2$, misura 2.00; Kerr scalare a $a=0.6$, con
-$-\varepsilon\Delta A_1/H^2$, misura 1.00; Dirac con la connessione di spin
-$\tau\varepsilon h'$ misura 1.00. I due casi a pendenza 1 stanno in settori
-opposti — bosonico con rotazione, fermionico statico — ed è questo a mostrare
-che l'oggetto discriminato è la struttura geometrica, non lo spin del campo.
+> Una versione precedente di questo lavoro sosteneva il contrario, sulla base di
+> una pendenza misurata $\simeq1$. Quella misura era contaminata da un difetto
+> numerico che il §9.3 documenta, perché è istruttivo e facile da ripetere.
 
 ### 9.1 Decomposizione esatta
 
@@ -800,54 +801,98 @@ $$\frac{q}{L^2}=Q_0(r)
 Q_0=\left(\hat\Omega-\frac{\mu a}{H}\right)^2-\frac{\Delta\bar A_0}{H^2},
 \tag{9.1}$$
 
-dove $A=A_0+A_1/L+A_2/L^2+\dots$ è l'espansione eikonale dell'autovalore
-sferoidale e $\bar A_0=A_0+\hat c^2-2\mu\hat c$. La (9.1) va confrontata
-direttamente con la (8.1) del caso statico e con la (10.1) del caso di Dirac:
-**hanno la stessa forma**, e differiscono solo per quale potenza di
-$\varepsilon$ porta il primo termine subprincipale.
+dove $A=A_0+A_1/L+A_2/L^2+\dots$ e $\bar A_0=A_0+\hat c^2-2\mu\hat c$.
+
+La struttura della (9.1) rende la domanda **puramente angolare**. A $\mu$ e
+$\hat c$ fissati, l'unica dipendenza da $L$ del membro destro passa per
+$A/L^2$: fissato quello, tutto il resto è funzione di $r$ soltanto. Quindi
+
+$$A_1=0\;\Longrightarrow\;\frac{q}{L^2}=Q_0+O(\varepsilon^2)
+\quad\text{identicamente,} \tag{9.2}$$
+
+senza bisogno di misurare alcunché sul potenziale radiale.
 
 Le convenzioni alternative dell'equazione angolare differiscono per termini
 $a^2\omega^2=L^2\hat c^2$ e $2am\omega=2L^2\mu\hat c$, entrambi puramente
 $O(L^2)$: entrano in $\bar A_0$, non in $A_1$. Il risultato è quindi
 indipendente dalla convenzione.
 
-### 9.2 Misura non circolare
+### 9.2 $A_1=0$, con dimostrazione
 
-Definire $A_1$ come coefficiente di $1/L$ e poi verificarne lo scaling sarebbe
-tautologico. Si procede invece così: a ogni $\ell$ si costruisce il potenziale
-con l'autovalore sferoidale **esatto** a quel $\ell$, lo si confronta con la sua
-forma di testa $Q_0$, e si misura la pendenza in $\varepsilon$ del residuo
-$D(r)=q/L^2-Q_0(r)$ su una finestra centrata sul picco.
+Nel settore scalare, posto $Q_0=\hat A+\hat c^2\cos^2\theta-\mu^2/\sin^2\theta$,
+la quantizzazione di Bohr–Sommerfeld angolare si scrive
 
-| $a$ | $\mu$ | $\hat\Omega$ | $r_{\rm picco}$ | $A_0$ | **pendenza** |
-|---|---|---|---|---|---|
-| 0.0 | 0.5 | 0.192450 | 3.00000 | 1.00000 | **1.951** |
-| 0.0 | 0.9 | 0.192450 | 3.00000 | 1.00000 | **1.951** |
-| 0.3 | 0.5 | 0.205614 | 2.78835 | 0.99857 | **0.963** |
-| 0.6 | 0.5 | 0.225120 | 2.47487 | 0.99315 | **0.996** |
-| 0.9 | 0.5 | 0.261204 | 1.93474 | 0.97924 | **1.006** |
-| 0.6 | 0.9 | 0.252767 | 2.23949 | 0.99778 | **1.014** |
-| 0.9 | 0.9 | 0.330631 | 1.60599 | 0.99135 | **0.997** |
+$$\int_{\theta_-}^{\theta_+}\sqrt{Q_0}\;d\theta=\pi\,(1-|\mu|),$$
 
-Il controllo statico dà 2, la rotazione dà 1, per ogni spin e ogni $\mu$
-provati. Il difetto del controllo rispetto a 2.000 è troncamento a
-$\ell\le160$, non struttura.
+e il punto decisivo è che **né il membro sinistro né il destro contengono
+$1/L$**: con $m=\mu L$ e $L=\ell+\tfrac12$ il fattore $L$ si semplifica
+esattamente, e il $+\tfrac12$ di Langer è già dentro $L$. In forma di Liouville
+l'equazione è $\varepsilon^2\psi''+(Q_0+\varepsilon^2Q_2)\psi=0$ con
+$Q_2=\tfrac14(1+\csc^2\theta)$: **solo potenze pari di $\varepsilon$**. Dopo la
+correzione di Maslov la quantizzazione formale è dunque
 
-### 9.3 Il termine non è un artefatto di parametrizzazione
+$$I(\hat A)+\varepsilon^2I_2(\hat A)+\dots=\pi(1-|\mu|),$$
 
-Nel caso sferico l'espansione dà $A_1=-1.4\times10^{-14}$ e
-$A_2=-0.25000000$, cioè esattamente il termine di Langer: il metodo riproduce il
-§8. Con rotazione $A_1\neq0$, e non è rimovibile. Ridefinendo $L\to L+\delta$ si
-ha $A_1\to A_1-2\delta A_0$; una costante unica assorbirebbe $A_1$ solo se
-$\delta=A_1/(2A_0)$ fosse comune ai modi, mentre i valori richiesti vanno da
-$-0.010$ a $-0.128$, con dispersione del 162%. È lo stesso test dell'Appendice B,
-che separa l'artefatto di Langer dal termine genuino.
+da cui $A_1\,I_A=0$ e quindi, essendo $I_A\neq0$,
 
-Per un overtone fissato $\operatorname{Im}\hat c=O(\varepsilon)$; facendo
-$\operatorname{Im}\hat c\to0$ la parte reale di $A_1$ resta stabile a $-0.0193$.
-Il termine sopravvive nel limite fisico ed è reale all'ordine dominante.
+$$\boxed{A_1=0}\qquad\text{e analogamente }A_3=0. \tag{9.3}$$
 
-### 9.4 Validazioni
+Al passo successivo $A_2=-I_2(A_0)/I_A(A_0)$; il calcolo in forma chiusa di
+$I_2$ richiede un periodo su ciclo complesso e non è svolto qui.
+
+**Due conferme numeriche indipendenti.** Scegliendo $\mu=2a/b$ con
+$b\mid(2\ell+1)$ — per esempio $\mu=2/3$ con $\ell\equiv1\ (\mathrm{mod}\ 3)$ —
+l'ordine $m$ è intero **esatto** e non va arrotondato. Allora, sia con una
+diagonalizzazione in base armonica sferica sia con `SpheroidalEigenvalue` di
+*Mathematica*, implementazione esterna al lavoro:
+
+| modello per $L^2(\hat A-A_0)$, $\ell=40\ldots100$ | parametri | residuo max |
+|---|---|---|
+| $A_2+b/L+c/L^2$, con $b$ **libero** | 3 | $4.6\times10^{-9}$ |
+| $A_2+c/L^2+d/L^4$, **solo pari** | 3 | $\mathbf{1.2\times10^{-12}}$ |
+
+A parità di parametri il modello a sole potenze pari vince di quasi tre ordini,
+e i coefficienti dispari escono a $10^{-5}$, cioè al livello dell'errore di
+modello. Per $\mu=2/3$, $\hat c=3/5$ si ottiene $A_2=-0.2310651878$.
+
+Il controllo vincolante è a $\hat c=0$, dove $A=\ell(\ell+1)$ è esatto e dunque
+$\hat A=1-\tfrac{1}{4L^2}$: la misura dà $L^2(\hat A-1)=-0.25$ a sedici cifre.
+**È il termine di Langer del §8**, ritrovato per una strada indipendente.
+
+### 9.3 La trappola: una quantità discreta dentro una regressione
+
+Il termine $\varepsilon^1$ che una versione precedente riportava era un
+artefatto, e vale la pena documentarlo perché chiunque lavori a $\mu$ fissato lo
+incontrerà.
+
+L'ordine $m$ è **intero**, quindi a $\mu$ nominale fissato si è tentati di porre
+$m=\mathrm{round}(\mu L)$. Ma allora $\mu_{\rm eff}=m/L$ non è $\mu$: differisce
+di $O(0.5/L)$. E $A_0$ dipende da $\mu$, per cui
+
+$$\frac{A}{L^2}\bigg|_{\rm misurato}
+=A_0(\mu)+\underbrace{\frac{\partial A_0}{\partial\mu}\,(\pm0.25)}_{\text{falso }A_1}\frac1L+\dots$$
+
+Per $\mu=\tfrac12$ e $L=\ell+\tfrac12$ si ha $\mu L=\tfrac{\ell}{2}+\tfrac14$,
+che per $\ell$ **pari** arrotonda in giù di $0.25$ e per $\ell$ **dispari** in su
+della stessa quantità. La firma è inequivocabile:
+
+| insieme di $\ell$ | $A_1$ misurato |
+|---|---|
+| 40, 60, 80, 120, 160, 240 (pari) | $-0.041441$ |
+| 41, 61, 81, 121, 161, 241 (dispari) | $+0.041443$ |
+
+**Cambia segno con la parità di $\ell$, a modulo identico.** Nessuna quantità
+fisica si comporta così.
+
+Il difetto sfugge anche a un controllo di parità sulla pendenza *radiale*,
+perché quella misura usa $|\Delta q|$ e il **modulo** dell'errore di
+arrotondamento è $0.25/L$ in entrambe le parità: la pendenza risulta 1 comunque.
+
+> Il controllo che lo trova non è analitico ed è a costo nullo: **variare una
+> quantità che, se la teoria è giusta, non deve contare** — qui la parità di
+> $\ell$.
+
+### 9.4 Validazioni della soluzione eikonale
 
 Per $a=0$ si ritrova $\hat\Omega=1/(3\sqrt3)$ e $r_{\rm picco}=3$, senza
 dipendenza da $\mu$. La condizione di radice doppia $Q_0(r_0)=Q_0'(r_0)=0$ è
@@ -856,20 +901,29 @@ fotonica equatoriale prograda $r_{\rm ph}=2[1+\cos(\tfrac23\arccos(-a))]$ e vi s
 avvicinano al crescere di $\mu$ — 2.788 e 2.239 contro 2.630 e 2.189 per
 $a=0.6$ — che è il comportamento corretto delle orbite fotoniche sferiche.
 
+Con $m$ intero esatto la pendenza radiale misurata vale $2.000000$ su
+$\mu=2/5,\,2/3,\,4/5$ e $a\le0.9$, e $2.0000000$–$2.0000051$ al picco eikonale
+autoconsistente: coerente con la (9.2), come dev'essere.
+
 ### 9.5 Attribuzione
 
-Che $A_1\neq0$ per l'autovalore sferoidale è **noto**, ed è contenuto nella
-letteratura eikonale su Kerr [23, 24]. Non è questa la
-rivendicazione.
+L'espansione eikonale in $1/L$ dei QNM di Kerr **è stabilita**: Dolan [23]
+sviluppa esplicitamente il metodo e ottiene una correzione di ordine $1/l$ alla
+frequenza; Yang *et al.* [24], Appendice A, espandono $A_{\ell m}$ ottenendo
+$A^0_{\ell m}=(l+\tfrac12)^2$ — il valore di Langer — dalla condizione di
+Bohr–Sommerfeld. Anche quella quantizzazione angolare è loro, e non la
+rivendichiamo.
 
-Va distinta anche dalla WKB di barriera su Kerr di Seidel e Iyer [33], che
-applica il metodo di [7] ai modi **bassi** espandendo il potenziale in potenze
-di $a\omega$. È un parametro piccolo diverso dal nostro $\varepsilon=1/L$: quel
-lavoro non contiene autovalori sferoidali né limite eikonale, e le difficoltà
-che riporta ad alto $a$ derivano proprio dall'espansione in $a\omega$, che qui
-non si effettua — il problema angolare è risolto esattamente. Il contenuto di questa sezione è la collocazione di quel termine
-nella stessa casella della connessione di spin di Dirac, attraverso una misura
-operativa comune, e la conseguente correzione del criterio (§10.1).
+Va distinta la WKB di barriera su Kerr di Seidel e Iyer [33], che applica il
+metodo di [7] ai modi **bassi** espandendo in potenze di $a\omega$: parametro
+piccolo diverso da $\varepsilon=1/L$, senza autovalori sferoidali né limite
+eikonale.
+
+Quello che aggiungiamo è puntuale. Yang *et al.* dichiarano che il loro schema
+ha errore $O(1/l)$: il coefficiente di $1/L$ è precisamente ciò che **scartano**.
+Qui si mostra che quel coefficiente è **zero**, con la ragione — la struttura a
+sole potenze pari della quantizzazione — e con la conseguenza (9.2), cioè che
+l'ordinamento $\varepsilon^2$ del settore bosonico sopravvive alla rotazione.
 
 ### 9.6 Il funzionale di ampiezza su Kerr
 
@@ -972,26 +1026,44 @@ $O(\varepsilon)$.
 ### 10.1 Il criterio, nella forma generale
 
 Mettendo insieme i tre casi — Schwarzschild bosonico (§8), Kerr scalare (§9) e
-Dirac (§10) — si può ora formulare il criterio senza attribuirlo allo spin.
+Dirac (§10) — il criterio si formula così.
 
-> **Criterio.** Si misuri la pendenza in $\varepsilon$ del primo termine
-> subprincipale della decomposizione. **Pendenza 2**: il regime è puramente di
-> Madelung, e spin e curvatura entrano degeneri con esso. **Pendenza 1**: esiste
-> un contributo geometrico che precede il funzionale di Madelung e va trattato a
-> parte.
+> **Criterio.** Si guardi a quale potenza di $\varepsilon$ compare il primo
+> termine subprincipale della decomposizione. **Ordine $\varepsilon^2$**: il
+> regime è puramente di Madelung, e spin e curvatura entrano degeneri con esso.
+> **Ordine $\varepsilon^1$**: esiste un contributo geometrico che precede il
+> funzionale di Madelung e va trattato a parte.
 
-Il criterio **non distingue spin intero da semintero**, e sarebbe un errore
-leggerlo così. Ne conosciamo due sorgenti indipendenti di pendenza 1:
+Il discriminante è **l'ordine dell'equazione**, non la rotazione né la curvatura:
 
-| sorgente | settore | termine $O(\varepsilon)$ | pendenza misurata |
+| caso | decomposizione | primo termine | natura dell'enunciato |
 |---|---|---|---|
-| separazione sferoidale da rotazione | bosonico, Kerr | $-\Delta A_1/H^2$ | 0.963 – 1.014 |
-| connessione di spin di Darboux | fermionico, statico | $\tau h'$ | 1.0000 |
+| bosonico statico (§8) | $V_s/L^2=h^2+\varepsilon^2v_2$ | $\varepsilon^2$ | identità algebrica |
+| bosonico rotante (§9) | $q/L^2=Q_0+O(\varepsilon^2)$ | $\varepsilon^2$ | conseguenza di $A_1=0$ |
+| fermionico (§10) | $V_\tau/K^2=h^2+\tau\varepsilon h'$ | $\boldsymbol{\varepsilon^1}$ | identità algebrica |
 
-Che le due coesistano in settori opposti — una bosonica con rotazione, una
-fermionica senza — è ciò che mostra che l'oggetto discriminato è la **struttura
-geometrica**, non lo spin del campo. Una formulazione precedente di questo lavoro
-attribuiva la pendenza 1 al solo settore fermionico: il §9 la smentisce.
+Nessuna delle tre righe è una pendenza adattata: le prime e le terze sono
+identità esatte, la seconda discende dalla (9.3). In un sistema del **primo**
+ordine la connessione di spin dei partner di Darboux compare a $\varepsilon^1$;
+in uno del **secondo** non c'è nulla a quell'ordine, con o senza rotazione.
+
+![Fig. 1](figures/fig1_ordinamento.pdf)
+
+**Figura 1.** Primo termine subprincipale contro $\varepsilon=1/L$, per i tre
+casi. Ogni serie è riscalata perché la retta passi per 1 a $\varepsilon=0.1$: le
+ampiezze assolute hanno significati fisici diversi e non sono confrontabili, le
+pendenze sì. Le rette grigie hanno pendenza 1 e 2. Schwarzschild gravitazionale
+e Kerr scalare misurano entrambi 2; Dirac, con la connessione di spin
+$\tau\varepsilon h'$, misura 1. La serie di Kerr è calcolata su sequenze a
+$m$ intero **esatto** (§9.3): con $m$ arrotondato misurerebbe 1, ed è
+l'artefatto che questo lavoro ha dovuto rimuovere.
+
+*Storia di questa formulazione.* Una versione precedente di questo lavoro
+sosteneva che il criterio non distinguesse lo spin del campo ma la presenza di
+«struttura geometrica», e portava Kerr come secondo caso a $\varepsilon^1$
+accanto a Dirac. Quella correzione era essa stessa un artefatto: la pendenza
+$\simeq1$ di Kerr veniva dall'arrotondamento documentato nel §9.3. Rimosso il
+difetto, la forma sopra è quella corretta, ed è anche la più semplice.
 
 ---
 
@@ -1459,9 +1531,12 @@ deterministici e girano in meno di un minuto ciascuno.
 | Legge con sorgente, §13 | `verification/open_continuity.py` | residuo $\sim10^{-6}$ |
 | Eq. (10.1)–(10.2), pendenze §12 e §10 | `../core/dirac_madelung_profile.py --scaling` | pendenza spin 1.0000 |
 | §6, ridondanza di $\mathcal E_M$ | `../calculations/robust_indicator_test.py` | $\mathcal E_M/|\Lambda_3|$ = 1.0437 ± 0.10% |
-| §9.1–9.3, termine $\varepsilon$ di Kerr | `../calculations/kerr_eikonal_order_test.py` | $A_1\neq0$; Langer esatto per $a=0$ |
-| §9.2, pendenze di Kerr | `../calculations/kerr_radial_order_profile.py` | 1.951 statico, 0.963–1.014 con rotazione |
-| Figura 1 | `figures/make_fig1.py` | pendenze 2.00 / 1.00 / 1.00 |
+| §9.2, $A_1=0$ con $m$ intero esatto | `../calculations/claude_verify_even_structure.wl` | modello pari, residuo $1.2\times10^{-12}$ |
+| §9.2, azione di Bohr–Sommerfeld | `../calculations/angular_bohr_sommerfeld_action.py` | $A_0$ senza solutore, residuo $4.5\times10^{-36}$ |
+| §9.2, solutore esterno | `../calculations/claude_verify_angular_independent.wl` | `SpheroidalEigenvalue`, 14 cifre su $A_c$ |
+| §9.3, la trappola dell'arrotondamento | `../calculations/test_kerr_eigenvalue_has_no_linear_term.py` | falso $A_1$ con segno legato alla parità di $\ell$ |
+| §9.4, pendenza radiale a $m$ esatto | `../calculations/kerr_fixed_mu_radial.py` | **2.0000015**, $A_1$ del fit $2\times10^{-10}$ |
+| Figura 1 | `figures/make_fig1.py` | pendenze **2.00 / 2.00 / 1.00** |
 | §9.6, frequenza autoconsistente | `../calculations/kerr_wkb3_selfconsistent.py` | WKB3 scalare a $3\times10^{-11}$ per $a=0$ |
 | Frequenze esatte di riferimento | `../core/leaver_qnm.py` | 10 cifre contro Leaver 1985 |
 | §5, previsione e sensibilità | `../calculations/madelung_wkb_prediction.py` | $1.7\times10^{-7}$ a $L=300$ |
@@ -1475,7 +1550,7 @@ deterministici e girano in meno di un minuto ciascuno.
 | §11.4, separazione geometria/barriera | `../calculations/vaidya_geometric_split.py` | identità esatta, differenza simbolica nulla |
 | §9.6, audit con derivate analitiche | `../calculations/kerr_madelung_analytic.py` | scarto da `np.gradient` 0.2%–5%; BC 0.4% |
 | §5, sensibilità alla frequenza | `../calculations/madelung_conditioning_schwarzschild.py` | amplificazione **2.0**, non $10^2$ |
-| Suite completa | `core/` e `calculations/` | **103 test superati**: 83 in `calculations/`, 20 in `core/` |
+| Suite completa | `core/` e `calculations/` | **114 test superati**: 94 in `calculations/`, 20 in `core/` |
 
 I PDF ad accesso libero sono in `papers/` (30 su 35 voci); le otto voci
 sotto paywall e le due monografie sono elencate in
