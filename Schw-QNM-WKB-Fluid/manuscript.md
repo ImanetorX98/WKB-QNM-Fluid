@@ -853,11 +853,42 @@ diagonalizzazione in base armonica sferica sia con `SpheroidalEigenvalue` di
 
 A parità di parametri il modello a sole potenze pari vince di quasi tre ordini,
 e i coefficienti dispari escono a $10^{-5}$, cioè al livello dell'errore di
-modello. Per $\mu=2/3$, $\hat c=3/5$ si ottiene $A_2=-0.2310651878$.
+modello.
 
-Il controllo vincolante è a $\hat c=0$, dove $A=\ell(\ell+1)$ è esatto e dunque
-$\hat A=1-\tfrac{1}{4L^2}$: la misura dà $L^2(\hat A-1)=-0.25$ a sedici cifre.
-**È il termine di Langer del §8**, ritrovato per una strada indipendente.
+**Il coefficiente successivo, e una precisazione necessaria.** $A_2$ **non è una
+costante**: è una funzione di $\mu$ e $\hat c$, e solo $A_1$ si annulla
+identicamente. Il secondo periodo della quantizzazione la fornisce in forma
+chiusa, $A_2=-I_2/I_A$ con
+
+$$I_2=\tfrac12\!\int\!\frac{Q_2}{\sqrt{Q_0}}\,d\theta
+\;+\;\tfrac1{24}\,\partial_A\!\!\int\!\frac{Q_0''}{\sqrt{Q_0}}\,d\theta,
+\qquad Q_2=\tfrac14\big(1+\csc^2\theta\big), \tag{9.4}$$
+
+dove la derivata in $A$ agisce sull'**intero** integrale, a estremi mobili:
+portarla sotto il segno produce un integrando non integrabile ai turning point,
+e un taglio arbitrario diventerebbe un parametro del risultato.
+
+| $\hat c$ (a $\mu=2/3$) | 0 | 0.2 | 0.4 | 0.6 | 0.8 |
+|---|---|---|---|---|---|
+| $A_0$ | 1 | 0.9889 | 0.9550 | 0.8975 | 0.8150 |
+| $A_2$ | $-\tfrac14$ | −0.2463 | −0.2375 | −0.2311 | −0.2364 |
+
+**Il limite sferico è il controllo vincolante.** A $\hat c=0$ l'equazione
+angolare si riduce alla Legendre associata e l'autovalore è esatto,
+$A=\ell(\ell+1)=L^2-\tfrac14$, dunque
+
+$$\hat A=1-\frac{1}{4L^2}
+\quad\Longrightarrow\quad A_0=1,\;\;A_1=0,\;\;A_2=-\tfrac14,$$
+
+con **tutti** i coefficienti successivi nulli e indipendentemente da $\mu$. La
+(9.4) riproduce $-\tfrac14$ esattamente, per ogni $\mu$ provato: **è il termine
+di Langer del §8**, ritrovato per una strada del tutto indipendente.
+
+Fuori dal limite sferico non esiste forma chiusa per $A$, e la (9.4) dà per
+esempio $A_2=-0.2310651878076874644$ a $\mu=2/3$, $\hat c=3/5$. Confrontando con
+gli autovalori a precisione 70, **senza alcun parametro adattato** — $A_0$ e
+$A_2$ entrambi dal lato analitico — la combinazione
+$L^4(\hat A-A_0-A_2/L^2)$ converge a $-0.0488$ fra $L=40.5$ e $L=160.5$.
 
 ### 9.3 La trappola: una quantità discreta dentro una regressione
 
@@ -1533,6 +1564,9 @@ deterministici e girano in meno di un minuto ciascuno.
 | §6, ridondanza di $\mathcal E_M$ | `../calculations/robust_indicator_test.py` | $\mathcal E_M/|\Lambda_3|$ = 1.0437 ± 0.10% |
 | §9.2, $A_1=0$ con $m$ intero esatto | `../calculations/claude_verify_even_structure.wl` | modello pari, residuo $1.2\times10^{-12}$ |
 | §9.2, azione di Bohr–Sommerfeld | `../calculations/angular_bohr_sommerfeld_action.py` | $A_0$ senza solutore, residuo $4.5\times10^{-36}$ |
+| Eq. (9.4), secondo periodo | `../calculations/angular_second_period.py` | $A_2=-1/4$ esatto a $\hat c=0$ |
+| Eq. (9.4), catena algebrica | `../calculations/claude_verify_second_period_chain.py` | tre passi, residuo simbolico nullo |
+| Eq. (9.4), contro autovalori | `../calculations/claude_verify_second_period.wl` | nessun parametro adattato; $A_1$ libero $\to6\times10^{-11}$ |
 | §9.2, solutore esterno | `../calculations/claude_verify_angular_independent.wl` | `SpheroidalEigenvalue`, 14 cifre su $A_c$ |
 | §9.3, la trappola dell'arrotondamento | `../calculations/test_kerr_eigenvalue_has_no_linear_term.py` | falso $A_1$ con segno legato alla parità di $\ell$ |
 | §9.4, pendenza radiale a $m$ esatto | `../calculations/kerr_fixed_mu_radial.py` | **2.0000015**, $A_1$ del fit $2\times10^{-10}$ |

@@ -221,8 +221,22 @@ getto centrale è invariato **a tutti gli ordini** e
 \omega_{\rm WKB3}=3.257504253653-0.486141916079\,i
 \]
 
-sono **costanti** su tutte le 30 righe. L'errore della WKB3 varia solo perché
-varia il bersaglio.
+sono **costanti** su tutte le 30 righe.
+
+Questo però era **asserito**, non verificato, e il brief chiedeva di
+verificarlo. Fatto: la perturbazione ha **zero** punti non nulli su una griglia
+di 200001 campioni in $|x|<1$ — il bump liscio è identicamente nullo fuori dal
+supporto, non esponenzialmente piccolo — e le sette derivate di $V$ in $x=0$,
+calcolate con differenze centrali di ordine alto sul potenziale **totale**,
+differiscono da quelle imperturbate di **esattamente** $0.000$.
+
+*Trappola incontrata nel verificarlo.* Un primo tentativo usava l'espressione
+analitica $\exp(1-1/(1-y^2))$ invece della definizione a tratti. Quella
+continuazione **non** si annulla fuori da $|y|<1$: a $x=0$ con centro 1.6 e
+larghezza 0.4 vale $\exp(1+1/15)=2.91$, e faceva risultare $V(0)=10.145$ invece
+di 10. È il supporto compatto a venire dall'indicatore, non dalla formula.
+
+L'errore della WKB3 varia dunque solo perché varia il bersaglio.
 
 ### Definizioni, come richiesto
 
