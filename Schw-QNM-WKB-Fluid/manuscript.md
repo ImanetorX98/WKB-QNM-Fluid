@@ -969,7 +969,7 @@ $r_*$ si ottengono simbolicamente; la condizione di barriera di [7], scritta in
 termini di $q$,
 
 $$\frac{q_0}{\sqrt{2q_0''}}=\Lambda_2-i\left(n+\tfrac12\right)(1+\Lambda_3),
-\tag{9.2}$$
+\tag{9.5}$$
 
 si risolve per $(\omega,r_0)$ complessi simultaneamente. A $a=0$ il solutore
 riproduce il WKB3 scalare a $3\times10^{-11}$; su Kerr converge con residui
