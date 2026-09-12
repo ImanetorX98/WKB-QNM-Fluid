@@ -1,7 +1,9 @@
-# Validazione dei gate A–D del brief del 12 settembre
+# Validazione dei gate A–D, F e G del brief del 12 settembre
 
-**Esito: A, B, C e D chiusi.** Nessun gate fallito, quindi nessun arresto.
-Dati completi in `claude_compact_data.json`. Nessun commit eseguito.
+**Esito: A, B, C, D, F e G chiusi.** Nessun gate fallito, quindi nessun arresto.
+Dati completi in `claude_compact_data.json`; il controllo G ha un resoconto
+proprio in [`claude_compact_second_order.md`](claude_compact_second_order.md),
+come il brief prescrive.
 
 Convenzioni comuni: \(V_0=10\,b(x)\) con \(b\) il bump liscio a supporto
 \([-1,1]\); perturbazione \(\eta\,b((x-c)/w)\); \(e^{-i\omega t}\); bordi uscenti
@@ -253,6 +255,79 @@ si confrontano andamenti su un campione unico e dichiarato.
 
 ---
 
+## Controllo F — residuo, norma e matching
+
+`calculations/claude_compact_matching.py` — **7.9 s**
+
+### \(F_\omega\): equazione variazionale contro differenze centrali
+
+\(\phi=\partial_\omega\psi\) risolve \(\phi''=(V-\omega^2)\phi-2\omega\psi\)
+con \(\phi(a)=0\), \(\phi'(a)=-i\), perché \(\psi(a)=1\) è fissata.
+
+| | \(F_\omega\) |
+|---|---|
+| variazionale | \(+1.643702431930+1.335211852721\,i\) |
+| FD, passo 1e−5 | scarto **9.7e−10** (reale), 1.2e−9 (immaginaria) |
+| FD, passo 1e−6 | 2.7e−9 |
+| FD, passo 1e−7 | 3.4e−8 |
+
+Il passo ottimo è \(10^{-5}\); sotto, domina l'arrotondamento.
+
+### \(N=-\psi(b)\,F_\omega\)
+
+| | |
+|---|---|
+| \(N\) diretta | \(-3.423237467769+3.584195129382\,i\) |
+| \(-\psi(b)F_\omega\) | \(-3.423237467768+3.584195129382\,i\) |
+| scarto relativo | **2.4e−13** |
+
+Il fattore è \(\psi(b)=0.18756-2.33292\,i\), di modulo 2.34: è esattamente
+quello che un Wronskiano **normalizzato** nasconderebbe. Verificato sul residuo
+nudo, come il brief prescrive.
+
+### Il residuo non è l'errore spettrale
+
+| | |
+|---|---|
+| \(\omega\) a tolleranza \(10^{-9}\) | \(3.423295488199-0.607387591982\,i\) |
+| \(\omega\) a tolleranza \(10^{-14}\) | \(3.423295488185-0.607387592074\,i\) |
+| spostamento vero | 9.358e−11 |
+| stima \(-\delta F/F_\omega\) | **9.358e−11** |
+| \(\lvert\delta F\rvert\) nudo | 1.982e−10 |
+
+La stima locale coincide con lo spostamento a tutte le cifre stampate. Il
+residuo nudo lo **sovrastima di un fattore 2.1**, che è \(\lvert F_\omega\rvert\):
+usarlo come errore spettrale sarebbe un errore sistematico, non conservativo.
+
+### Bordi: \(B/N\) contro \(B\) e \(N\) separati
+
+| \([a,b]\) | \(\lvert B/B_0-1\rvert\) | \(\lvert N/N_0-1\rvert\) | \(\lvert (B/N)/(B_0/N_0)-1\rvert\) |
+|---|---|---|---|
+| \([-1.5,\,2.4]\) | 1.53e+00 | 1.53e+00 | **2.9e−14** |
+| \([-1.0,\,3.0]\) | 1.4e−14 | 1.1e−14 | **1.4e−14** |
+| \([-2.0,\,3.5]\) | 7.66e−01 | 7.66e−01 | **5.6e−12** |
+
+La distinzione richiesta dal brief è netta: **\(B\) e \(N\) cambiano del 77% e
+del 153%, il rapporto no.** Spostando il bordo sinistro la normalizzazione
+\(\psi(a)=1\) è imposta altrove e l'intera soluzione si riscala; il fattore si
+cancella nel rapporto.
+
+Il bordo **destro** è un caso a parte: \(B\) e \(N\) restano invariati a
+\(10^{-14}\), e c'è una ragione esatta. Nella regione libera
+\(\psi=Ce^{i\omega x}\), quindi
+
+\[
+\frac{d}{db}\Big[2\omega\!\int^b\!\psi^2+i\psi(b)^2\Big]
+=2\omega\psi(b)^2+2i\psi(b)\psi'(b)
+=2\omega\psi(b)^2-2\omega\psi(b)^2=0 .
+\]
+
+\(N\) è **identicamente indipendente** dall'estremo destro, finché questo resta
+dove \(V=0\). È il termine di superficie a renderlo tale: senza, la dipendenza
+resterebbe.
+
+---
+
 ## Costi, fallimenti, comandi
 
 | script | tempo | esito |
@@ -261,6 +336,8 @@ si confrontano andamenti su un campione unico e dichiarato.
 | `claude_compact_spectrum.py` | 11.8 s | gate A |
 | `claude_compact_rank.py` | 15.9 s | gate C |
 | `claude_compact_predictive.py` | 18.1 s | gate D |
+| `claude_compact_matching.py` | 7.9 s | controllo F |
+| `claude_compact_second_order_response.py` | 9.4 s | controllo G |
 
 **Fallimenti da registrare.** Due, entrambi miei e corretti:
 `eikonal_frequency` chiamata con la firma sbagliata, e `ndarray.ptp` rimosso in
@@ -283,5 +360,11 @@ risolto identificandone la causa invece di chiedere più cifre.
   è coerente con la proposizione, non una sua dimostrazione.
 * Non è stata toccata la questione dell'originalità, né il manoscritto, né gli
   handoff precedenti.
-* L'estensione E sulla derivata spettrale di Kerr **non è stata avviata**: i
-  gate A–B che la abilitano sono ora chiusi.
+* Il controllo **G** è riportato a parte, in
+  [`claude_compact_second_order.md`](claude_compact_second_order.md), come il
+  brief prescrive.
+* L'estensione E sulla derivata spettrale di Kerr **non è stata avviata**. I
+  suoi punti 1–3 sono verifica numerica di formule già derivate da Codex, ma il
+  punto 4 richiede le \(D_\pm\) esatte a raggio **finito** e le loro derivate in
+  \(\omega\), che nella nota compaiono solo come limiti: quello resta lavoro
+  analitico.
